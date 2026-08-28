@@ -1,6 +1,6 @@
 ---
 name: prove-the-work
-description: Verify a code change with mandatory unit coverage, the full relevant suite, a production-representative build, and direct runtime evidence from computer use or a deterministic script.
+description: Select the strongest relevant automated, build, and runtime evidence available to verify a code change proportionately to its behavior and risk.
 ---
 
 # Prove The Work
@@ -8,20 +8,20 @@ description: Verify a code change with mandatory unit coverage, the full relevan
 ## Verification ladder
 
 1. Define the exact behavior, regression, or invariant being proved.
-2. Route iOS and macOS behavior through `$verify-apple-apps` and Electron behavior through `$verify-electron-apps`.
-3. Add or update focused unit tests for every changed behavior.
-4. For a bug, make the test fail for the original reason when a cheap deterministic path exists.
-5. Use snapshot tests only when pixels, layout, formatting, or rendered structure are the contract.
-6. Run focused tests and record exact counts or failures.
-7. Run the full relevant suite, linters, static checks, and a production-representative build.
+2. Inventory the repository's existing tests, static checks, build paths, runtime harnesses, observability, available skills, and environment limits.
+3. Select the layers that can catch realistic failures for this change. Route applicable iOS and macOS behavior through `$verify-apple-apps` and applicable Electron behavior through `$verify-electron-apps`.
+4. Prefer focused unit tests for changed behavioral code when the owning boundary can be exercised meaningfully.
+5. For a bug, make the test fail for the original reason when a cheap deterministic path exists.
+6. Use snapshot tests only when pixels, layout, formatting, or rendered structure are the contract.
+7. Run focused tests and add broader suites, linters, static checks, builds, or packaging when they cover material integration or release risk.
 8. Rebuild and restart the real artifact when stale binaries or cached state could hide the result.
-9. Exercise the user path with computer use or a deterministic script. Repeat timing-sensitive or crash-prone paths enough to challenge the original failure.
-10. Inspect direct evidence such as UI state, process liveness, logs, persisted values, network results, generated artifacts, crash reports, or traces.
-11. Run a nearby blast-radius smoke test and directly prove the key fact the change is safe because of.
-12. Rerun affected verification after review fixes.
+9. Exercise the user path with computer use or a deterministic script when the behavior has a meaningful runtime surface and the environment supports it. Repeat timing-sensitive or crash-prone paths enough to challenge the original failure.
+10. Inspect direct evidence such as UI state, process liveness, logs, persisted values, network results, generated artifacts, crash reports, or traces when relevant.
+11. Add a nearby blast-radius check when adjacent behavior is plausibly affected, and prove the key safety fact as far as practical.
+12. Rerun selected verification affected by review fixes.
 
 ## Evidence standard
 
-Compilation proves syntax and linkage. Unit tests prove modeled behavior. Neither proves the real application path. Claim completion only when the strongest practical evidence covers the user's exact behavior.
+Compilation proves syntax and linkage. Unit tests prove modeled behavior. Runtime checks prove only the paths actually exercised. Claim completion according to the strongest practical evidence available for the task, and name what remains unproved.
 
-If manual verification is blocked, state the blocker, what was verified instead, and the remaining concrete check. Do not rename proxy evidence as a manual pass.
+If a useful layer is irrelevant, unavailable, blocked, or disproportionate, state why, what was verified instead, and any remaining concrete risk. Do not rename proxy evidence as a stronger pass.

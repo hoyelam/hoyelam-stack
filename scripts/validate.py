@@ -64,6 +64,43 @@ def find_repository_references(path: Path, root: Path) -> list[Path]:
     return [(root / reference).resolve() for reference in references]
 
 
+def validate_marketplace(path: Path, plugin_name: str, plugin_version: str) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    try:
+        marketplace = load_json(path)
+    except (ValueError, json.JSONDecodeError) as error:
+        return [ValidationIssue(path, str(error))]
+
+    interface = marketplace.get("interface")
+    if not isinstance(marketplace.get("name"), str) or not marketplace["name"]:
+        issues.append(ValidationIssue(path, "marketplace name is missing"))
+    if not isinstance(interface, dict) or not interface.get("displayName"):
+        issues.append(ValidationIssue(path, "marketplace display name is missing"))
+
+    plugins = marketplace.get("plugins")
+    if not isinstance(plugins, list):
+        return issues + [ValidationIssue(path, "marketplace plugins must be a list")]
+    matching = [entry for entry in plugins if isinstance(entry, dict) and entry.get("name") == plugin_name]
+    if len(matching) != 1:
+        return issues + [ValidationIssue(path, f"marketplace must contain exactly one {plugin_name} entry")]
+
+    entry = matching[0]
+    source = entry.get("source")
+    expected_source = {
+        "source": "url",
+        "url": "https://github.com/hoyelam/hoyelam-stack.git",
+        "ref": f"v{plugin_version}",
+    }
+    if source != expected_source:
+        issues.append(ValidationIssue(path, f"marketplace source must be {expected_source}"))
+    expected_policy = {"installation": "AVAILABLE", "authentication": "ON_INSTALL"}
+    if entry.get("policy") != expected_policy:
+        issues.append(ValidationIssue(path, f"marketplace policy must be {expected_policy}"))
+    if not entry.get("category"):
+        issues.append(ValidationIssue(path, "marketplace category is missing"))
+    return issues
+
+
 def validate_repository(root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     required = [
@@ -72,6 +109,7 @@ def validate_repository(root: Path) -> list[ValidationIssue]:
         root / "LICENSE",
         root / "plugin.json",
         root / ".codex-plugin" / "plugin.json",
+        root / ".agents" / "plugins" / "marketplace.json",
     ]
     for path in required:
         if not path.is_file():
@@ -95,6 +133,16 @@ def validate_repository(root: Path) -> list[ValidationIssue]:
         issues.append(ValidationIssue(root, "Codex manifest must expose ./skills/"))
     if agent_plugin.get("$schema") != "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json":
         issues.append(ValidationIssue(root / "plugin.json", "Agent Plugin schema is missing or unsupported"))
+    plugin_name = codex.get("name")
+    plugin_version = codex.get("version")
+    if isinstance(plugin_name, str) and isinstance(plugin_version, str):
+        issues.extend(
+            validate_marketplace(
+                root / ".agents" / "plugins" / "marketplace.json",
+                plugin_name,
+                plugin_version,
+            )
+        )
 
     skills = sorted((root / "skills").glob("*/SKILL.md"))
     if not skills:

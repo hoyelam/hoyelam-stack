@@ -3,28 +3,28 @@
 ## Apple applications
 
 1. Invoke `$verify-apple-apps` for iOS and macOS behavioral changes.
-2. Use the focused automated layer that owns the behavior, then the full relevant test plan or suite.
-3. Build and launch the real application artifact.
-4. Verify iOS through XCUITest, Maestro, Simulator control, computer use, or a repository harness.
-5. Verify macOS through application tests, computer use, logs, process state, signing, entitlements, and direct system side effects.
-6. Preserve `.xcresult`, screenshot, log, crash, persistence, and artifact evidence relevant to the change.
+2. Select focused tests, broader plans or suites, and builds according to the changed boundary and risk.
+3. Build and launch the real application artifact when runtime, target, signing, entitlement, packaging, or integration behavior needs direct evidence.
+4. For selected iOS runtime verification, use XCUITest, Maestro, Simulator control, computer use, or a repository harness.
+5. For selected macOS runtime verification, use relevant application tests, computer use, logs, process state, signing, entitlements, and direct system side effects.
+6. Preserve only the `.xcresult`, screenshot, log, crash, persistence, and artifact evidence relevant to the selected proof.
 
 ## Electron applications
 
 1. Invoke `$verify-electron-apps` for Electron behavioral changes.
 2. Identify whether main, preload, renderer, utility, or native operating-system behavior owns the change.
-3. Run focused and full tests, type checks, linting, and a packaged build.
-4. Launch with an isolated profile and loopback-only DevTools endpoints.
-5. Use Chrome DevTools Protocol or the repository's Playwright Electron harness for Chromium surfaces.
-6. Use computer use for native menus, dialogs, tray items, permissions, window chrome, and drag and drop.
-7. Preserve console, exception, network, target, DOM, accessibility, screenshot, process, persistence, and packaged-artifact evidence.
+3. Select focused and broader tests, type checks, linting, and packaged builds according to process-boundary, integration, packaging, and release risk.
+4. When runtime evidence is selected, launch with an isolated profile and loopback-only DevTools endpoints.
+5. Use Chrome DevTools Protocol or the repository's Playwright Electron harness for relevant Chromium surfaces.
+6. Use computer use for relevant native menus, dialogs, tray items, permissions, window chrome, and drag and drop.
+7. Preserve only the console, exception, network, target, DOM, accessibility, screenshot, process, persistence, and packaged-artifact evidence relevant to the selected proof.
 
 ## Shared completion rule
 
 1. Environment readiness is not behavior verification.
-2. Compilation and unit tests alone are not end-to-end proof.
+2. Compilation and unit tests alone are not end-to-end proof when the claim concerns real runtime behavior.
 3. A screenshot without the action, state transition, and side-effect evidence is incomplete.
-4. Every verified review fix returns through the affected automated and runtime layers.
+4. Every verified review fix returns through the affected selected automated and runtime layers.
 5. Blocked layers remain named and cannot be relabeled as passing.
 
 ## Agent use

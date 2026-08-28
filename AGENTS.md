@@ -7,21 +7,32 @@
 3. Use numbered steps, no preamble, and no closing filler.
 4. Restate the task state on every turn.
 
-## Engineering workflow
+## Preferred engineering workflow
 
-1. Reconstruct relevant prior context before resuming older work, then reconcile it with live repository state.
-2. Investigate the request, observable symptom, expected behavior, origin, and evidence before editing.
-3. Locate the actual repository, applicable instructions, source, callers, tests, history, and adjacent behavior.
-4. Isolate the feature or defect at the smallest meaningful boundary.
-5. Read the repository's architecture documentation and use relevant platform skills before implementation.
-6. Fix the root cause with the smallest complete change that fits the existing architecture.
-7. Add or update unit tests for every behavioral change. Add snapshot tests only when rendered output or visual structure is the behavior under test.
-8. Run focused checks, the full relevant suite, and a production-representative build.
-9. Manually exercise the behavior with computer use or a deterministic script and inspect runtime evidence. Build a reusable project-local harness when that path would otherwise be rediscovered.
-10. Use `verify-apple-apps` for iOS and macOS behavior and `verify-electron-apps` for Electron behavior.
-11. Run comment, correctness, simplicity, architecture, and test-quality review passes.
-12. Resolve every verified in-scope finding, then rerun affected verification.
-13. When interrupted, preserve recoverable work and a precise resume capsule without claiming completion.
+Treat this workflow as a decision aid, not a mandatory sequence. First inspect the request, repository instructions, task risk, existing tests, supported build paths, runtime surfaces, and available tools and skills. Select, combine, reorder, or omit workflow layers according to what can materially prove the requested outcome.
+
+1. Reconstruct relevant prior context when resuming older work, then reconcile it with live repository state.
+2. Investigate enough to distinguish the request, expected behavior, origin, and smallest meaningful boundary before editing.
+3. Locate the actual repository, applicable instructions, owning source, callers, tests, history, and adjacent behavior that matter to the change.
+4. Read relevant architecture documentation and platform skills when they can change the implementation decision.
+5. Fix the root cause with the smallest complete change that fits the existing architecture.
+6. Prefer unit coverage for behavioral code. Use snapshot tests only when rendered output or visual structure is the behavior under test.
+7. Choose focused checks, broader suites, static analysis, builds, and runtime interaction according to the failure modes they can catch.
+8. Exercise the real behavior with computer use or a deterministic script when the change has a meaningful runtime surface and the environment supports it.
+9. Use `verify-apple-apps` for relevant iOS and macOS verification and `verify-electron-apps` for relevant Electron verification.
+10. Scale comment, correctness, simplicity, architecture, and test-quality review to the diff and its risk.
+11. Resolve every verified in-scope finding, then rerun the affected selected verification.
+12. When interrupted, preserve recoverable work and a precise resume capsule without claiming completion.
+
+## Hard boundaries
+
+1. Preserve the user's scope and authorization limits.
+2. Treat a workflow or verification layer explicitly requested by the user as required unless it is genuinely blocked.
+3. Follow closer repository instructions when they conflict with a general preference here.
+4. Never report an omitted, unavailable, or blocked verification layer as passing.
+5. Increase verification depth for security, privacy, data loss, money, permissions, signing, concurrency, migration, and release risk.
+6. Resolve verified in-scope findings before claiming completion.
+7. Do not perform destructive or external actions without the required authority.
 
 ## Comments
 
@@ -32,12 +43,3 @@
 5. Every prefixed comment must name the external constraint, evidence source, failure mode, and removal condition when one exists.
 6. Treat the prefix as a review trigger, not proof that the comment deserves to remain.
 7. Remove narration, section banners, commented-out code, workaround stories, stale TODOs, and comments that repeat the code.
-
-## GitHub CLI
-
-1. Use `gh` for GitHub operations.
-2. Before the first authenticated GitHub operation, run `gh auth status --hostname github.com` and `gh api user --jq .login`.
-3. Retry sandbox-related keychain, network, DNS, or permission failures with required elevated permission before judging authentication.
-4. Before repository writes, verify `gh api repos/OWNER/REPO --jq '.permissions.push'`.
-5. Never print, inspect, copy, or persist token values.
-6. If authentication is invalid, stop GitHub mutations and ask the user to authenticate in their own terminal.

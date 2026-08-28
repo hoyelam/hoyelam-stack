@@ -18,15 +18,15 @@ Apply `$prove-the-work`. This skill specializes its verification ladder for Elec
 
 1. Define the exact invariant, original failure path, process boundary, nearby regression path, and observable evidence.
 2. Add focused unit or integration coverage at the lowest layer that owns the behavior. Test IPC contracts from both sides when their schema or lifecycle changed.
-3. Run the focused tests, full relevant suite, type checks, linting, and a production-representative packaged or distributable build.
-4. Launch the current artifact with an isolated test profile and loopback-only debugging ports. Never attach verification tooling to the user's normal application profile.
-5. Verify renderer targets through the Chrome DevTools Protocol or the repository's Playwright Electron harness. Verify the main process separately through the V8 inspector when main-process behavior changed.
-6. Capture console errors, uncaught exceptions, failed requests, target crashes, DOM or accessibility state, screenshots, network evidence, process health, and persisted side effects.
-7. Use DOM, accessibility, roles, labels, or stable test identifiers for renderer interaction. Use computer use for native menus, dialogs, tray items, window chrome, drag and drop, permission sheets, and behavior outside Chromium's DOM.
-8. Rebuild and relaunch after edits. Confirm the connected DevTools target belongs to the newly launched artifact.
-9. Repeat race-prone, reload, sleep/wake, close/reopen, multi-window, IPC, and crash paths enough to challenge the original failure.
+3. Run focused tests and select broader suites, type checks, linting, and packaged or distributable builds according to process-boundary, integration, packaging, and release risk.
+4. When runtime behavior needs direct evidence, launch the current artifact with an isolated test profile and loopback-only debugging ports. Never attach verification tooling to the user's normal application profile.
+5. When renderer runtime verification is selected, use the Chrome DevTools Protocol or the repository's Playwright Electron harness. Inspect the main process separately through the V8 inspector only when main-process behavior changed.
+6. Capture the console, exception, request, target, DOM or accessibility, screenshot, process, and persisted-side-effect evidence relevant to the selected proof.
+7. During runtime verification, use DOM, accessibility, roles, labels, or stable test identifiers for renderer interaction. Use computer use for relevant native surfaces outside Chromium's DOM.
+8. Rebuild and relaunch after edits when stale artifacts could hide the result. Confirm any connected DevTools target belongs to the newly launched artifact.
+9. Repeat race-prone, reload, sleep/wake, close/reopen, multi-window, IPC, and crash paths when they are in scope.
 10. Test development and packaged behavior when bundling, paths, protocols, updates, native modules, signing, preload loading, or content security differs between them.
-11. Rerun affected layers after every verified review fix.
+11. Rerun selected layers affected by every verified review fix.
 
 ## Doctor
 

@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,6 +8,7 @@ from scripts.validate import (
     find_repository_references,
     find_scaffold_placeholders,
     parse_frontmatter,
+    validate_marketplace,
     validate_repository,
 )
 
@@ -64,6 +66,39 @@ class RepositoryTests(unittest.TestCase):
     def test_hoyelam_stack_repository_is_valid(self) -> None:
         root = Path(__file__).resolve().parent.parent
         self.assertEqual(validate_repository(root), [])
+
+
+class MarketplaceTests(unittest.TestCase):
+    def test_rejects_a_marketplace_ref_that_does_not_match_the_plugin_version(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "marketplace.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "name": "hoyelam",
+                        "interface": {"displayName": "Hoyelam"},
+                        "plugins": [
+                            {
+                                "name": "hoyelam-stack",
+                                "source": {
+                                    "source": "url",
+                                    "url": "https://github.com/hoyelam/hoyelam-stack.git",
+                                    "ref": "v0.3.0",
+                                },
+                                "policy": {
+                                    "installation": "AVAILABLE",
+                                    "authentication": "ON_INSTALL",
+                                },
+                                "category": "Developer Tools",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            issues = validate_marketplace(path, "hoyelam-stack", "0.4.0")
+            self.assertEqual(len(issues), 1)
+            self.assertIn("v0.4.0", issues[0].message)
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ description: Perform an extensive evidence-backed review of a scoped implementat
 1. Fix every verified in-scope finding, including simpler or more concise designs that preserve the requested behavior.
 2. Keep fixes within the task boundary. Report material out-of-scope work separately.
 3. Add or adjust tests for behavior changed by review fixes.
-4. Rerun focused checks, the full relevant suite, build, runtime verification, comment audit, and final diff inspection.
+4. Rerun the selected checks, builds, runtime verification, comment audit, and final diff inspection affected by the fixes.
 5. Repeat review until no verified in-scope findings remain.
 
 ## Report

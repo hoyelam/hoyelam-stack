@@ -1,10 +1,12 @@
 {
   "name": "hoyelam-stack",
-  "version": "0.3.0",
-  "description": "Investigate deeply, implement the root-cause fix, prove real behavior, and resolve every verified review finding.",
+  "version": "0.4.0",
+  "description": "Inspect the task and available tooling, then select a proportionate root-cause, implementation, verification, and review workflow.",
   "author": {
     "name": "hoyelam"
   },
+  "homepage": "https://github.com/hoyelam/hoyelam-stack#readme",
+  "repository": "https://github.com/hoyelam/hoyelam-stack",
   "license": "MIT",
   "keywords": [
     "workflow",
@@ -22,8 +24,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "hoyelam-stack",
-    "shortDescription": "Root-cause-first engineering workflows.",
-    "longDescription": "A personal engineering system for context recall, root-cause investigation, architecture-aware implementation, mandatory tests, Apple and Electron runtime verification, strict comment discipline, safe checkpoints, and review-to-resolution loops.",
+    "shortDescription": "Adaptive root-cause-first workflows.",
+    "longDescription": "A personal engineering system that inspects each task and its available tooling, then selects proportionate context recall, investigation, implementation, tests, Apple or Electron runtime verification, comment discipline, checkpoints, and review layers.",
     "developerName": "hoyelam",
     "category": "Developer Tools",
     "capabilities": [
@@ -31,13 +33,9 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use $hoyelam-mode to investigate and complete this task.",
-      "Use $recall-context before resuming prior work.",
+      "Use $hoyelam-mode to select and run a proportionate workflow for this task.",
       "Use $comment-discipline to audit this diff.",
-      "Use $prove-the-work to verify this change.",
-      "Use $verify-apple-apps to verify this iOS or macOS change.",
-      "Use $verify-electron-apps to verify this Electron change.",
-      "Use $checkpoint-work to pause unfinished work safely."
+      "Use $prove-the-work to verify this change."
     ]
   }
 }

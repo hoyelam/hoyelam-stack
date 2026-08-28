@@ -15,6 +15,7 @@ The first version reflects recurring patterns from prior engineering tasks witho
 11. The most valuable workflow additions came from repeated friction and explicit corrections, while one-off project facts did not belong in global instructions.
 12. Apple application work repeatedly required Simulator or macOS interaction, Xcode test evidence, signing or entitlement checks, and rebuilt-artifact verification.
 13. Electron work needs separate proof across Chromium renderer state, main-process behavior, native desktop surfaces, packaging, and persisted side effects.
+14. The workflow is an explicit preference rather than a fixed sequence: agents should inspect available repository guidance, tooling, and evidence surfaces, then select proportionate layers without weakening safety or overstating verification.
 
 ## Pstack alignment review
 

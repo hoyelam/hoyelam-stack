@@ -29,6 +29,6 @@ Use only the installed skills relevant to the task:
 3. Keep views declarative and feature logic testable outside the UI.
 4. Make invalid states difficult or impossible to represent.
 5. Follow existing composition, navigation, persistence, and dependency conventions.
-6. Add reducer or model unit tests for every behavioral path.
+6. Prefer reducer or model unit tests for behavioral paths that can be exercised meaningfully.
 7. Add snapshot tests only when rendering or layout is materially changed.
-8. Build and run the real target in the simulator or on macOS, then manually exercise the feature.
+8. Build and run the real target in the Simulator or on macOS when runtime behavior, target integration, or user-visible output needs direct evidence.
