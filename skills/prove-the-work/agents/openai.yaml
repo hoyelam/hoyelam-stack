@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prove The Work"
+  short_description: "Tests, builds, and direct runtime evidence"
+  default_prompt: "Use $prove-the-work to verify this change against the real behavior."
+policy:
+  allow_implicit_invocation: true

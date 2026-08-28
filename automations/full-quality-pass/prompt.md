@@ -1,0 +1,1 @@
+Read and follow `automations/full-quality-pass/FOR_AGENTS.md` from the configured repository. Finish the configured branch through automated tests, production-representative build, direct behavior verification, comment audit, extensive review, resolution of every verified in-scope finding, and final re-verification. Never merge, deploy, release, or widen scope.

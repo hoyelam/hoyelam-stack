@@ -1,0 +1,6 @@
+interface:
+  display_name: "Recall Context"
+  short_description: "Rebuild the current state of prior work"
+  default_prompt: "Use $recall-context to reconstruct the current state before we resume this work."
+policy:
+  allow_implicit_invocation: true

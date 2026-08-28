@@ -1,0 +1,6 @@
+interface:
+  display_name: "Verify Electron Apps"
+  short_description: "Prove Electron behavior across every process"
+  default_prompt: "Use $verify-electron-apps to verify this Electron change with tests, a packaged build, DevTools evidence, and real interaction."
+policy:
+  allow_implicit_invocation: true

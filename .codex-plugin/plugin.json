@@ -1,0 +1,43 @@
+{
+  "name": "hoyelam-stack",
+  "version": "0.3.0",
+  "description": "Investigate deeply, implement the root-cause fix, prove real behavior, and resolve every verified review finding.",
+  "author": {
+    "name": "hoyelam"
+  },
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "investigation",
+    "testing",
+    "verification",
+    "code-review",
+    "ios",
+    "macos",
+    "electron",
+    "xctest",
+    "maestro",
+    "devtools"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "hoyelam-stack",
+    "shortDescription": "Root-cause-first engineering workflows.",
+    "longDescription": "A personal engineering system for context recall, root-cause investigation, architecture-aware implementation, mandatory tests, Apple and Electron runtime verification, strict comment discipline, safe checkpoints, and review-to-resolution loops.",
+    "developerName": "hoyelam",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $hoyelam-mode to investigate and complete this task.",
+      "Use $recall-context before resuming prior work.",
+      "Use $comment-discipline to audit this diff.",
+      "Use $prove-the-work to verify this change.",
+      "Use $verify-apple-apps to verify this iOS or macOS change.",
+      "Use $verify-electron-apps to verify this Electron change.",
+      "Use $checkpoint-work to pause unfinished work safely."
+    ]
+  }
+}

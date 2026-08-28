@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review and Resolve"
+  short_description: "Review deeply and fix every proven issue"
+  default_prompt: "Use $review-and-resolve to review this implementation and resolve all verified findings."
+policy:
+  allow_implicit_invocation: true

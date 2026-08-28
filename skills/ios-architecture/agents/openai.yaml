@@ -1,0 +1,6 @@
+interface:
+  display_name: "iOS Architecture"
+  short_description: "TCA and Point-Free architecture guidance"
+  default_prompt: "Use $ios-architecture to fit this Apple-platform change into the repository architecture."
+policy:
+  allow_implicit_invocation: true

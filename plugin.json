@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hoyelam-stack",
+  "description": "Context-aware, root-cause-first engineering workflows with tests, Apple and Electron runtime verification, safe checkpoints, strict comment discipline, and review-to-resolution loops.",
+  "version": "0.3.0",
+  "author": {
+    "name": "hoyelam"
+  },
+  "license": "MIT"
+}

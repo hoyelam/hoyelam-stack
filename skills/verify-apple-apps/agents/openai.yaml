@@ -1,0 +1,6 @@
+interface:
+  display_name: "Verify Apple Apps"
+  short_description: "Prove iOS and macOS behavior end to end"
+  default_prompt: "Use $verify-apple-apps to verify this Apple-platform change with tests, a real build, and runtime evidence."
+policy:
+  allow_implicit_invocation: true

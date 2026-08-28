@@ -1,0 +1,6 @@
+interface:
+  display_name: "I Have ADHD"
+  short_description: "Action-first, numbered, state-aware replies"
+  default_prompt: "Use $i-have-adhd to format every update and final answer."
+policy:
+  allow_implicit_invocation: true

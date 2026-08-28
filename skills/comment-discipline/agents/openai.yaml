@@ -1,0 +1,6 @@
+interface:
+  display_name: "Comment Discipline"
+  short_description: "Delete narration and prove rare exceptions"
+  default_prompt: "Use $comment-discipline to audit this diff and resolve accepted comment findings."
+policy:
+  allow_implicit_invocation: true

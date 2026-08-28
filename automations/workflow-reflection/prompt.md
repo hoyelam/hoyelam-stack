@@ -1,0 +1,1 @@
+Read and follow `automations/workflow-reflection/FOR_AGENTS.md` from the configured hoyelam-stack repository. Review only the configured completed work, apply the evidence gate from `$reflect-workflow`, and produce a ranked workflow-improvement proposal. Do not edit the stack or contact external systems unless that authority is explicitly configured.

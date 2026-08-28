@@ -1,0 +1,6 @@
+interface:
+  display_name: "Checkpoint Work"
+  short_description: "Pause unfinished work without losing state"
+  default_prompt: "Use $checkpoint-work to preserve this unfinished work and leave a precise resume capsule."
+policy:
+  allow_implicit_invocation: true
