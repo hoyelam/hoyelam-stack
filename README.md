@@ -8,7 +8,7 @@ The modular structure is inspired by [pstack](https://github.com/cursor/plugins/
 
 1. `hoyelam-mode` selects a proportionate workflow for non-trivial engineering work without requiring every task to execute every phase.
 2. Specialist agents reconstruct context, investigate root causes, audit comments, review code, design verification, and verify Apple and Electron runtime behavior.
-3. Focused skills provide optional depth for implementation, context recall, safe checkpoints, reusable real-app verification, Apple-platform verification, Electron DevTools verification, and evidence-gated workflow reflection.
+3. Focused skills provide optional depth for implementation, durable multi-unit orchestration, context recall, safe checkpoints, reusable real-app verification, Apple-platform verification, Electron DevTools verification, and evidence-gated workflow reflection.
 4. Dormant automation packs run a full quality pass, watch a pull request, or propose workflow improvements when explicitly configured.
 5. A local validator and GitHub Actions workflow verify the repository itself.
 6. A repository marketplace and tagged releases provide versioned installation and updates.
@@ -23,6 +23,7 @@ The modular structure is inspired by [pstack](https://github.com/cursor/plugins/
 6. Invoke `$verify-apple-apps` for iOS or macOS and `$verify-electron-apps` for Electron.
 7. Read [the platform verification guide](docs/platform-verification.md) for evidence expectations and agent routing.
 8. Read [the release process](docs/releases.md) and [the changelog](CHANGELOG.md) for versioning details.
+9. Invoke `$orchestrate-project` only for programs that span independent units or task contexts.
 
 ## Core rule
 

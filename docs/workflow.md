@@ -9,6 +9,7 @@
 5. Name material omissions and residual uncertainty. An unavailable layer is a boundary, not a failure and not a pass.
 6. Preserve hard safety, authorization, repository, and evidence-truthfulness requirements regardless of the selected workflow.
 7. Include any workflow or verification layer the user explicitly requested unless it is genuinely blocked.
+8. Route project-scale programs with independently executable units or multi-session coordination through `$orchestrate-project`; do not use it for work one agent can finish directly.
 
 ## Available phases
 
@@ -21,8 +22,9 @@
 7. `Verifying`: when applicable, build the real artifact and exercise the exact behavior with computer use or a deterministic script.
 8. `Reviewing`: audit the dimensions relevant to the diff, such as comments, correctness, simplicity, architecture, lifecycle, tests, and user experience.
 9. `Resolving`: fix every verified in-scope finding and return to testing and verification.
-10. `Complete`: report direct evidence, remaining boundaries, and worktree state.
-11. `Checkpointed`: when interrupted, preserve recoverable work and a precise resume capsule without claiming completion.
+10. `Orchestrating`: for project-scale work, persist units, dependencies, inbox events, gates, and revision-bound verification outside the conversation.
+11. `Complete`: report direct evidence, remaining boundaries, and worktree state.
+12. `Checkpointed`: when interrupted, preserve recoverable work and a precise resume capsule without claiming completion.
 
 ## Investigation standard
 

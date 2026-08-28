@@ -17,6 +17,14 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 3. Other coding agents can consume `AGENTS.md`, the open plugin manifest, or the skill directories through their supported discovery mechanism.
 4. The source repository remains authoritative; edits appear locally without copying files.
 
+## Orchestration layer
+
+1. `orchestrate-project` coordinates programs that span independently executable units or task contexts.
+2. Its dependency-free runtime stores project-local program state, units, inbox events, gates, verification receipts, standing orders, and generated status under `.hoyelam/orchestrate/`.
+3. File locking and atomic writes protect concurrent state updates.
+4. Verification is keyed to the current unit revision, so an artifact change invalidates older evidence.
+5. Ordinary tasks do not pay the orchestration cost.
+
 ## Automation layer
 
 1. `automations/full-quality-pass` finishes a completed implementation through verification and review.
@@ -28,5 +36,5 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 ## Validation layer
 
 1. `scripts/validate.py` validates manifests, skill frontmatter, agent frontmatter, automation files, and placeholders.
-2. `tests/` unit-tests the validator.
+2. `tests/` covers the validator, local installer, platform verification scripts, and orchestration runtime.
 3. `.github/workflows/validate.yml` runs the same local command in repository CI.

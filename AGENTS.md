@@ -1,12 +1,5 @@
 # hoyelam-stack working agreement
 
-## Output
-
-1. Apply the `i-have-adhd` skill on every turn.
-2. Lead with the current state or next action.
-3. Use numbered steps, no preamble, and no closing filler.
-4. Restate the task state on every turn.
-
 ## Preferred engineering workflow
 
 Treat this workflow as a decision aid, not a mandatory sequence. First inspect the request, repository instructions, task risk, existing tests, supported build paths, runtime surfaces, and available tools and skills. Select, combine, reorder, or omit workflow layers according to what can materially prove the requested outcome.
@@ -23,6 +16,7 @@ Treat this workflow as a decision aid, not a mandatory sequence. First inspect t
 10. Scale comment, correctness, simplicity, architecture, and test-quality review to the diff and its risk.
 11. Resolve every verified in-scope finding, then rerun the affected selected verification.
 12. When interrupted, preserve recoverable work and a precise resume capsule without claiming completion.
+13. Use `orchestrate-project` only for independently executable work that spans units or sessions; collapse to direct work when one agent can reasonably finish it.
 
 ## Hard boundaries
 

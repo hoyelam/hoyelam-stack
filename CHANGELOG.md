@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 - 2026-08-28
+
+1. Added durable project-scale orchestration with units, dependencies, standing orders, inbox events, gates, generated status, and revision-bound verification.
+2. Added interruption recovery, concurrent-write protection, completion enforcement, and a verified three-unit local simulation.
+3. Removed the bundled `i-have-adhd` preference skill and all stack-level response-format requirements.
+
 ## 0.4.0 - 2026-08-28
 
 1. Made workflow selection adaptive to task risk, repository context, and available tooling.

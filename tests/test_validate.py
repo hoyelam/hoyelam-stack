@@ -96,9 +96,9 @@ class MarketplaceTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            issues = validate_marketplace(path, "hoyelam-stack", "0.4.0")
+            issues = validate_marketplace(path, "hoyelam-stack", "0.5.0")
             self.assertEqual(len(issues), 1)
-            self.assertIn("v0.4.0", issues[0].message)
+            self.assertIn("v0.5.0", issues[0].message)
 
 
 if __name__ == "__main__":

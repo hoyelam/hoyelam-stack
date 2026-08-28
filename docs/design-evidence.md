@@ -16,6 +16,7 @@ The first version reflects recurring patterns from prior engineering tasks witho
 12. Apple application work repeatedly required Simulator or macOS interaction, Xcode test evidence, signing or entitlement checks, and rebuilt-artifact verification.
 13. Electron work needs separate proof across Chromium renderer state, main-process behavior, native desktop surfaces, packaging, and persisted side effects.
 14. The workflow is an explicit preference rather than a fixed sequence: agents should inspect available repository guidance, tooling, and evidence surfaces, then select proportionate layers without weakening safety or overstating verification.
+15. Personal response-format preferences belong in user-level skills or instructions rather than the portable engineering stack.
 
 ## Pstack alignment review
 
@@ -26,6 +27,6 @@ The first version reflects recurring patterns from prior engineering tasks witho
 5. `blast-radius` strengthened the existing rule to prove important safety facts with executable evidence. It did not justify a duplicate skill because `$investigate-first`, `$prove-the-work`, and `$review-and-resolve` already share that responsibility.
 6. `architect` reinforced grounding interfaces and ownership before code. The existing architecture routing remains preferable because iOS work should continue to follow repository documentation, Composable Architecture, and relevant Point-Free skills rather than a universal sketching ceremony.
 7. `maintain-verification-skill` is deferred until a real project-local harness shows drift; adding a maintenance workflow before that would encode an unobserved need.
-8. Parallel model arenas and autonomous shipping playbooks are not included because prior work supports careful specialist passes, but not a standing preference for model-specific orchestration or automatic merging.
+8. Pstack's orchestrator demonstrated a real gap between routing one task and coordinating a program. `$orchestrate-project` adopts durable units, standing orders, inbox events, revision-bound verification, gates, generated status, pilot-first scaling, and restart recovery without Graphite, PR landing, model-specific routing, or automatic shipping.
 
 These observations support the workflow; they do not encode private project names, source, or user data.

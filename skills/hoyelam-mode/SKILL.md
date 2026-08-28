@@ -5,8 +5,6 @@ description: Select and run a proportionate root-cause-first workflow for non-tr
 
 # Hoyelam Mode
 
-Apply `$i-have-adhd` throughout the task.
-
 ## Choose the workflow
 
 1. Inspect the request, task risk, repository instructions, architecture, owning surface, existing tests, supported builds, runtime harnesses, available skills, and environment capabilities.
@@ -16,6 +14,11 @@ Apply `$i-have-adhd` throughout the task.
 5. State material unavailable, irrelevant, or disproportionate layers as boundaries. Never present an omitted layer as passing.
 6. Include layers explicitly requested by the user unless they are genuinely blocked.
 7. Keep selection lightweight. Do not narrate a workflow checklist when the choice is obvious.
+
+## Project-scale route
+
+1. Use `$orchestrate-project` when the requested outcome contains independently executable units, is expected to outlive one task context, or explicitly assigns ongoing program coordination.
+2. Do not use orchestration merely because a task is difficult or contains several steps. Collapse to this skill's direct workflow when one agent can reasonably complete and verify the outcome.
 
 ## Scope gate
 

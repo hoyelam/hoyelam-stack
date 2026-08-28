@@ -23,7 +23,7 @@ The marketplace resolves the plugin from its tagged GitHub release. It does not 
 4. Run `./scripts/validate.sh` to confirm the source repository.
 5. Start a new Codex task so skill discovery refreshes.
 
-Pulling the repository updates linked skills immediately. Check out a tag such as `v0.4.0` when you want a fixed version instead of the latest `main` branch.
+Pulling the repository updates linked skills immediately. Check out a tag such as `v0.5.0` when you want a fixed version instead of the latest `main` branch.
 
 ## Use with other coding agents
 

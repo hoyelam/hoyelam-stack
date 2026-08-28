@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hoyelam-stack",
-  "description": "Adaptive, root-cause-first engineering workflows that select proportionate testing, runtime verification, checkpoints, comment discipline, and review layers.",
-  "version": "0.4.0",
+  "description": "Adaptive engineering workflows with durable multi-unit orchestration, proportionate testing, runtime verification, checkpoints, comment discipline, and review layers.",
+  "version": "0.5.0",
   "author": {
     "name": "hoyelam"
   },
