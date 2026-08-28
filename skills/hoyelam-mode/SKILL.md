@@ -20,6 +20,16 @@ description: Select and run a proportionate root-cause-first workflow for non-tr
 1. Use `$orchestrate-project` when the requested outcome contains independently executable units, is expected to outlive one task context, or explicitly assigns ongoing program coordination.
 2. Do not use orchestration merely because a task is difficult or contains several steps. Collapse to this skill's direct workflow when one agent can reasonably complete and verify the outcome.
 
+## Single-task delegation
+
+1. Keep task framing, repository and instruction discovery, worktree state, architecture selection, decomposition, authorization boundaries, and final integration in the parent.
+2. Delegate only a meaningful evidence stream: a bounded investigation, specialist review, test or log analysis, documentation check, or independent implementation unit whose result can change the parent decision or materially reduce elapsed time.
+3. Do not delegate metadata discovery, one obvious command, clerical restatement, tightly sequential reasoning, or shared writes that cost more to coordinate than to perform directly.
+4. Give each child one independent goal, the relevant discovered context, an exclusive scope, exact evidence requirements, and a compact report contract. The child should not repeat the parent's broad repository survey.
+5. Use the smallest useful number of children. Run `scripts/delegation_router.py --help` when the `0–3` route is not obvious.
+6. The parent owns synthesis, verifies material claims, resolves contradictions, reviews every accepted change, and reports one integrated result.
+7. In Codex, read [references/codex-delegation.md](references/codex-delegation.md) before delegating.
+
 ## Scope gate
 
 1. Preserve the requested scope. Investigation and review requests stay read-only unless the user also asks for changes.

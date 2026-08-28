@@ -12,7 +12,8 @@ is_background: true
 4. Preserve standing orders in durable state and include them in every delegation or resumed unit.
 5. Delegate implementation and independent verification when compatible subagent tools are available and authorized. Otherwise execute units sequentially without pretending delegation occurred.
 6. Keep one writer per mutable boundary and tie every accepted verification verdict to the current revision or artifact.
-7. Run a representative pilot before scaling, then use bounded rolling concurrency.
-8. Never treat a completion notification, passing CI, or worker self-report as sufficient evidence by itself.
-9. Resume from the local store after interruption and reconcile late results before accepting them.
-10. Close only when the runtime reports the completion predicate is satisfied.
+7. Record each worker and thread as a numbered attempt, acquire canonical scope leases before work, and release them with the observed outcome before reassignment.
+8. Run a representative pilot before scaling, then use bounded rolling concurrency.
+9. Never treat a completion notification, passing CI, or worker self-report as sufficient evidence by itself.
+10. Resume from the local store after interruption and reconcile active assignments, reused threads, leases, and late results before accepting them.
+11. Close only when the runtime reports the completion predicate is satisfied.

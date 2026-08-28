@@ -6,9 +6,9 @@ The modular structure is inspired by [pstack](https://github.com/cursor/plugins/
 
 ## What it includes
 
-1. `hoyelam-mode` selects a proportionate workflow for non-trivial engineering work without requiring every task to execute every phase.
+1. `hoyelam-mode` selects a proportionate workflow and routes `0–3` meaningful evidence streams without requiring every task to execute every phase or use delegation.
 2. Specialist agents reconstruct context, investigate root causes, audit comments, review code, design verification, and verify Apple and Electron runtime behavior.
-3. Focused skills provide optional depth for implementation, durable multi-unit orchestration, context recall, safe checkpoints, reusable real-app verification, Apple-platform verification, Electron DevTools verification, and evidence-gated workflow reflection.
+3. Focused skills provide optional depth for implementation, durable multi-unit orchestration with assignment and lease tracking, context recall, safe checkpoints, reusable real-app verification, Apple-platform verification, Electron DevTools verification, and evidence-gated workflow reflection.
 4. Dormant automation packs run a full quality pass, watch a pull request, or propose workflow improvements when explicitly configured.
 5. A local validator and GitHub Actions workflow verify the repository itself.
 6. A repository marketplace and tagged releases provide versioned installation and updates.

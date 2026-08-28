@@ -17,6 +17,7 @@ The first version reflects recurring patterns from prior engineering tasks witho
 13. Electron work needs separate proof across Chromium renderer state, main-process behavior, native desktop surfaces, packaging, and persisted side effects.
 14. The workflow is an explicit preference rather than a fixed sequence: agents should inspect available repository guidance, tooling, and evidence surfaces, then select proportionate layers without weakening safety or overstating verification.
 15. Personal response-format preferences belong in user-level skills or instructions rather than the portable engineering stack.
+16. Single-task delegation is useful for bounded evidence streams, but parent-owned metadata discovery and integration prevent duplicated orientation and contradictory conclusions.
 
 ## Pstack alignment review
 
@@ -28,5 +29,6 @@ The first version reflects recurring patterns from prior engineering tasks witho
 6. `architect` reinforced grounding interfaces and ownership before code. The existing architecture routing remains preferable because iOS work should continue to follow repository documentation, Composable Architecture, and relevant Point-Free skills rather than a universal sketching ceremony.
 7. `maintain-verification-skill` is deferred until a real project-local harness shows drift; adding a maintenance workflow before that would encode an unobserved need.
 8. Pstack's orchestrator demonstrated a real gap between routing one task and coordinating a program. `$orchestrate-project` adopts durable units, standing orders, inbox events, revision-bound verification, gates, generated status, pilot-first scaling, and restart recovery without Graphite, PR landing, model-specific routing, or automatic shipping.
+9. Pstack's coordinator, brief, and context-guard guidance supports parent-owned synthesis and exclusive writable scope. The local stack adds a Codex adapter, a bounded direct-task router, and durable assignment attempts rather than importing Cursor-specific cloud and model rules.
 
 These observations support the workflow; they do not encode private project names, source, or user data.

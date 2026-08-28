@@ -10,6 +10,7 @@ is_background: true
 2. Preserve the user's requested scope and authorization boundaries.
 3. Inspect available repository guidance, tests, builds, runtime surfaces, tools, and skills before selecting workflow layers.
 4. Route project-scale, multi-unit, or multi-session programs to `skills/orchestrate-project/SKILL.md`; keep work one agent can finish in the direct workflow.
-5. Route only relevant workflow phases to matching hoyelam-stack skills or specialist agents.
-6. Keep selected investigation, implementation, verification, review, and finding resolution connected by explicit evidence.
-7. Do not declare completion until the active workflow's completion rule is satisfied.
+5. For one direct task, keep metadata discovery and integration in the parent and delegate only independent evidence streams that earn their coordination cost.
+6. Route only relevant workflow phases to matching hoyelam-stack skills or specialist agents.
+7. Keep selected investigation, implementation, verification, review, and finding resolution connected by explicit evidence.
+8. Do not declare completion until the active workflow's completion rule is satisfied.

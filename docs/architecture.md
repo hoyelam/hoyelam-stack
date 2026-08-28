@@ -20,10 +20,16 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 ## Orchestration layer
 
 1. `orchestrate-project` coordinates programs that span independently executable units or task contexts.
-2. Its dependency-free runtime stores project-local program state, units, inbox events, gates, verification receipts, standing orders, and generated status under `.hoyelam/orchestrate/`.
-3. File locking and atomic writes protect concurrent state updates.
+2. Its dependency-free runtime stores project-local program state, units, worker assignments, numbered attempts, thread identities, exclusive scope leases, inbox events, gates, verification receipts, standing orders, and generated status under `.hoyelam/orchestrate/`.
+3. File locking, atomic writes, orphan cleanup, and full-store preflight protect concurrent and interrupted state updates; exact opaque lease conflicts and hierarchical `repo:` path conflicts prevent two active units from claiming the same canonical mutable scope.
 4. Verification is keyed to the current unit revision, so an artifact change invalidates older evidence.
 5. Ordinary tasks do not pay the orchestration cost.
+
+## Delegation layer
+
+1. `hoyelam-mode` owns direct-task routing and keeps repository metadata discovery, decisions, integration, and final reporting in the parent.
+2. A small deterministic router encodes the default `0–3` child policy for representative task shapes.
+3. Codex-specific fork, capacity, reuse, control, and report guidance lives in a conditional reference so the portable core does not prescribe unavailable tools to other agents.
 
 ## Automation layer
 
