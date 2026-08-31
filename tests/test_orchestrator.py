@@ -156,6 +156,102 @@ class OrchestratorTests(unittest.TestCase):
             self.assertEqual(closed["program"]["status"], "complete")
             self.assertIn("Program status: complete", (store / "status.md").read_text(encoding="utf-8"))
 
+    def test_verification_records_structured_harness_evidence(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            store = Path(directory) / "store"
+            self.initialize(store)
+            self.add_unit(store, "unit-1")
+            self.run_command(
+                store,
+                "unit",
+                "set",
+                "unit-1",
+                "--state",
+                "verification",
+                "--revision",
+                "revision-1",
+            )
+
+            recorded = json.loads(
+                self.run_command(
+                    store,
+                    "verification",
+                    "record",
+                    "unit-1",
+                    "--revision",
+                    "revision-1",
+                    "--verdict",
+                    "verified",
+                    "--evidence",
+                    "captured the user-visible result",
+                    "--harness",
+                    "verify-app",
+                    "--harness-revision",
+                    "harness-revision-1",
+                    "--doctor",
+                    "passed",
+                    "--feature",
+                    "primary-flow",
+                    "--artifact",
+                    "artifacts/primary-flow.json",
+                ).stdout
+            )
+
+            self.assertEqual(
+                recorded["harness"],
+                {
+                    "name": "verify-app",
+                    "revision": "harness-revision-1",
+                    "doctor": "passed",
+                    "features": ["primary-flow"],
+                    "artifacts": ["artifacts/primary-flow.json"],
+                },
+            )
+            checked = json.loads(
+                self.run_command(store, "verification", "check", "unit-1").stdout
+            )
+            self.assertEqual(checked["harness"], recorded["harness"])
+
+    def test_verified_harness_evidence_requires_behavior_and_artifacts(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            store = Path(directory) / "store"
+            self.initialize(store)
+            self.add_unit(store, "unit-1")
+            self.run_command(
+                store,
+                "unit",
+                "set",
+                "unit-1",
+                "--state",
+                "verification",
+                "--revision",
+                "revision-1",
+            )
+
+            incomplete = self.run_command(
+                store,
+                "verification",
+                "record",
+                "unit-1",
+                "--revision",
+                "revision-1",
+                "--verdict",
+                "verified",
+                "--evidence",
+                "doctor only",
+                "--harness",
+                "verify-app",
+                "--harness-revision",
+                "harness-revision-1",
+                "--doctor",
+                "passed",
+                check=False,
+            )
+
+            self.assertEqual(incomplete.returncode, 1)
+            self.assertIn("at least one --feature", incomplete.stderr)
+            self.assertEqual((store / "verification.json").read_text(encoding="utf-8").strip(), "[]")
+
     def test_concurrent_unit_writes_preserve_every_unit(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             store = Path(directory) / "store"

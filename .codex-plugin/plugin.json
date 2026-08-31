@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "hoyelam-stack",
     "shortDescription": "Adaptive root-cause-first workflows.",
-    "longDescription": "A personal engineering system that inspects each task and its available tooling, then selects proportionate context recall, investigation, implementation, durable multi-unit orchestration, tests, Apple or Electron runtime verification, comment discipline, checkpoints, and review layers.",
+    "longDescription": "A personal engineering system that inspects each task and its available tooling, then selects proportionate context recall, investigation, implementation, durable multi-unit orchestration, tests, maintained project verification harnesses, Apple or Electron runtime verification, comment discipline, checkpoints, and review layers.",
     "developerName": "hoyelam",
     "category": "Developer Tools",
     "capabilities": [

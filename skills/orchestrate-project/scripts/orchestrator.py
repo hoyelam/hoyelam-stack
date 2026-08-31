@@ -20,6 +20,7 @@ UNIT_STATES = {"pending", "running", "verification", "blocked", "done", "abandon
 TERMINAL_STATES = {"done", "abandoned"}
 VERDICTS = {"verified", "failed", "blocked"}
 ATTEMPT_OUTCOMES = {"completed", "blocked", "failed", "cancelled"}
+DOCTOR_STATUSES = {"passed", "failed", "not-run"}
 SAFE_IDENTIFIER = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 LEASE_NAMESPACE = re.compile(r"^[a-z][a-z0-9-]*$")
 
@@ -99,6 +100,15 @@ def require_text(value: object, label: str) -> str:
     if not normalized or "\n" in normalized or "\r" in normalized:
         raise OrchestratorError(f"{label} must be one non-empty line")
     return normalized
+
+
+def require_text_list(value: object, label: str) -> list[str]:
+    if not isinstance(value, list):
+        raise OrchestratorError(f"{label} must be a list")
+    result = [require_text(item, f"{label} item") for item in value]
+    if len(result) != len(set(result)):
+        raise OrchestratorError(f"{label} must not contain duplicates")
+    return result
 
 
 def canonicalize_lease(value: str) -> str:
@@ -356,6 +366,27 @@ class Store:
                 raise OrchestratorError(f"stored verification verdict is invalid: {index}")
             require_string(row["evidence"], f"stored verification evidence {index}")
             require_text(row["recorded_at"], f"stored verification time {index}")
+            harness = row.get("harness")
+            if harness is not None:
+                if not isinstance(harness, dict):
+                    raise OrchestratorError(f"stored verification harness must be an object: {index}")
+                harness_required = {"name", "revision", "doctor", "features", "artifacts"}
+                harness_missing = sorted(harness_required - harness.keys())
+                if harness_missing:
+                    raise OrchestratorError(
+                        f"stored verification harness {index} is missing fields: {', '.join(harness_missing)}"
+                    )
+                require_identifier(harness["name"], f"stored verification harness name {index}")
+                require_text(harness["revision"], f"stored verification harness revision {index}")
+                doctor = harness["doctor"]
+                if not isinstance(doctor, str) or doctor not in DOCTOR_STATUSES:
+                    raise OrchestratorError(f"stored verification doctor status is invalid: {index}")
+                features = require_text_list(harness["features"], f"stored verification features {index}")
+                artifacts = require_text_list(harness["artifacts"], f"stored verification artifacts {index}")
+                if verdict == "verified" and (doctor != "passed" or not features or not artifacts):
+                    raise OrchestratorError(
+                        f"verified harness evidence requires a passed doctor, features, and artifacts: {index}"
+                    )
             identity = (unit, revision)
             if identity in identities:
                 raise OrchestratorError(f"stored verification is duplicated: {unit} {revision}")
@@ -875,12 +906,44 @@ class Store:
         revision: str,
         verdict: str,
         evidence: str,
+        harness_name: str | None = None,
+        harness_revision: str | None = None,
+        doctor: str | None = None,
+        features: list[str] | None = None,
+        artifacts: list[str] | None = None,
     ) -> dict[str, object]:
         require_identifier(unit_id, "unit identifier")
         revision = require_text(revision, "revision or artifact identifier")
         evidence = require_string(evidence, "verification evidence")
         if verdict not in VERDICTS:
             raise OrchestratorError(f"unknown verification verdict: {verdict}")
+        features = require_text_list(features or [], "verification features")
+        artifacts = require_text_list(artifacts or [], "verification artifacts")
+        harness_requested = any(
+            value is not None and value != []
+            for value in (harness_name, harness_revision, doctor, features, artifacts)
+        )
+        harness: dict[str, object] | None = None
+        if harness_requested:
+            if harness_name is None or harness_revision is None or doctor is None:
+                raise OrchestratorError(
+                    "structured harness evidence requires --harness, --harness-revision, and --doctor"
+                )
+            harness_name = require_identifier(harness_name, "verification harness name")
+            harness_revision = require_text(harness_revision, "verification harness revision")
+            if doctor not in DOCTOR_STATUSES:
+                raise OrchestratorError(f"unknown doctor status: {doctor}")
+            if verdict == "verified" and (doctor != "passed" or not features or not artifacts):
+                raise OrchestratorError(
+                    "verified harness evidence requires --doctor passed, at least one --feature, and at least one --artifact"
+                )
+            harness = {
+                "name": harness_name,
+                "revision": harness_revision,
+                "doctor": doctor,
+                "features": features,
+                "artifacts": artifacts,
+            }
         with self.locked():
             self.require_initialized()
             program, units, rows, gates, inbox_events = self.require_active()
@@ -896,6 +959,8 @@ class Store:
                 "evidence": evidence,
                 "recorded_at": now(),
             }
+            if harness is not None:
+                entry["harness"] = harness
             rows = [
                 row
                 for row in rows
@@ -1199,6 +1264,11 @@ def parser() -> argparse.ArgumentParser:
     verification_record.add_argument("--revision", required=True)
     verification_record.add_argument("--verdict", required=True)
     verification_record.add_argument("--evidence", required=True)
+    verification_record.add_argument("--harness")
+    verification_record.add_argument("--harness-revision")
+    verification_record.add_argument("--doctor", choices=sorted(DOCTOR_STATUSES))
+    verification_record.add_argument("--feature", action="append", default=[])
+    verification_record.add_argument("--artifact", action="append", default=[])
     verification_check = verification_commands.add_parser("check")
     verification_check.add_argument("unit")
 
@@ -1262,6 +1332,11 @@ def execute(arguments: argparse.Namespace) -> object:
             arguments.revision,
             arguments.verdict,
             arguments.evidence,
+            arguments.harness,
+            arguments.harness_revision,
+            arguments.doctor,
+            arguments.feature,
+            arguments.artifact,
         )
     if arguments.command == "verification" and arguments.verification_command == "check":
         return store.check_verification(arguments.unit)

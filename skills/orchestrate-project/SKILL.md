@@ -54,7 +54,16 @@ description: Coordinate a project-scale engineering program that spans multiple 
    python3 <skill-directory>/scripts/orchestrator.py --store <store> unit release <unit> --outcome completed --revision <revision> --worker <worker> --thread <thread> --attempt <attempt>
    ```
 
-4. Record verification against the exact revision or artifact identifier. A changed revision invalidates earlier evidence automatically.
+4. Record verification against the exact revision or artifact identifier. A changed revision invalidates earlier evidence automatically. When a project harness supplied runtime proof, also record its name and revision, doctor status, mapped feature identifiers, and preserved artifact references:
+
+   ```bash
+   python3 <skill-directory>/scripts/orchestrator.py --store <store> verification record <unit> \
+     --revision <revision> --verdict verified --evidence "<summary>" \
+     --harness <verify-skill> --harness-revision <harness-revision> --doctor passed \
+     --feature <feature-id> --artifact <artifact-reference>
+   ```
+
+   Structured harness evidence is optional for non-runtime proof. When supplied for a verified verdict, doctor, feature, and artifact fields are required so readiness cannot masquerade as behavior evidence.
 5. Use an independent verifier when evidence is judgment-heavy, expensive, security-sensitive, or high impact. A cheap deterministic command may be run by the worker and spot-checked by the coordinator.
 6. Park only genuine product decisions or newly required authority as gates. Continue ready work that does not depend on an open gate.
 7. Generate status from the store instead of maintaining a narrative progress board by hand.

@@ -17,6 +17,13 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 3. Other coding agents can consume `AGENTS.md`, the open plugin manifest, or the skill directories through their supported discovery mechanism.
 4. The source repository remains authoritative; edits appear locally without copying files.
 
+## Verification infrastructure layer
+
+1. `build-verification-harness` creates a project-local control skill, executable helpers, and an indexed feature map when repeated runtime proof would otherwise be improvised.
+2. `maintain-verification-harness` reconciles that control surface with current source and exercises every mapped feature without changing product behavior.
+3. Apple and Electron platform skills define platform safety and evidence contracts; project-local harnesses compose them with application-specific launch, interaction, fixtures, and proof paths.
+4. Structured orchestration receipts bind runtime evidence to the application revision, harness revision, doctor result, mapped features, and preserved artifacts.
+
 ## Orchestration layer
 
 1. `orchestrate-project` coordinates programs that span independently executable units or task contexts.
