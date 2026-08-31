@@ -52,8 +52,9 @@
 4. A production-representative build is valuable when target, entitlement, linkage, packaging, or configuration behavior can differ.
 5. Direct runtime evidence is valuable when the changed behavior manifests in a real application surface.
 6. Every review fix returns through the selected verification steps it can affect.
-7. Repositories without a reliable real-app control path should gain a project-local verification harness rather than inventing a new manual recipe for every task.
+7. Repositories without a reliable real-app control path should gain a project-local verification harness and indexed feature map rather than inventing a new manual recipe for every task.
 8. iOS and macOS verification follows `$verify-apple-apps`; Electron verification follows `$verify-electron-apps`.
+9. When an existing harness or feature map may have drifted, use `$maintain-verification-harness` to reconcile source and drive the mapped behavior before relying on it.
 
 ## Completion report
 

@@ -26,6 +26,7 @@
 3. A screenshot without the action, state transition, and side-effect evidence is incomplete.
 4. Every verified review fix returns through the affected selected automated and runtime layers.
 5. Blocked layers remain named and cannot be relabeled as passing.
+6. When a project-local verification skill exists, use its mapped feature identifier and preserve its structured evidence receipt with the platform evidence.
 
 ## Agent use
 

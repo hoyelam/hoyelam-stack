@@ -46,7 +46,7 @@ description: Select and run a proportionate root-cause-first workflow for non-tr
 5. Implement the smallest complete root-cause solution that matches the existing architecture. Avoid compatibility layers, speculative abstractions, and unrelated cleanup.
 6. Prefer focused unit tests for behavioral code when the owning boundary can be exercised meaningfully. Use snapshot tests only when visual or rendered structure is the behavior.
 7. Select focused tests, broader suites, static checks, builds, and packaging based on the failure modes and risk of the change.
-8. Use `$prove-the-work` when runtime behavior, integration, or user-visible outcomes need direct evidence. Use `$verify-apple-apps` for applicable iOS and macOS work, `$verify-electron-apps` for applicable Electron work, and `$build-verification-harness` when repeated real-app verification lacks a reliable control path.
+8. Use `$prove-the-work` when runtime behavior, integration, or user-visible outcomes need direct evidence. Use `$verify-apple-apps` for applicable iOS and macOS work, `$verify-electron-apps` for applicable Electron work, `$build-verification-harness` when repeated real-app verification lacks a reliable control path, and `$maintain-verification-harness` when an existing control skill or feature map may have drifted.
 9. Use `$comment-discipline` for code changes that add, retain, or touch comments, suppressions, directives, or workaround prose.
 10. Use `$review-and-resolve` at a depth proportionate to the diff, risk, and architecture surface.
 11. Resolve every verified in-scope finding and rerun the selected verification layers affected by the fix.

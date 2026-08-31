@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+1. Strengthened project-local verification harnesses with an agent-facing control CLI contract, indexed feature maps, explicit isolation and process ownership, rendered-web evidence expectations, and structured evidence receipts.
+2. Added `$maintain-verification-harness` for source reconciliation and live feature-map sweeps without changing product behavior.
+3. Extended orchestration verification records with optional harness identity, doctor status, mapped features, and artifact references.
+
 ## 0.5.1 - 2026-08-28
 
 1. Added single-task delegation guidance with parent-owned metadata discovery and a Codex-specific adapter for compact forks, bounded capacity, worker reuse, and evidence reports.

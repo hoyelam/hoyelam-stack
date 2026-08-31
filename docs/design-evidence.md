@@ -18,6 +18,8 @@ The first version reflects recurring patterns from prior engineering tasks witho
 14. The workflow is an explicit preference rather than a fixed sequence: agents should inspect available repository guidance, tooling, and evidence surfaces, then select proportionate layers without weakening safety or overstating verification.
 15. Personal response-format preferences belong in user-level skills or instructions rather than the portable engineering stack.
 16. Single-task delegation is useful for bounded evidence streams, but parent-owned metadata discovery and integration prevent duplicated orientation and contradictory conclusions.
+17. A control CLI, indexed feature map, and explicit maintenance pass turn repository-specific runtime knowledge into testable infrastructure instead of prose that silently drifts.
+18. Cold-read web pilots showed that dormant applications fail for distinct product, toolchain, and environment reasons. Useful harnesses preserve that distinction, bind teardown to process birth identity, and prove semantic locators against rendered state.
 
 ## Pstack alignment review
 
@@ -27,8 +29,8 @@ The first version reflects recurring patterns from prior engineering tasks witho
 4. `reflect` inspired `$reflect-workflow` and the dormant workflow-reflection automation; the local version requires repeated evidence or an explicit preference and does not require a multi-model panel.
 5. `blast-radius` strengthened the existing rule to prove important safety facts with executable evidence. It did not justify a duplicate skill because `$investigate-first`, `$prove-the-work`, and `$review-and-resolve` already share that responsibility.
 6. `architect` reinforced grounding interfaces and ownership before code. The existing architecture routing remains preferable because iOS work should continue to follow repository documentation, Composable Architecture, and relevant Point-Free skills rather than a universal sketching ceremony.
-7. `maintain-verification-skill` is deferred until a real project-local harness shows drift; adding a maintenance workflow before that would encode an unobserved need.
+7. `maintain-verification-skill` informed `$maintain-verification-harness`; the local version is product-neutral, changes only harness-owned files, does not impose a fixed cadence, and preserves external-action authorization boundaries.
 8. Pstack's orchestrator demonstrated a real gap between routing one task and coordinating a program. `$orchestrate-project` adopts durable units, standing orders, inbox events, revision-bound verification, gates, generated status, pilot-first scaling, and restart recovery without Graphite, PR landing, model-specific routing, or automatic shipping.
-9. Pstack's coordinator, brief, and context-guard guidance supports parent-owned synthesis and exclusive writable scope. The local stack adds a Codex adapter, a bounded direct-task router, and durable assignment attempts rather than importing Cursor-specific cloud and model rules.
+9. Pstack's coordinator, brief, and context-guard guidance supports parent-owned synthesis and exclusive writable scope. The local stack adds a Codex adapter, a bounded direct-task router, and durable assignment attempts without vendor-specific execution assumptions.
 
 These observations support the workflow; they do not encode private project names, source, or user data.
