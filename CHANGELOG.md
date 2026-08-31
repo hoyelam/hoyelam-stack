@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.0 - 2026-08-31
 
 1. Strengthened project-local verification harnesses with an agent-facing control CLI contract, indexed feature maps, explicit isolation and process ownership, rendered-web evidence expectations, and structured evidence receipts.
 2. Added `$maintain-verification-harness` for source reconciliation and live feature-map sweeps without changing product behavior.
