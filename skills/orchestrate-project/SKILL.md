@@ -11,6 +11,7 @@ description: Coordinate a project-scale engineering program that spans multiple 
 2. Keep ordinary features, fixes, investigations, and single-session autonomous work in `$hoyelam-mode`.
 3. Collapse orchestration when one agent can reasonably complete and verify the work directly. The state store and delegation ceremony must earn their cost.
 4. Preserve the user's authorization boundaries. Coordination does not authorize publishing, deployment, destructive actions, messages, purchases, or unrelated scope.
+5. When the user requests Herdr orchestration, read the [Herdr delegation adapter](../hoyelam-mode/references/herdr-delegation.md) for worker control and identity mapping. Keep this skill's durable assignment and verification records authoritative.
 
 ## Frame the program
 

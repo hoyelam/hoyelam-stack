@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0 - 2026-09-05
+
+1. Added an optional Herdr delegation adapter for explicitly requested orchestration, with self-contained worker briefs, bounded concurrency, exclusive write scopes, and lead-owned verification.
+2. Connected Herdr worker identities and assignment attempts to durable project orchestration records.
+3. Preserved native Codex delegation for other tasks. Herdr remains optional and is selected only by explicit request.
+
 ## 0.6.0 - 2026-08-31
 
 1. Strengthened project-local verification harnesses with an agent-facing control CLI contract, indexed feature maps, explicit isolation and process ownership, rendered-web evidence expectations, and structured evidence receipts.

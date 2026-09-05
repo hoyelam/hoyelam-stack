@@ -28,7 +28,8 @@ description: Select and run a proportionate root-cause-first workflow for non-tr
 4. Give each child one independent goal, the relevant discovered context, an exclusive scope, exact evidence requirements, and a compact report contract. The child should not repeat the parent's broad repository survey.
 5. Use the smallest useful number of children. Run `scripts/delegation_router.py --help` when the `0–3` route is not obvious.
 6. The parent owns synthesis, verifies material claims, resolves contradictions, reviews every accepted change, and reports one integrated result.
-7. In Codex, read [references/codex-delegation.md](references/codex-delegation.md) before delegating.
+7. When the user requests Herdr orchestration, read [references/herdr-delegation.md](references/herdr-delegation.md) and use Herdr for the delegated work. Merely running inside Herdr does not select this route.
+8. Otherwise, in Codex, read [references/codex-delegation.md](references/codex-delegation.md) before using native subagents. Keep one parent responsible for assignments and integration across either route.
 
 ## Scope gate
 

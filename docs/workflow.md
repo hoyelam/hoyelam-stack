@@ -11,6 +11,7 @@
 7. Include any workflow or verification layer the user explicitly requested unless it is genuinely blocked.
 8. Route project-scale programs with independently executable units or multi-session coordination through `$orchestrate-project`; do not use it for work one agent can finish directly.
 9. Within one direct task, keep metadata discovery and integration in the parent and delegate only independent evidence streams that earn their coordination cost.
+10. When the user requests Herdr orchestration, use the [Herdr delegation adapter](../skills/hoyelam-mode/references/herdr-delegation.md). Hoyelam-mode retains workflow and completion decisions; Herdr supplies worker panes. Otherwise use native delegation when available and useful. Running inside Herdr alone does not activate orchestration.
 
 ## Available phases
 
