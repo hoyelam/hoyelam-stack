@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
+from collections.abc import Iterator
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -38,12 +40,22 @@ def load_json(path: Path) -> dict[str, object]:
     return value
 
 
+def repository_files(root: Path) -> Iterator[Path]:
+    excluded = {".git", ".work", ".hoyelam", "__pycache__"}
+    for directory, directories, filenames in os.walk(root):
+        directories[:] = [name for name in directories if name not in excluded]
+        for name in filenames:
+            path = Path(directory) / name
+            if path.is_file():
+                yield path
+
+
 def find_scaffold_placeholders(root: Path) -> list[Path]:
     suffixes = {".md", ".json", ".yaml", ".yml", ".py", ".sh"}
     marker = "[" + "TODO:"
     found: list[Path] = []
-    for path in root.rglob("*"):
-        if path.is_file() and path.suffix in suffixes:
+    for path in repository_files(root):
+        if path.suffix in suffixes:
             if marker in path.read_text(encoding="utf-8"):
                 found.append(path)
     return found
@@ -158,9 +170,6 @@ def validate_repository(root: Path) -> list[ValidationIssue]:
             issues.append(ValidationIssue(skill_path, f"skill name must be {expected_name}"))
         if not metadata.get("description"):
             issues.append(ValidationIssue(skill_path, "skill description is missing"))
-        for link in find_local_markdown_links(skill_path):
-            if not link.is_file():
-                issues.append(ValidationIssue(skill_path, f"linked local resource is missing: {link}"))
         openai_path = skill_path.parent / "agents" / "openai.yaml"
         if not openai_path.is_file():
             issues.append(ValidationIssue(openai_path, "skill UI metadata is missing"))
@@ -196,6 +205,11 @@ def validate_repository(root: Path) -> list[ValidationIssue]:
         prompt_path = automation_path.parent / "prompt.md"
         if not prompt_path.is_file() or not prompt_path.read_text(encoding="utf-8").strip():
             issues.append(ValidationIssue(prompt_path, "automation prompt is missing or empty"))
+
+    for markdown_path in sorted(path for path in repository_files(root) if path.suffix == ".md"):
+        for link in find_local_markdown_links(markdown_path):
+            if not link.is_file():
+                issues.append(ValidationIssue(markdown_path, f"linked local resource is missing: {link}"))
 
     for placeholder_path in find_scaffold_placeholders(root):
         issues.append(ValidationIssue(placeholder_path, "unfinished scaffold placeholder"))

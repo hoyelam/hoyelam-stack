@@ -48,6 +48,6 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 
 ## Validation layer
 
-1. `scripts/validate.py` validates manifests, skill frontmatter, agent frontmatter, automation files, and placeholders.
+1. `scripts/validate.py` validates manifests, skill frontmatter, agent frontmatter, automation files, local Markdown resource links, and placeholders. File discovery excludes Git metadata and local `.work`, `.hoyelam`, and `__pycache__` state.
 2. `tests/` covers the validator, local installer, platform verification scripts, and orchestration runtime.
 3. `.github/workflows/validate.yml` runs the same local command in repository CI.

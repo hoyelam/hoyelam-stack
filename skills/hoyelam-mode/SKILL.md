@@ -9,11 +9,23 @@ description: Select and run a proportionate root-cause-first workflow for non-tr
 
 1. Inspect the request, task risk, repository instructions, architecture, owning surface, existing tests, supported builds, runtime harnesses, available skills, and environment capabilities.
 2. Treat the workflow below as a preferred route and capability menu, not a mandatory sequence.
-3. Select only layers that can materially improve the implementation or evidence. Combine, reorder, narrow, or omit layers when justified by the task.
+3. Verification is required for every change; select its depth, not whether to verify. Combine, reorder, narrow, or omit individual layers when justified by the task.
 4. Use more depth for changes involving security, privacy, destructive state, money, permissions, signing, concurrency, migrations, releases, or hard-to-reproduce failures.
 5. State material unavailable, irrelevant, or disproportionate layers as boundaries. Never present an omitted layer as passing.
 6. Include layers explicitly requested by the user unless they are genuinely blocked.
 7. Keep selection lightweight. Do not narrate a workflow checklist when the choice is obvious.
+
+## Define success
+
+Establish the observable acceptance criteria and realistic failure modes before choosing an implementation. State what must be true when the work is complete.
+
+## Plan verification
+
+1. Before implementation, read `$prove-the-work` and map each acceptance criterion to the exact check or interaction, required environment or fixtures, expected result, and evidence to capture. Distinguish required checks from optional evidence.
+2. Discover the project's verification contract in repository instructions, contributor documentation, scripts, or CI. When establishing or repairing that contract, use the [project verification contract](../prove-the-work/references/project-verification.md).
+3. Check that the planned tools and control paths are available. Run a focused baseline when practical; reproduce regressions when a deterministic path exists. Identify missing tests, harness work, and blockers before dependent implementation, and plan any authorized verification setup explicitly.
+4. State the verification plan, then proceed within the user's authorization; this step does not require a new approval. A small change can use one sentence in the task context, while complex work can use the project's existing plan or handoff record.
+5. Carry the plan through implementation, review, and final verification. Revise it when scope or evidence changes, and expose unresolved verification gaps without silently weakening acceptance criteria. Documentation, configuration, libraries, services, scripts, and applications all require evidence suited to their actual output.
 
 ## Project-scale route
 
@@ -38,22 +50,19 @@ description: Select and run a proportionate root-cause-first workflow for non-tr
 3. Ask only when a missing decision materially changes the result or requires new authority.
 4. When resuming related work, run `$recall-context` before acting. When the user pauses unfinished work, run `$checkpoint-work` instead of forcing the normal completion rule.
 
-## Preferred route
+## Working sequence
 
-1. Read applicable `AGENTS.md`, repository documentation, and local instructions.
-2. Use `$investigate-first` when the cause, ownership, regression history, or change boundary is not already established.
-3. State the evidence-backed problem and smallest meaningful boundary before editing.
-4. Read relevant architecture documentation and platform skills when they can affect the design. For iOS or macOS work, apply `$ios-architecture` when the repository uses or is adopting Composable Architecture or Point-Free libraries.
-5. Implement the smallest complete root-cause solution that matches the existing architecture. Avoid compatibility layers, speculative abstractions, and unrelated cleanup.
-6. Prefer focused unit tests for behavioral code when the owning boundary can be exercised meaningfully. Use snapshot tests only when visual or rendered structure is the behavior.
-7. Select focused tests, broader suites, static checks, builds, and packaging based on the failure modes and risk of the change.
-8. Use `$prove-the-work` when runtime behavior, integration, or user-visible outcomes need direct evidence. Use `$verify-apple-apps` for applicable iOS and macOS work, `$verify-electron-apps` for applicable Electron work, `$build-verification-harness` when repeated real-app verification lacks a reliable control path, and `$maintain-verification-harness` when an existing control skill or feature map may have drifted.
-9. Use `$comment-discipline` for code changes that add, retain, or touch comments, suppressions, directives, or workaround prose.
-10. Use `$review-and-resolve` at a depth proportionate to the diff, risk, and architecture surface.
-11. Resolve every verified in-scope finding and rerun the selected verification layers affected by the fix.
-12. Report the root cause, implementation, selected evidence, review findings resolved, omitted or blocked layers, remaining boundaries, and worktree state.
-13. After a complex or unusually costly task, use `$reflect-workflow` to propose durable improvements only when its evidence gate is satisfied.
+1. **Understand.** Read repository instructions, owning source, callers, and relevant architecture guidance. Use `$investigate-first` when cause or ownership is unclear. State the evidence-backed problem and smallest meaningful boundary. Apply `$ios-architecture` when Point-Free architecture can affect an Apple-platform design.
+2. **Define success.** Establish observable acceptance criteria and realistic failure modes as described above.
+3. **Plan verification.** Map those criteria to feasible checks, prerequisites, expected results, and evidence before implementation.
+4. **Implement.** Make the smallest complete root-cause change that fits the architecture. For larger work, choose small verifiable units and check each before dependent work builds on it; retain final integration checks. Unit boundaries do not require separate commits or delegation.
+5. **Verify.** Execute the plan through `$prove-the-work`. Use `$verify-apple-apps` for iOS or macOS and `$verify-electron-apps` for Electron. Use `$build-verification-harness` for a missing recurring real-app control path and `$maintain-verification-harness` for drift. For regressions, exercise the original reproduction through the same relevant interface after the fix; report when that proof is unavailable.
+6. **Review and resolve.** Review the complete scoped diff through `$review-and-resolve`, including `$comment-discipline` for touched comments or directives. Use independent review for substantial or risky changes when available and authorized. Validate findings before automatically fixing confirmed in-scope issues; report out-of-scope work separately.
+7. **Re-verify.** Rerun checks affected by review fixes on the final changed state and inspect the revised diff. Return to review and resolution when new verified issues remain. If review made no changes, retain still-current evidence; a distinct step does not require a redundant run.
+8. **Report evidence.** Report the result, tested state, observed outcomes, resolved findings, and concrete remaining boundaries. Failed or blocked required checks leave verification incomplete.
+
+After a complex or unusually costly task, use `$reflect-workflow` only when its evidence gate is satisfied. When changing this workflow's behavioral rules, use [workflow validation](references/workflow-validation.md) to exercise ordinary tasks before treating structural validation as evidence of agent behavior.
 
 ## Completion rule
 
-Completion requires evidence proportionate to the change and honest reporting of remaining boundaries; it does not require every workflow layer. Do not claim more than the selected evidence proves, and do not claim completion while verified in-scope findings remain unresolved.
+Completion requires passing evidence for the acceptance criteria and required checks on the final changed state, plus resolution of verified in-scope findings. Apply the evidence standard in `$prove-the-work`. A blocked required check leaves verification incomplete; report the implementation and blocker without claiming the task is complete. Optional omissions remain explicit boundaries. Every available workflow layer need not run.

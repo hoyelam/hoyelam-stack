@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0 - 2026-09-05
+
+1. Made verification a default completion requirement for every project type, with separate success-definition and verification-planning steps before implementation and evidence tied to the final changed state.
+2. Added a reusable project verification contract covering supported commands, local and CI requirements, failure propagation, and maintenance.
+3. Strengthened evidence rules for blocked checks, stale results, unexpected skips, zero-test runs, and weakened assertions; expanded repository validation to local Markdown links in documentation and supporting references while excluding Git metadata and local scratch, orchestration, and cache state from file discovery.
+4. Formalized eight workflow steps with distinct verification, review-and-resolution, and re-verification phases; added proportionate independent review, incremental proof, and isolated task validation for changes to the method.
+
 ## 0.7.0 - 2026-09-05
 
 1. Added an optional Herdr delegation adapter for explicitly requested orchestration, with self-contained worker briefs, bounded concurrency, exclusive write scopes, and lead-owned verification.

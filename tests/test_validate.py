@@ -1,4 +1,5 @@
 import json
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
@@ -66,6 +67,52 @@ class RepositoryTests(unittest.TestCase):
     def test_hoyelam_stack_repository_is_valid(self) -> None:
         root = Path(__file__).resolve().parent.parent
         self.assertEqual(validate_repository(root), [])
+
+    def test_ignores_local_state_and_git_metadata(self) -> None:
+        source = Path(__file__).resolve().parent.parent
+        for relative in (".work", ".hoyelam", ".git", "skills/hoyelam-mode/__pycache__"):
+            with self.subTest(directory=relative), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory) / "stack"
+                shutil.copytree(
+                    source, root,
+                    ignore=shutil.ignore_patterns(".git", ".work", ".hoyelam", "__pycache__"),
+                )
+                scratch = root / relative
+                scratch.mkdir(parents=True, exist_ok=True)
+                (scratch / "draft.md").write_text(
+                    "[Scratch reference](not-a-package-file.md)\n[" + "TODO: unfinished local note]\n",
+                    encoding="utf-8",
+                )
+                self.assertEqual(validate_repository(root), [])
+
+    def test_rejects_broken_links_outside_skill_entrypoints(self) -> None:
+        source = Path(__file__).resolve().parent.parent
+        for relative in (
+            "docs/workflow.md",
+            "skills/prove-the-work/references/project-verification.md",
+            "agents/runtime-verifier.md",
+            "automations/full-quality-pass/FOR_AGENTS.md",
+        ):
+            with self.subTest(path=relative):
+                with tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory) / "stack"
+                    shutil.copytree(
+                        source, root,
+                        ignore=shutil.ignore_patterns(".git", ".work", ".hoyelam", "__pycache__"),
+                    )
+                    path = root / relative
+                    original = path.read_text(encoding="utf-8")
+                    target = path.parent / "missing-verification-contract.md"
+                    path.write_text(original + "\n[Contract](missing-verification-contract.md)\n", encoding="utf-8")
+                    issues = validate_repository(root)
+                    self.assertEqual(len(issues), 1)
+                    self.assertEqual(issues[0].path, path)
+                    self.assertIn(str(target.resolve()), issues[0].message)
+                    target.write_text(
+                        "---\nname: verification-contract\ndescription: Resource validation fixture.\n---\n",
+                        encoding="utf-8",
+                    )
+                    self.assertEqual(validate_repository(root), [])
 
 
 class MarketplaceTests(unittest.TestCase):

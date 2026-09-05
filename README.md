@@ -28,7 +28,13 @@ The modular structure is inspired by pstack, adapted into product-neutral instru
 
 ## Core rule
 
-Use the smallest workflow that produces enough evidence for the task's risk. Completion means every claim is supported, material gaps are named, and verified in-scope findings are resolved; it does not mean every available step ran.
+Understand → Define success → Plan verification → Implement → Verify → Review and resolve → Re-verify → Report evidence.
+
+Verification is required for every change across applications, libraries, services, scripts, configuration, and documentation. Use the smallest workflow that proves the acceptance criteria and required checks on the final changed state. Failed or blocked required checks leave verification incomplete; every available step need not run.
+
+Use the [project verification contract](skills/prove-the-work/references/project-verification.md) to establish reusable commands, observable outcomes, local and CI requirements, and evidence boundaries in each project. Installing the stack makes this method available; adoption happens through the project's instructions or invocation of `$hoyelam-mode` or `$prove-the-work`.
+
+Check small units before building dependent work, use independent review for substantial or risky changes when available and authorized, and automatically fix confirmed in-scope findings. Validate changes to the method through [isolated implementation tasks](skills/hoyelam-mode/references/workflow-validation.md).
 
 ## License
 
