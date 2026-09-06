@@ -16,23 +16,24 @@ Every proof names which process owns the behavior and which other boundary can i
 2. Integration-test IPC channels, preload APIs, persistence, migrations, protocol handlers, and process lifecycle with explicit cleanup.
 3. Use the repository's Playwright Electron or equivalent harness for renderer and cross-process flows when it already exists.
 4. Test native modules and packaged-path behavior against the packaged artifact when development mode changes module loading or filesystem layout.
-5. Run the complete relevant suite, type checking, linting, and packaging before the final runtime pass.
+5. Select broader suites, type checking, linting, and packaging according to the affected boundary and repository-required checks. A pure logic check does not automatically need packaging or runtime launch.
 
-## Launch for inspection
+## Launch for runtime proof
 
 1. Use the repository's supported launch command and a temporary user-data directory or project-defined test profile.
-2. Bind remote debugging to loopback. Use an ephemeral or verified free port when the harness supports it.
-3. Start renderer inspection with Electron's `--remote-debugging-port=<port>` switch.
-4. Start main-process inspection with `--inspect=<port>` or `--inspect-brk=<port>` only when main-process debugging is required.
-5. Record the launched process identifiers, artifact path, profile path, ports, and readiness signal.
-6. Query `/json/version` and `/json/list`, then confirm target title, URL, type, and WebSocket endpoint before driving it.
+2. Record the launched process identifiers, artifact path, profile path, and readiness signal. Use a project harness or desktop control without debugging ports when it can prove the required behavior.
+3. If renderer inspection through CDP is selected, use Electron's `--remote-debugging-port=<port>` switch. Bind remote debugging to loopback and use an ephemeral or verified free port when supported.
+4. Use `--inspect=<port>` or `--inspect-brk=<port>` only when main-process debugging is needed, with the inspector bound to loopback as well.
+5. When connecting protocol tools, record the ports and confirm target identity before driving them. Query `/json/version` and `/json/list` or use the harness's equivalent identity check. Confirm the title, URL, type, and WebSocket endpoint belong to the current app.
 
 Electron documents renderer DevTools in [Application debugging](https://www.electronjs.org/docs/latest/tutorial/application-debugging), main-process inspection in [Debugging the main process](https://www.electronjs.org/docs/latest/tutorial/debugging-main-process), and remote-debugging switches in [Supported command line switches](https://www.electronjs.org/docs/latest/api/command-line-switches).
 
 ## DevTools evidence
 
+Use this guidance when DevTools supplies the selected proof; it is not required for every renderer or Electron change.
+
 1. Runtime: capture uncaught exceptions, rejected promises, console errors, and evaluated state used to prove the invariant.
-2. DOM and accessibility: assert stable roles, labels, attributes, visible text, focus, and state. Avoid coordinates for renderer content.
+2. DOM and accessibility: assert stable roles, labels, attributes, visible text, focus, and state. Prefer semantic controls; if only visual interaction is available, inspect fresh state before using coordinates.
 3. Network: record relevant request URL, method, status, response or failure, timing, cache or service-worker involvement, and WebSocket or event-stream messages.
 4. Page and targets: detect reloads, renderer crashes, unexpected new windows, navigation, and target replacement.
 5. Performance: capture a trace, CPU profile, heap evidence, or frame timing only when performance is in scope.
@@ -42,8 +43,8 @@ The [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protoco
 
 ## Real desktop interaction
 
-1. Use DevTools or repository Playwright for Chromium content.
-2. Use computer use for native menus, system dialogs, tray items, title bars, window management, file drag and drop, permissions, and other surfaces outside the DOM.
+1. Use a repository harness, DevTools, Playwright, computer use, or another available path that proves the Chromium interaction. These are alternatives; choosing one does not require installing the others.
+2. Use computer use or an equivalent native harness for menus, system dialogs, tray items, title bars, window management, file drag and drop, permissions, and other surfaces outside the DOM.
 3. Inspect fresh application state after each native interaction and capture screenshots where accessibility state is insufficient.
 4. Verify main-process or filesystem side effects independently after visible success.
 5. Include reload, relaunch, multiple windows, offline or failed-network behavior, and close or quit lifecycle when they are in the blast radius.

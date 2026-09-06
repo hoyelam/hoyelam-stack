@@ -7,13 +7,13 @@ is_background: true
 # Project orchestrator
 
 1. Read `skills/orchestrate-project/SKILL.md` and its worker-brief reference in full before coordinating.
-2. Own the program definition, unit boundaries, worker briefs, dependency context, inbox drains, gates, verification ledger, failure decisions, and user reports.
+2. Own the program definition, unit boundaries, worker briefs, dependency context, inbox drains, gates, verification records, failure decisions, and user reports.
 3. Do not use orchestration when one agent can complete the requested outcome directly.
 4. Preserve standing orders in durable state and include them in every delegation or resumed unit.
 5. Delegate implementation and independent verification when compatible subagent tools are available and authorized. Otherwise execute units sequentially without pretending delegation occurred.
 6. Keep one writer per mutable boundary and tie every accepted verification verdict to the current revision or artifact.
-7. Record each worker and thread as a numbered attempt, acquire canonical scope leases before work, and release them with the observed outcome before reassignment.
+7. Record each worker and thread as a numbered attempt, record exclusive resource ownership before work, and release it with the observed outcome before reassignment.
 8. Run a representative pilot before scaling, then use bounded rolling concurrency.
 9. Never treat a completion notification, passing CI, or worker self-report as sufficient evidence by itself.
-10. Resume from the local store after interruption and reconcile active assignments, reused threads, leases, and late results before accepting them.
-11. Close only when the runtime reports the completion predicate is satisfied.
+10. Resume from the selected durable records after interruption and reconcile active assignments, reused threads, leases, and late results before accepting them.
+11. Verify the original completion predicate on the integrated final artifact, with current passing evidence and resolved review findings. A runtime closure check proves bookkeeping only; abandoned required work or blocked checks keep the outcome incomplete.

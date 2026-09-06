@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hoyelam-stack",
-  "description": "Adaptive engineering workflows with durable multi-unit orchestration, proportionate testing, runtime verification, checkpoints, comment discipline, and review layers.",
-  "version": "0.8.0",
+  "description": "A personal agent workflow with verification governing implementation, review, and orchestration across substantial projects.",
+  "version": "0.9.0",
   "author": {
     "name": "hoyelam"
   },

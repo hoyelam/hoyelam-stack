@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify macOS Apps"
+  short_description: "Verify macOS changes with proportionate evidence"
+  default_prompt: "Use $verify-macos-apps to select and run the checks needed to verify this macOS change."

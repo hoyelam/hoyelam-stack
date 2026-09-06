@@ -1,81 +1,49 @@
 ---
 name: orchestrate-project
-description: Coordinate a project-scale engineering program that spans multiple independent units or sessions with durable state, explicit worker briefs, revision-bound verification, and resumable progress. Do not use for work one agent can finish directly.
+description: Coordinate substantial programs across independent units or sessions through scoped delegation, durable progress, review, and verification of the integrated result. Collapse work one agent can finish directly.
 ---
 
 # Orchestrate Project
 
-## Route deliberately
+Verification governs the program: a worker finishing creates a result to inspect, and acceptance requires evidence for the current artifact. The coordinator owns the outcome, dependency decisions, integration, and user report.
 
-1. Use this skill when the requested outcome spans multiple independently executable units, is expected to outlive one task context, or explicitly assigns ongoing coordination.
-2. Keep ordinary features, fixes, investigations, and single-session autonomous work in `$hoyelam-mode`.
-3. Collapse orchestration when one agent can reasonably complete and verify the work directly. The state store and delegation ceremony must earn their cost.
-4. Preserve the user's authorization boundaries. Coordination does not authorize publishing, deployment, destructive actions, messages, purchases, or unrelated scope.
-5. When the user requests Herdr orchestration, read the [Herdr delegation adapter](../hoyelam-mode/references/herdr-delegation.md) for worker control and identity mapping. Keep this skill's durable assignment and verification records authoritative.
+## Choose the scale and tools
 
-## Frame the program
+1. Use this playbook for a standing program that outlives one task context or needs ongoing coordination of independently executable units. Ordinary features, fixes, and ambitious single-session tasks stay in `$hoyelam-mode`, with bounded delegation where useful.
+2. Collapse to direct work when one agent can reasonably implement and verify the outcome. Retain verification inline without creating a program store or extra roles.
+3. Use the project's existing coordination records when they can preserve the contract below. Otherwise use the [bundled runtime](references/bundled-runtime.md), which provides assignments, exclusive scope leases, inbox events, verification receipts, and recovery. Select one authoritative record; do not maintain competing boards.
+4. Use available authorized delegation tools. In Codex, follow the [Codex adapter](../hoyelam-mode/references/codex-delegation.md); use the [Herdr adapter](../hoyelam-mode/references/herdr-delegation.md) when requested. No particular hosting service, model, PR stack tool, or CI service is required.
+5. Coordination preserves the user's scope and authorization. A request to implement does not by itself authorize publishing, merging, deployment, destructive operations, or external messages.
 
-1. Define a countable completion predicate and the evidence required for each completed unit.
-2. Split work by independently writable and verifiable boundaries. Give each boundary one writer at a time.
-3. Record standing constraints before delegation so every new or resumed worker receives the same instructions.
-4. Initialize durable state with the bundled runtime:
+## Roles and records
 
-   ```bash
-   python3 <skill-directory>/scripts/orchestrator.py --store .hoyelam/orchestrate/<project> init --goal "<goal>" --done "<predicate>" --standing-order "<constraint>"
-   ```
+- **Coordinator:** frames the outcome, authors briefs, assigns exclusive scope, inspects results, maintains dependency context, and accepts verified integration. Delegate implementation while coordinating concurrent work; perform small integration work directly when it is safe and cheaper than another handoff.
+- **Worker:** owns one bounded implementation or investigation and returns its actual changes and evidence. One writer owns each mutable boundary, including branches, worktrees, overlapping paths, simulators, and accounts.
+- **Verifier or reviewer:** independently challenges expensive, judgment-heavy, or high-impact evidence and changes. A cheap deterministic check can be run by the worker and spot-checked by the coordinator. Review depth follows `$review-and-resolve`.
+- Add a track coordinator only when the lead cannot manage the ready units directly; keep the tree shallow and its concurrency within runtime limits.
 
-5. Keep `.hoyelam/` ignored unless the user explicitly wants the coordination record committed.
+Persist the completion predicate, standing instructions, units and dependencies, briefs, exclusive resource ownership, worker/session identities and attempt numbers, results, current artifact identities, verification receipts, decisions, and unresolved gates. Existing files or runtime records are sufficient when they preserve these facts across interruption. Derive status from them. Store sensitive task evidence according to the project's conventions; keep local scratch records out of commits unless requested.
 
-## Brief and execute units
+## Playbook
 
-1. Read [references/worker-brief.md](references/worker-brief.md) before creating the first worker brief and [references/scope-leases.md](references/scope-leases.md) before assigning the first mutable boundary.
-2. A unit must name its goal, writable and forbidden scope, context, acceptance criteria, verification, dependencies, timebox, assignment identity, scope leases, and report shape.
-3. Refuse to delegate a unit whose missing context would force a worker to guess.
-4. Before starting work, record the worker, thread identity, attempt, and canonical exclusive lease keys:
+1. **Frame success and verification.** Define the program's observable completion predicate. Break it into independently writable and verifiable units, with acceptance criteria, exact checks, prerequisites, expected observations, and evidence per unit. Plan integration checks as well. Identify required checks and expose feasibility gaps before dependent implementation. Record standing instructions before the first assignment.
+2. **Brief and pilot.** Use the [worker brief](references/worker-brief.md). Relay dependency outputs, not just unit names. Run one representative unit through implementation, verification, review, and local integration before broad fan-out. Correct the brief or verification recipe from its results. For cheap repeated units, the first ordinary unit is enough; no extra pilot roles are needed.
+3. **Delegate ready work.** Assign only units whose dependency evidence is current and accepted. Record the worker, session, attempt, and exclusive scope before it writes. Use bounded rolling concurrency, refilling as units finish. When delegation is unavailable, execute sequentially and report that boundary. Every new or resumed assignment receives current standing instructions and consolidated context.
+4. **Drain and assess results.** Queue completion reports while finishing a critical edit, brief, or state update. At a safe boundary, reconcile each report with its assignment and current attempt. Classify it as ready for verification, failed, blocked, cancelled, or stale; completion notifications alone do not establish success. Preserve evidence and release resource ownership before reassignment. Continue useful independent work around failures or human gates.
+5. **Verify, review, and resolve.** Inspect actual diffs and receipts using `$prove-the-work` and `$review-and-resolve`. Validate findings, automatically fix confirmed issues within authorized scope, and rerun affected checks on the revised state. Failed behavior gets a scoped fix; blocked verification stays incomplete. Preserve failed attempts. A reviewer assertion, passing CI, or environment readiness alone cannot prove acceptance.
+6. **Integrate continuously.** Integrate accepted units locally as dependencies permit, then run the selected integration checks before dependent work proceeds. Keep one owner of each integration branch. Identify the exact combined artifact, including uncommitted changes; passing each unit alone does not prove their composition. If PRs or stacks are part of the authorized work, track their current heads and dependency order and re-verify affected behavior after restacks or conflict fixes. Publishing and landing require their own authority.
+7. **Close against evidence.** Reconcile every assignment to an outcome and release all active ownership. Check the original program predicate on the integrated final artifact, all required acceptance and review evidence, and any unresolved gates. Report completed units, failed or blocked checks, abandoned scope, evidence locations, and the next action for any blocker. Abandoning a required unit does not satisfy the original predicate; scope can change only within user authorization. Close bookkeeping separately from claiming successful completion.
 
-   ```bash
-   python3 <skill-directory>/scripts/orchestrator.py --store <store> unit assign <unit> --worker <worker> --thread <thread> --lease <scope-key>
-   ```
+## Verification receipts
 
-5. When subagents are available and authorized, delegate independent ready units concurrently. Otherwise execute the same units sequentially while preserving their boundaries and state.
-6. Run one representative unit through implementation and verification before broad fan-out. Correct the brief and unit size from pilot evidence.
-7. Prefer a rolling window that refills as units finish. Never allow two workers to hold the same scope lease or write the same worktree, branch, file boundary, simulator state, or mutable external resource concurrently.
+Bind every verdict to the exact unit revision or artifact and the relevant fixtures, configuration, and harness version. Record the command or interaction, expected and observed outcome, test counts and exit status where applicable, artifact paths, and `passed`, `failed`, `blocked`, or `not run`. A revision change makes the old receipt insufficient for the new artifact; rerun affected checks and explicitly justify any carried-forward evidence for unaffected claims.
 
-## Drain and verify
+For runtime proof, identify the application instance, the exercised user path, readiness observations, and resulting state or side effects. Use the project's existing evidence format or the bundled harness fields when that format is selected. A doctor checks readiness, not the feature. Route platform work through `$verify-ios-apps`, `$verify-macos-apps`, or `$verify-electron-apps`.
 
-1. Treat worker completion as an inbox event bound to its stored worker, thread, and attempt. Finish the current critical state update before draining queued reports. Assigned units require all three identity fields, including for late results and retries.
+## Recovery and bounded retries
 
-   ```bash
-   python3 <skill-directory>/scripts/orchestrator.py --store <store> inbox push <event> --unit <unit> --status <status> --report <report> --worker <worker> --thread <thread> --attempt <attempt>
-   ```
-2. Inspect every report before changing its unit state. Missing or contradictory evidence becomes a blocked or failed unit, not a pass.
-3. Release every assignment with its outcome. A completed attempt must include its revision or artifact identifier; failed, blocked, and cancelled outcomes release their leases and preserve attempt history.
+On resume, read durable records before spawning. Reconcile actual worktrees, running workers, attempts, exclusive scopes, latest reports, and current artifacts. A late result must match the current assignment and dependencies before it is accepted; preserve useful findings from stale work without blindly integrating it.
 
-   ```bash
-   python3 <skill-directory>/scripts/orchestrator.py --store <store> unit release <unit> --outcome completed --revision <revision> --worker <worker> --thread <thread> --attempt <attempt>
-   ```
+Retry only after diagnosing the failure, with a finite budget appropriate to its cause. Narrow scope for capacity failures, repair broken prerequisites, and stop repeated unchanged infrastructure retries with a precise handoff. Preserve completed work and route around blocked units. Missing or corrupt records must be reconciled or restored before more assignments can safely write.
 
-4. Record verification against the exact revision or artifact identifier. A changed revision invalidates earlier evidence automatically. When a project harness supplied runtime proof, also record its name and revision, doctor status, mapped feature identifiers, and preserved artifact references:
-
-   ```bash
-   python3 <skill-directory>/scripts/orchestrator.py --store <store> verification record <unit> \
-     --revision <revision> --verdict verified --evidence "<summary>" \
-     --harness <verify-skill> --harness-revision <harness-revision> --doctor passed \
-     --feature <feature-id> --artifact <artifact-reference>
-   ```
-
-   Structured harness evidence is optional for non-runtime proof. When supplied for a verified verdict, doctor, feature, and artifact fields are required so readiness cannot masquerade as behavior evidence.
-5. Use an independent verifier when evidence is judgment-heavy, expensive, security-sensitive, or high impact. A cheap deterministic command may be run by the worker and spot-checked by the coordinator.
-6. Park only genuine product decisions or newly required authority as gates. Continue ready work that does not depend on an open gate.
-7. Generate status from the store instead of maintaining a narrative progress board by hand.
-
-## Resume and close
-
-1. On a new task or after interruption, run `resume` before creating more work. Treat a durable-store validation error as corruption to repair or restore before any mutation.
-2. Reconcile every unit with its durable state, active assignment, thread identity, latest attempt, scope leases, latest report, current revision, and verification verdict.
-3. Reuse a known thread only when its role and context still fit the unit. Every retry receives a new stored attempt number and reacquires its leases.
-4. Retry according to the observed failure. Cap repeated attempts, then mark the unit blocked or abandoned with evidence instead of looping indefinitely.
-5. Close only when every unit is done or explicitly abandoned, no assignment or lease remains active, each done unit has current verified evidence, and every gate is resolved.
-6. Report the completion predicate, unit counts, attempts, current assignments and leases, current verification, abandoned work, unresolved boundaries, store path, and worktree state.
-
-Run the CLI with `--help` for unit, inbox, verification, gate, status, resume, and close commands.
+For design provenance and adaptations, see [design evidence](../../docs/design-evidence.md).

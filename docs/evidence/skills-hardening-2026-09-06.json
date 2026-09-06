@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-06",
+  "scope": "Confirmed skills and global-instruction audit findings; reversible local installation",
+  "backup": "/Users/hoyelam/.local/share/hoyelam/skill-overrides/2026-09-06-verification",
+  "installed": {
+    "installed_files_checked": 129,
+    "source_links": 16,
+    "quarantined_paths": 36,
+    "unrelated_config_preserved": true,
+    "errors": []
+  },
+  "staged_validation": {
+    "edits": 129,
+    "entrypoints": 96,
+    "relative_links_checked": 305,
+    "preexisting_missing_links": [],
+    "errors": [],
+    "quarantine_paths": 36,
+    "new_source_links": 2,
+    "config_only_expected_enable_flag": true
+  },
+  "exercise": {
+    "final": {
+      "exit": 0,
+      "output": "test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) ... ok\ntest_empty (test_quota.BatchTests.test_empty) ... ok\ntest_invalid (test_quota.BatchTests.test_invalid) ... ok\ntest_partition (test_quota.BatchTests.test_partition) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+    },
+    "original": {
+      "exit": 1,
+      "output": "test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) ... \n  test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) (args=(True, 3)) ... FAIL\n  test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) (args=(False, 3)) ... FAIL\n  test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) (args=(3, True)) ... FAIL\ntest_empty (test_quota.BatchTests.test_empty) ... ok\ntest_invalid (test_quota.BatchTests.test_invalid) ... ok\ntest_partition (test_quota.BatchTests.test_partition) ... ok\n\n======================================================================\nFAIL: test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) (args=(True, 3))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/skills-fix-otizpi6h/quota-review-pmpekhzq/test_quota.py\", line 12, in test_boolean_inputs_are_rejected\n    with self.subTest(args=args), self.assertRaises(ValueError):\n                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) (args=(False, 3))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/skills-fix-otizpi6h/quota-review-pmpekhzq/test_quota.py\", line 12, in test_boolean_inputs_are_rejected\n    with self.subTest(args=args), self.assertRaises(ValueError):\n                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_boolean_inputs_are_rejected (test_quota.BatchTests.test_boolean_inputs_are_rejected) (args=(3, True))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/skills-fix-otizpi6h/quota-review-pmpekhzq/test_quota.py\", line 12, in test_boolean_inputs_are_rejected\n    with self.subTest(args=args), self.assertRaises(ValueError):\n                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nFAILED (failures=3)\n"
+    },
+    "required_package_check": {
+      "exit": 78,
+      "output": "Required packaging check unavailable: the fixture signing service is not provisioned.\n",
+      "unchanged": true
+    },
+    "independent_partition_cases": 275,
+    "limits": [
+      "Guided isolated exercise with deliberately supplied valid finding; not a blind baseline comparison.",
+      "Worker plan timestamps/records are available, but full tool activity ordering was not independently observed.",
+      "No real signing service or Apple/Electron application exercised."
+    ]
+  },
+  "workflow_hashes": {
+    "AGENTS.md": "3e3f8b4dd68d48d841bf0f9d79052ea0b1bab0d0707d6dd3bef3c9c912b05689",
+    "skills/hoyelam-mode/SKILL.md": "69c63656bf58ca4828f21db97ea3fef712bf54af0fb9ee47e6d1fe144de54115"
+  },
+  "finding_groups": [
+    "L01\u2013L11",
+    "C1\u2013C9",
+    "CP01\u2013CP15",
+    "G01\u2013G05"
+  ],
+  "limits": [
+    "This is a targeted resolution of the completed audit, not a proof that all 517 audited skill versions are defect-free.",
+    "No real Apple/Electron app, external service, or release flow was exercised.",
+    "The workflow exercise was guided with a supplied valid finding, not a blind comparison. Full worker tool-ordering was not independently observed.",
+    "Third-party updates can replace local overrides; preserved hashes require review before reapplication.",
+    "New agent sessions are required to refresh global instructions and skill discovery."
+  ]
+}

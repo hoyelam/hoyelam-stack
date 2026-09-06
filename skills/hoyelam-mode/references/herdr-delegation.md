@@ -29,6 +29,6 @@ Apply this adapter when the user requests Herdr orchestration. Hoyelam-mode stil
 
 ## Project-scale records
 
-When `$orchestrate-project` applies, keep its durable store, scope leases, assignment attempts, inbox, and revision-bound verification as the source of truth. Herdr does not replace those records.
+When `$orchestrate-project` applies, use its selected durable records for exclusive scope ownership, assignment attempts, completion reports, and revision-bound verification. Herdr lifecycle status does not replace those facts. The bundled store is one supported implementation.
 
 Use the unique worker name as the assignment's worker identity and a session-qualified pane identity as its thread identity. Record both before prompting; do not use a pane ID alone across different Herdr sessions. Keep the stored worker, thread, and attempt on every report. Reconcile live occupants with the stored assignment on resume, and create a new assignment attempt when a worker is replaced. Persist the report and evidence before releasing the assignment.

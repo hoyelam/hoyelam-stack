@@ -5,6 +5,8 @@ description: Audit and repair an existing project-local verification skill and f
 
 # Maintain Verification Harness
 
+This skill maintains the bundled verification-skill and feature-map format. For an existing harness with a different structure, use its supported maintenance checks and `$prove-the-work`; do not migrate it just to satisfy this template.
+
 ## Locate and bound the pass
 
 1. Find the project-local verification skill that owns launch, doctor, drive, evidence, cleanup, and an indexed feature map. If several are plausible and the requested scope does not identify one, ask which surface is in scope.

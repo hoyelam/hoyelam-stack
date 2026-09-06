@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify iOS Apps"
+  short_description: "Verify iOS changes with proportionate evidence"
+  default_prompt: "Use $verify-ios-apps to select and run the checks needed to verify this iOS change."

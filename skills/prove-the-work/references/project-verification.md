@@ -4,7 +4,7 @@ Read this when establishing verification for a project or repairing missing, con
 
 ## Establish one supported path
 
-Find the current contract in `AGENTS.md`, contributor documentation, package scripts, build targets, and CI. Reuse that location and tooling. If implementation is authorized and a missing contract prevents reliable proof, document the smallest supported path in the owning project and link it from its agent instructions. During read-only work, report the gap instead. Do not modify other projects merely because the stack is available to them.
+Find the current contract in `AGENTS.md`, contributor documentation, package scripts, build targets, and any existing CI. A CI service is not required. Reuse that location and tooling. If implementation is authorized and a missing contract prevents reliable proof, document the smallest supported path in the owning project and link it from its agent instructions. During read-only work, report the gap instead. Do not modify other projects merely because the stack is available to them.
 
 Record:
 
@@ -12,10 +12,10 @@ Record:
 2. Exact focused commands and the canonical command for the relevant suite, static checks, and build. Define successful execution, expected test discovery, and legitimate skips.
 3. Observable acceptance criteria for the changed behavior and the appropriate runtime or output inspection path.
 4. Isolation, evidence capture, and cleanup for checks that mutate state. Prefer disposable fixtures and stop only owned processes.
-5. Which checks are required locally and in CI, with platform-specific commands when they differ. Required CI remains pending until it actually runs against the relevant revision.
+5. Which checks are required locally and, when the project uses CI, which are required there, with platform-specific commands when they differ. Required CI remains pending until it actually runs against the relevant revision.
 6. Known coverage gaps, their concrete impact, and how to unblock them. A documented gap is not a waiver or a passing result.
 
-For recurring checks, prefer one existing script or build target shared by local work and CI. It must propagate failures and detect missing expected tests or outputs. Add a wrapper only when it removes repeated ambiguity. When changes to the verification path are in scope, exercise both a valid run and a controlled failure in an isolated fixture; prove that failure reaches the caller. Never deliberately corrupt production state to test the gate.
+For recurring checks, prefer one existing script or build target, shared with CI when the project uses it. It must propagate failures and detect missing expected tests or outputs. Add a wrapper only when it removes repeated ambiguity. When changes to the verification path are in scope, exercise both a valid run and a controlled failure in an isolated fixture; prove that failure reaches the caller. Never deliberately corrupt production state to test the gate.
 
 ## Select evidence by surface
 

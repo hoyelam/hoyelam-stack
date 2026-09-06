@@ -2,31 +2,28 @@
 
 ## Intent
 
-Finish an already-implemented branch through tests, real behavior verification, comment audit, extensive review, finding resolution, and a final evidence report.
+Apply the user's verification and review method to an already-implemented branch. This is an optional scheduled wrapper; the same work can run directly through `$hoyelam-mode`.
 
 ## Required configuration
 
-1. Repository path and expected branch.
-2. Base branch.
-3. Repository verification commands.
-4. Real artifact launch or control path.
-5. User behavior or regression to verify.
+1. Repository, expected branch, base, and writable scope.
+2. Intended outcome and observable acceptance criteria, including any explicitly required checks.
+3. Supported verification commands or evidence sources appropriate to the change.
+4. For application runtime behavior, the launch or control path, fixtures, and user behavior to verify. Documentation-only work does not require an application launch path.
 
 ## Execution
 
-1. Read the repository `AGENTS.md` and `skills/hoyelam-mode/SKILL.md`.
-2. Confirm the repository, branch, base, worktree scope, and user-requested behavior.
-3. Stop on unrelated destructive state or ambiguous ownership.
-4. Run unit tests, the full relevant suite, static checks, and a production-representative build.
-5. Run the real behavior through computer use or a deterministic verification script.
-6. Run the comment auditor and code reviewer on the complete scoped diff.
-7. Verify each finding before editing.
-8. Resolve every verified in-scope finding.
-9. Repeat affected tests, build, runtime verification, comment audit, and code review until clean.
-10. Update only the existing branch. Do not create a second competing pull request.
+1. Read the repository `AGENTS.md` and the installed `$hoyelam-mode` skill.
+2. Confirm repository, branch, base, ownership, authorized fixes, and intended outcome.
+3. Define the verification plan before fixing anything. Select checks that can disprove the acceptance criteria: source and link validation for documentation, focused tests for logic, broader suites or builds for integration risk, and real interactions for runtime behavior. Preserve explicitly required checks as gates.
+4. Run the selected checks and record actual evidence. Missing required tools leave verification incomplete; optional omissions need a concrete reason.
+5. Review the complete scoped diff through `$review-and-resolve`. Include comment review when relevant, and independent review for substantial or risky changes when available and authorized. A named specialist agent is not required for every change.
+6. Validate findings before editing. Automatically resolve confirmed in-scope issues within the configured authority.
+7. Rerun affected verification and inspect the revised diff. Continue until required evidence is current and no verified in-scope findings remain, or report the exact blocker.
+8. Report the outcome and evidence. Update only the configured branch; do not create a competing pull request. Pushing or posting requires configured authority.
 
 ## Boundary
 
 1. Do not merge, deploy, release, or broaden scope.
-2. Do not hide failed or blocked verification.
-3. Do not treat a reviewer report as evidence that the real behavior works.
+2. Never hide failed or blocked required verification or treat readiness as behavior proof.
+3. A reviewer report alone does not establish that the intended behavior works.

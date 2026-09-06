@@ -1,6 +1,6 @@
-# Project verification harness contract
+# Bundled verification harness template
 
-Use this contract when a repository needs a reusable control surface rather than another task-specific verification recipe. Fit the names and tools to the repository's conventions.
+Use this format when creating a bundled-style project-local verification skill. Its layout, JSON CLI convention, and validator apply to skills that select this template. Existing repository test drivers and evidence formats can satisfy the core verification method without migration. Fit the control commands to the project.
 
 ## Project-local shape
 

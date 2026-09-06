@@ -1,8 +1,10 @@
-# Automations
+# Optional automation wrappers
+
+These packs are configuration material for running selected work on a schedule or trigger. Installing the stack does not schedule them. The core method, including orchestration and verification, works directly without an automation service.
 
 ## Full quality pass
 
-Use after implementation when a branch needs the complete hoyelam-stack finish line:
+Use after implementation when a branch needs verification and review proportionate to its changes:
 
 1. Read `automations/full-quality-pass/FOR_AGENTS.md`.
 2. Configure the repository and branch in the automation editor.

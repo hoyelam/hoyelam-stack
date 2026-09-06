@@ -15,6 +15,12 @@ Verification planning is a distinct step before implementation. Keep it proporti
 
 Read-only reviews remain read-only. Independent reviewers report supported findings; the implementation owner verifies them and owns accepted fixes. Small low-risk changes can use self-review. See [review-and-resolve](../skills/review-and-resolve/SKILL.md) for review selection and the resolution loop.
 
+## Orchestration governed by verification
+
+For substantial programs, [orchestrate-project](../skills/orchestrate-project/SKILL.md) turns the working sequence into scoped assignments and durable progress. The lead defines unit acceptance and integration checks before delegation, pilots a representative unit, uses bounded rolling concurrency, reviews returned evidence, and integrates accepted work continuously. Each dependency advances on verified results. The final combined artifact must satisfy the original outcome; completed workers alone do not prove it.
+
+Use existing project records when they preserve ownership, attempts, dependencies, and current evidence. The bundled runtime supplies those safeguards when needed. Direct tasks keep the same evidence standard with less coordination. Optional automation packs schedule selected work only when configured; they are not a prerequisite for this method.
+
 ## Selection rule
 
 1. Inspect the task type, changed surface, repository instructions, existing test and build commands, runtime harnesses, available tools, environment limits, and potential impact.
@@ -71,13 +77,13 @@ Define observable acceptance criteria, then plan verification before implementat
 4. A production-representative build is valuable when target, entitlement, linkage, packaging, or configuration behavior can differ.
 5. Direct runtime evidence is valuable when the changed behavior manifests in a real application surface.
 6. Every review fix returns through the selected verification steps it can affect.
-7. Repositories without a reliable real-app control path should gain a project-local verification harness and indexed feature map rather than inventing a new manual recipe for every task.
-8. iOS and macOS verification follows `$verify-apple-apps`; Electron verification follows `$verify-electron-apps`.
+7. Repositories without a reliable real-app control path should gain a repeatable verification path that fits their existing tools and documentation; the bundled harness and feature-map template is available when needed.
+8. iOS verification follows `$verify-ios-apps` and macOS verification follows `$verify-macos-apps`; Electron verification follows `$verify-electron-apps`.
 9. When an existing harness or feature map may have drifted, use `$maintain-verification-harness` to reconcile source and drive the mapped behavior before relying on it.
 
 For changes to this workflow, follow [workflow validation](../skills/hoyelam-mode/references/workflow-validation.md) and inspect actual task outputs. Unit tests and hypothetical scenario answers alone do not establish that agents follow the method during implementation.
 
-The [2026-09-05 implementation exercise](evidence/workflow-2026-09-05.md) records three isolated tasks, independent replay, and the limits of that evidence.
+The [initial 2026-09-05 implementation exercise](evidence/workflow-2026-09-05.md) records three isolated tasks and independent replay. The subsequent [workflow alignment exercise](evidence/workflow-alignment-2026-09-05.md) covers reuse of existing project records and blocked completion with the revised orchestration guidance. Each records the limits of its evidence.
 
 ## Completion report
 

@@ -8,7 +8,7 @@
 4. `plugin.json` exposes the portable skill package through the open Agent Plugins format.
 5. `.codex-plugin/plugin.json` adds Codex-specific presentation and discovery metadata.
 
-Apple and Electron runtime verification each have a platform skill, supporting references and doctor script, and a dedicated read-only verifier agent. The generic runtime verifier routes to them.
+iOS, macOS, and Electron have dedicated verification entrypoints. iOS and macOS share Apple references, diagnostics, and a read-only verifier agent. The existing Apple skill remains a shared route. These tools supplement supported project harnesses; the generic runtime verifier routes to the relevant platform.
 
 ## Local layer
 
@@ -19,15 +19,15 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 
 ## Verification infrastructure layer
 
-1. `build-verification-harness` creates a project-local control skill, executable helpers, and an indexed feature map when repeated runtime proof would otherwise be improvised.
+1. `build-verification-harness` creates or extends a repeatable project verification path, with an optional control-skill and feature-map template when repeated runtime proof would otherwise be improvised.
 2. `maintain-verification-harness` reconciles that control surface with current source and exercises every mapped feature without changing product behavior.
 3. Apple and Electron platform skills define platform safety and evidence contracts; project-local harnesses compose them with application-specific launch, interaction, fixtures, and proof paths.
-4. Structured orchestration receipts bind runtime evidence to the application revision, harness revision, doctor result, mapped features, and preserved artifacts.
+4. Orchestration evidence identifies the application artifact, harness when relevant, exercised behavior, and preserved results. The bundled harness schema also records doctor status and mapped features; existing formats can carry equivalent evidence.
 
 ## Orchestration layer
 
 1. `orchestrate-project` coordinates programs that span independently executable units or task contexts.
-2. Its dependency-free runtime stores project-local program state, units, worker assignments, numbered attempts, thread identities, exclusive scope leases, inbox events, gates, verification receipts, standing orders, and generated status under `.hoyelam/orchestrate/`.
+2. Existing project records can satisfy the playbook’s ownership, dependency, recovery, and evidence requirements. Its optional dependency-free runtime stores project-local program state, units, worker assignments, numbered attempts, thread identities, exclusive scope leases, inbox events, gates, verification receipts, standing orders, and generated status under `.hoyelam/orchestrate/`.
 3. File locking, atomic writes, orphan cleanup, and full-store preflight protect concurrent and interrupted state updates; exact opaque lease conflicts and hierarchical `repo:` path conflicts prevent two active units from claiming the same canonical mutable scope.
 4. Verification is keyed to the current unit revision, so an artifact change invalidates older evidence.
 5. Ordinary tasks do not pay the orchestration cost.
@@ -50,4 +50,4 @@ Apple and Electron runtime verification each have a platform skill, supporting r
 
 1. `scripts/validate.py` validates manifests, skill frontmatter, agent frontmatter, automation files, local Markdown resource links, and placeholders. File discovery excludes Git metadata and local `.work`, `.hoyelam`, and `__pycache__` state.
 2. `tests/` covers the validator, local installer, platform verification scripts, and orchestration runtime.
-3. `.github/workflows/validate.yml` runs the same local command in repository CI.
+3. `.github/workflows/validate.yml` runs the same local command to check this plugin repository. It is repository maintenance infrastructure; using the skills does not require GitHub Actions or any CI service.

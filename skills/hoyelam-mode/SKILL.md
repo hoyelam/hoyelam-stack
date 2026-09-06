@@ -21,16 +21,17 @@ Establish the observable acceptance criteria and realistic failure modes before 
 
 ## Plan verification
 
-1. Before implementation, read `$prove-the-work` and map each acceptance criterion to the exact check or interaction, required environment or fixtures, expected result, and evidence to capture. Distinguish required checks from optional evidence.
+1. Before implementation, map each acceptance criterion to the exact check or interaction, required environment or fixtures, expected result, and evidence to capture. Distinguish required checks from optional evidence. Read `$prove-the-work` when designing or executing a verification contract, when evidence is ambiguous, or when the task needs its detailed receipt and completion rules.
 2. Discover the project's verification contract in repository instructions, contributor documentation, scripts, or CI. When establishing or repairing that contract, use the [project verification contract](../prove-the-work/references/project-verification.md).
 3. Check that the planned tools and control paths are available. Run a focused baseline when practical; reproduce regressions when a deterministic path exists. Identify missing tests, harness work, and blockers before dependent implementation, and plan any authorized verification setup explicitly.
 4. State the verification plan, then proceed within the user's authorization; this step does not require a new approval. A small change can use one sentence in the task context, while complex work can use the project's existing plan or handoff record.
 5. Carry the plan through implementation, review, and final verification. Revise it when scope or evidence changes, and expose unresolved verification gaps without silently weakening acceptance criteria. Documentation, configuration, libraries, services, scripts, and applications all require evidence suited to their actual output.
 
-## Project-scale route
+## Orchestrate substantial work
 
-1. Use `$orchestrate-project` when the requested outcome contains independently executable units, is expected to outlive one task context, or explicitly assigns ongoing program coordination.
-2. Do not use orchestration merely because a task is difficult or contains several steps. Collapse to this skill's direct workflow when one agent can reasonably complete and verify the outcome.
+1. Orchestration is a core part of the method for substantial programs. Use `$orchestrate-project` for work that needs ongoing coordination across independently executable units or sessions. The coordinator owns scoped briefs, dependency context, integration, and current verification evidence; worker completion is a result to inspect.
+2. Plan unit verification before delegation, accept units only after their required checks and review, and verify the combined result before claiming completion. Use existing project coordination tools or the bundled runtime.
+3. Do not use orchestration merely because a task is difficult or contains several steps. Collapse to this skill's direct workflow when one agent can reasonably complete and verify the outcome.
 
 ## Single-task delegation
 
@@ -56,7 +57,7 @@ Establish the observable acceptance criteria and realistic failure modes before 
 2. **Define success.** Establish observable acceptance criteria and realistic failure modes as described above.
 3. **Plan verification.** Map those criteria to feasible checks, prerequisites, expected results, and evidence before implementation.
 4. **Implement.** Make the smallest complete root-cause change that fits the architecture. For larger work, choose small verifiable units and check each before dependent work builds on it; retain final integration checks. Unit boundaries do not require separate commits or delegation.
-5. **Verify.** Execute the plan through `$prove-the-work`. Use `$verify-apple-apps` for iOS or macOS and `$verify-electron-apps` for Electron. Use `$build-verification-harness` for a missing recurring real-app control path and `$maintain-verification-harness` for drift. For regressions, exercise the original reproduction through the same relevant interface after the fix; report when that proof is unavailable.
+5. **Verify.** Execute the planned checks and capture current acceptance evidence; use `$prove-the-work` for detailed verification and receipt guidance. Use `$verify-ios-apps` for iOS, `$verify-macos-apps` for macOS and `$verify-electron-apps` for Electron. Use `$build-verification-harness` for a missing recurring real-app control path and `$maintain-verification-harness` for drift. For regressions, exercise the original reproduction through the same relevant interface after the fix; report when that proof is unavailable.
 6. **Review and resolve.** Review the complete scoped diff through `$review-and-resolve`, including `$comment-discipline` for touched comments or directives. Use independent review for substantial or risky changes when available and authorized. Validate findings before automatically fixing confirmed in-scope issues; report out-of-scope work separately.
 7. **Re-verify.** Rerun checks affected by review fixes on the final changed state and inspect the revised diff. Return to review and resolution when new verified issues remain. If review made no changes, retain still-current evidence; a distinct step does not require a redundant run.
 8. **Report evidence.** Report the result, tested state, observed outcomes, resolved findings, and concrete remaining boundaries. Failed or blocked required checks leave verification incomplete.

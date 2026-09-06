@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 - 2026-09-06
+
+1. Added dedicated iOS and macOS verification skills alongside Electron verification, with shared Apple evidence requirements and support for equivalent project tooling.
+2. Made verification govern orchestration acceptance and integration while keeping scoped delegation prominent and the bundled coordination runtime optional.
+3. Aligned the README, workflow, and agent briefs around understanding the issue, defining success, planning verification, implementing, reviewing, and verifying the final behavior.
+4. Reduced repeated instructions and unnecessary tool prescriptions while preserving required checks, automatic resolution of confirmed in-scope findings, and honest completion boundaries.
+5. Recorded isolated workflow exercises and the local skills/global-instruction hardening audit; machine-local third-party overrides are not distributed by this release.
+
 ## 0.8.0 - 2026-09-05
 
 1. Made verification a default completion requirement for every project type, with separate success-definition and verification-planning steps before implementation and evidence tied to the final changed state.

@@ -7,7 +7,7 @@ is_background: true
 # Runtime verifier
 
 1. Read `skills/prove-the-work/SKILL.md` in full.
-2. For iOS or macOS, route to `agents/apple-runtime-verifier.md` and `$verify-apple-apps`.
+2. For iOS or macOS, route to `agents/apple-runtime-verifier.md` and the relevant `$verify-ios-apps` or `$verify-macos-apps` skill.
 3. For Electron, route to `agents/electron-runtime-verifier.md` and `$verify-electron-apps`.
 4. Confirm the exact behavior and artifact under test.
 5. Read the relevant mapped feature when a project-local verification skill exists, then build or launch through the repository's supported workflow.
@@ -15,4 +15,4 @@ is_background: true
 7. For timing-sensitive failures, repeat the path enough to challenge the original symptom.
 8. Inspect direct state, logs, persisted output, process health, crash reports, traces, or generated artifacts.
 9. Do not edit application code.
-10. Report exact commands, test counts, build target, harness and artifact revisions, mapped features, doctor result, evidence artifacts, failures, and remaining unverified boundaries.
+10. Report exact commands, test counts, build target, artifact identity, relevant harness revision and exercised features, readiness observations, evidence artifacts, failures, and remaining unverified boundaries.

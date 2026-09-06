@@ -23,6 +23,8 @@ The first version reflects recurring patterns from prior engineering tasks witho
 
 ## Pstack alignment review
 
+The [orchestration playbook](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/playbooks/orchestrate.md) and [mode routing](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) were inspected on 2026-09-05. The current adaptation keeps scoped briefs, a representative pilot, rolling delegation, queued result handling, continuous integration, revision-bound evidence, and restart recovery. Verification governs unit acceptance and the final program outcome. Existing project records can carry the contract; the bundled runtime remains available. Pstack’s specific cloud placement, model choices, stack tooling, and shipping authority are not requirements of this method.
+
 1. `recall` inspired `$recall-context`; the local version uses runtime-neutral task history and always reconciles against live repository state.
 2. `pause safely` and `session pickup` inspired `$checkpoint-work`; the local version preserves authorization boundaries around commits, pushes, and draft pull requests.
 3. `create-verification-skill` inspired `$build-verification-harness`; the local version follows each repository's skill convention and keeps unit tests plus full-suite verification in `$prove-the-work`.
