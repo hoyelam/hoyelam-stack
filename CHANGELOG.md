@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0 - 2026-09-06
+
+1. Automatically select Herdr for useful, authorized delegation when its managed environment, CLI, and current session are reachable, without a repeated orchestration prompt.
+2. Honor explicit user preferences and retain native/direct fallback when automatic detection is unavailable; report blockers instead of silently replacing explicitly required Herdr.
+3. Align task and project orchestration entry points, distinguish sandbox socket restrictions from unreachable sessions, and record a live Astra/Herdr workflow exercise with independent review.
+
 ## 0.9.0 - 2026-09-06
 
 1. Added dedicated iOS and macOS verification skills alongside Electron verification, with shared Apple evidence requirements and support for equivalent project tooling.
