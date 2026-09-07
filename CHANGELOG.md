@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.1 - 2026-09-07
+
+1. Front-load the hoyelam-mode discovery description so its engineering purpose remains visible when skill descriptions are shortened.
+2. Reduce the main skill by 38% by consolidating repeated rules and loading delegation details from a supporting reference, preserving scope and verification requirements.
+3. Record isolated success and blocked-check exercises and a fresh Codex CLI session that discovered the full revised description and loaded the complete skill.
+
 ## 0.10.0 - 2026-09-06
 
 1. Automatically select Herdr for useful, authorized delegation when its managed environment, CLI, and current session are reachable, without a repeated orchestration prompt.

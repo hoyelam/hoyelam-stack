@@ -1,6 +1,6 @@
 {
   "name": "hoyelam-stack",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "A personal agent workflow with verification governing implementation, review, and orchestration across substantial projects.",
   "author": {
     "name": "hoyelam"
