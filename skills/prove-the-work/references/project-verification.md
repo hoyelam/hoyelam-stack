@@ -29,7 +29,7 @@ For recurring checks, prefer one existing script or build target, shared with CI
 | Documentation, prompts, or skills | Check references and examples against their owning source; for behavioral workflow changes, exercise representative requests and failure scenarios. Structural validation alone cannot prove agent behavior. |
 | Configuration or CI | Parse and validate the owning format, then exercise the affected command or consuming tool and its failure path when practical. |
 
-Select relevant rows together for mixed projects. Increase depth for security, privacy, money, destructive state, permissions, signing, concurrency, migrations, and releases. Do not add tests that merely repeat wording or implementation. For repeated real-app verification that lacks a reliable control path, use `$build-verification-harness`; for drift in an existing harness, use `$maintain-verification-harness`.
+These are evidence options, not a required stack of tools or checks. Select relevant rows together for mixed projects and increase depth when the consequences of failure warrant it. Do not add tests that merely repeat wording or implementation. For repeated real-app verification that lacks a reliable control path, consider `$build-verification-harness`; for drift in an existing harness, consider `$maintain-verification-harness`. Existing project tooling may already provide the needed proof.
 
 ## Maintain with the behavior
 

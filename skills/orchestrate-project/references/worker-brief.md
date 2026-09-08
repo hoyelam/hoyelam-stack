@@ -1,17 +1,12 @@
 # Worker brief
 
-Use the smallest version of this contract that still prevents guessing.
+Give the worker enough context to execute one independent outcome without repeating the lead's broad discovery. A short brief can cover:
 
-1. `GOAL`: one observable outcome executable without access to the coordinator conversation.
-2. `SCOPE`: writable paths or resources, forbidden paths or resources, and the exclusive worktree or branch when applicable.
-3. `CONTEXT`: repository instructions, owning files, architecture decisions, dependency results, and relevant failure evidence.
-4. `ACCEPTANCE`: independently checkable criteria, one per line.
-5. `VERIFY`: exact commands or runtime interactions, prerequisites, expected observations, required versus optional checks, artifact identity, evidence to preserve, and known environmental limits. For runtime work include relevant harness identity and user paths; bundled feature-map and doctor fields apply only when that format is used.
-6. `DEPENDENCIES`: unit identifiers whose outputs must be relayed before work begins.
-7. `TIMEBOX`: a stopping condition that returns partial evidence instead of continuing indefinitely.
-8. `FORBIDDEN`: destructive operations, external mutations, scope expansion, and unit-specific restrictions.
-9. `ASSIGNMENT`: worker name, runtime session identity, attempt number, and exclusive ownership of every writable or mutable boundary. When using the bundled runtime, use canonical lease keys from [scope-leases.md](scope-leases.md).
-10. `REPORT`: status, assignment identity, revision or artifact identifier, changed paths, evidence actually collected, deviations, blockers, and suggested follow-ups.
-11. `STANDING`: the complete current standing-order list.
+- **Outcome and context:** the goal, repository and owning surface, applicable instructions, relevant findings, and dependency outputs the worker needs.
+- **Scope and authority:** owned writable paths or resources, forbidden actions, and any shared-state isolation constraint.
+- **Acceptance and proof:** observable criteria, required checks or interactions, prerequisites, expected results, and evidence to return. Distinguish optional checks and known blockers.
+- **Return:** actual changes or findings, tested artifact, commands and observations, unresolved issues, and the next bounded action when blocked.
 
-Dependencies carry context as well as ordering. Paste the relevant upstream result into the downstream brief or point to a durable repository artifact the worker can read.
+For a continuing program, include current standing decisions. Add worker/session identity and attempt numbers when retries or interruption require durable correlation. When selecting the bundled runtime, record assignment identities and canonical [scope leases](scope-leases.md) before writes. Add a timebox or stopping condition when work could otherwise continue without useful progress.
+
+Send current dependency evidence or a readable artifact containing it; a unit name alone carries ordering, not context.

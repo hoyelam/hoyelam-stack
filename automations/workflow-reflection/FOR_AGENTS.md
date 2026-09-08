@@ -17,7 +17,7 @@ Review completed engineering work for repeated friction, user corrections, and r
 2. Reconstruct only the configured tasks and their final repository states.
 3. Require the evidence gate for every proposed rule.
 4. Check whether an existing skill, agent, automation, test, or script already covers the lesson.
-5. Prefer structural enforcement over more prose.
+5. Look for rules to remove or consolidate and reusable tools that reduce repeated effort. Compare user interventions, redundant calls, elapsed time, and available usage data when relevant. Prefer structural enforcement over more prose.
 6. Produce a ranked proposal with evidence, overlap, expected benefit, and validation plan.
 7. Do not edit the reusable stack unless the automation was explicitly configured and authorized to apply approved proposals.
 

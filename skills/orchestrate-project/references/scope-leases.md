@@ -1,6 +1,6 @@
 # Scope leases
 
-Read this reference before assigning the first unit with a mutable boundary.
+Use these keys when the bundled runtime manages assignments. Other coordination tools may preserve exclusive ownership using their own conventions.
 
 ## Format
 

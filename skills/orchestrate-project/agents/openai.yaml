@@ -1,6 +1,6 @@
 interface:
   display_name: "Orchestrate Project"
-  short_description: "Coordinate durable multi-unit engineering programs"
+  short_description: "Lead delegated work through verified integration"
   default_prompt: "Use $orchestrate-project to coordinate this multi-unit project through verified completion."
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 interface:
   display_name: "Hoyelam Mode"
-  short_description: "Complete root-cause-first engineering work"
-  default_prompt: "Use $hoyelam-mode to inspect what is available and select a proportionate workflow for this task."
+  short_description: "Orchestrate useful work and verify outcomes"
+  default_prompt: "Use $hoyelam-mode to choose useful tools, delegate independent work, and verify the outcome."
 policy:
   allow_implicit_invocation: true

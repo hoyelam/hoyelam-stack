@@ -20,16 +20,9 @@ Keep one configured pull request review-ready by diagnosing CI and review feedba
 
 ## Execution
 
-1. Read repository instructions and the current pull request diff, checks, review threads, and recent commits.
-2. Wait when checks are still running and no action is available.
-3. Diagnose failures from their logs and reproduce locally when practical.
-4. Verify review feedback against the current head before changing code.
-5. Apply only verified in-scope fixes on the existing pull request branch.
-6. Add or update unit tests for changed behavior.
-7. Run focused checks, the full relevant suite, a production-representative build, and direct behavior verification when applicable.
-8. Run comment and final code review passes before pushing.
-9. Push only after the complete local quality pass succeeds.
-10. Report the new head, checks, runtime evidence, resolved review threads, and remaining blockers.
+Inspect the configured pull request's current diff, checks, review feedback, and repository instructions. Diagnose failures from actual logs and validate feedback against the current head. Wait when checks are running and no useful independent work is available.
+
+Apply supported in-scope fixes on the existing branch. Follow `$hoyelam-mode` for proportional verification, useful delegation, review, and final-state evidence. Select checks that address the affected behavior while preserving repository and user requirements. Push only with configured authority and passing required local checks. Report the new head, checks actually observed, resolved findings, and blockers.
 
 ## Boundary
 

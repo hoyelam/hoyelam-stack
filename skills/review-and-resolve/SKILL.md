@@ -1,38 +1,32 @@
 ---
 name: review-and-resolve
-description: Perform an extensive evidence-backed review of a scoped implementation, verify findings, fix every accepted in-scope issue, and rerun affected checks before completion.
+description: Review a scoped implementation for supported issues and resolve verified findings when implementation is authorized.
 ---
 
 # Review And Resolve
 
 ## Choose the reviewer
 
-Use an independent reviewer for substantial changes, difficult-to-reproduce failures, or material security, privacy, data-loss, money, permissions, concurrency, migration, or release risk when delegation is available and authorized. Give the reviewer the request, acceptance criteria, complete scoped diff and owning context, tested state, and evidence paths. Ask it to find supported issues without supplying the implementer's preferred verdict. Keep the reviewer read-only; the implementation owner validates findings and owns all accepted fixes.
+For substantial or risky changes, delegate an independent read-only review when available and authorized. Give the reviewer the request, acceptance criteria, complete scoped diff, relevant owning context, tested state, and evidence. Ask for supported findings without supplying the implementer's preferred verdict. The lead validates findings and owns fixes and integration, directly or through scoped delegation.
 
 For small low-risk changes, a deliberate self-review is sufficient. If independent review is unavailable, report that boundary and perform the strongest available review; never call self-review independent. An explicitly required independent review remains a gate.
 
 ## Review
 
-1. Establish the intended behavior, architecture, and verified baseline before reading the diff.
-2. Review the complete scoped diff and enough surrounding code to understand each changed boundary.
-3. Check correctness, root-cause coverage, simplicity, naming, data modeling, architecture fit, concurrency, lifecycle, cancellation, error handling, security, privacy, performance, accessibility, localization, test quality, and user experience where relevant.
-4. Look for duplicated state, hidden coupling, unnecessary wrappers, compatibility layers, speculative abstractions, dead paths, and changes that could be smaller.
-5. Check tests for meaningful behavior, negative cases, determinism, false confidence, and missing regression coverage. Confirm each acceptance criterion has direct evidence on the final changed state; challenge zero-test passes, unexpected skips, weakened assertions, stale artifacts, and unsupported CI claims using [prove-the-work](../prove-the-work/SKILL.md).
-6. Run `$comment-discipline` for comment-specific findings.
-7. Verify each candidate finding against code, documentation, a targeted test, or runtime evidence. Drop speculative findings.
+Review the complete scoped diff and enough surrounding context to understand the changed boundaries. Prioritize correctness, the original failure or requested behavior, architecture fit, unnecessary complexity, and the risks actually present. Inspect touched comments and directives; `$comment-discipline` is available for a deeper comment audit.
+
+Challenge whether tests and other evidence prove the requested outcome on the final state. Watch for missing regression coverage, zero-test passes, unexpected skips, weakened assertions, stale artifacts, and unsupported CI claims. Consult [prove-the-work](../prove-the-work/SKILL.md) when evidence is ambiguous.
+
+Verify candidate findings against source contracts, tests, or direct observations. Drop speculative findings and style preferences without a concrete benefit.
 
 ## Resolve
 
-1. When implementation is authorized, automatically fix every verified in-scope finding without asking again for routine reversible edits. Simpler designs qualify only when evidence supports a concrete improvement while preserving the requested behavior. A read-only review reports findings without edits.
-2. Keep fixes within the task boundary. Report material out-of-scope work separately.
-3. Add or adjust tests for behavior changed by review fixes.
+When implementation is authorized, fix verified in-scope findings without asking again for routine reversible edits. Simpler designs qualify when evidence supports a concrete improvement while preserving requested behavior. A read-only review reports findings without edits. Report material out-of-scope work separately.
 
-## Re-verify
+After fixes, rerun affected checks against the final state and inspect the revised diff. Add or adjust coverage when changed behavior needs it. Retain current evidence for unaffected claims; if review made no changes, do not rerun checks merely to mark this step done.
 
-1. After fixes, rerun affected selected checks, builds, and runtime paths against the final state, then inspect the revised diff and touched comments.
-2. Repeat review and resolution when new verified in-scope findings remain. Retain current evidence for unaffected claims; if review made no changes, do not rerun checks merely to mark this step done.
-3. Ground reviewer disagreements in a reproduction, source contract, or direct observation. Do not churn code to satisfy speculative feedback or loop on unchanged evidence. If a verified issue cannot be resolved within scope or available authority, report it as a blocker without claiming completion.
+Repeat review when new verified issues remain, using evidence to resolve disagreements. Do not churn code for speculative feedback or loop on unchanged evidence. An unresolved verified in-scope issue or failed or blocked required check prevents a completion claim; continue independent authorized work and report the blocker.
 
 ## Report
 
-Report verified findings, rejected candidates with reason when useful, fixes applied, tests added or changed, exact verification results, remaining out-of-scope work, and worktree state.
+Lead with supported findings or the resolved outcome, then the evidence and remaining limits. Include rejected candidates only when the reason matters to the decision.

@@ -21,9 +21,9 @@ The first version reflects recurring patterns from prior engineering tasks witho
 17. A control CLI, indexed feature map, and explicit maintenance pass turn repository-specific runtime knowledge into testable infrastructure instead of prose that silently drifts.
 18. Cold-read web pilots showed that dormant applications fail for distinct product, toolchain, and environment reasons. Useful harnesses preserve that distinction, bind teardown to process birth identity, and prove semantic locators against rendered state.
 
-## Pstack alignment review
+## Pstack alignment review — historical 2026-09-05
 
-The [orchestration playbook](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/playbooks/orchestrate.md) and [mode routing](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) were inspected on 2026-09-05. The current adaptation keeps scoped briefs, a representative pilot, rolling delegation, queued result handling, continuous integration, revision-bound evidence, and restart recovery. Verification governs unit acceptance and the final program outcome. Existing project records can carry the contract; the bundled runtime remains available. Pstack’s specific cloud placement, model choices, stack tooling, and shipping authority are not requirements of this method.
+The [orchestration playbook](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/playbooks/orchestrate.md) and [mode routing](https://github.com/cursor/plugins/blob/main/pstack/skills/poteto-mode/SKILL.md) were inspected on 2026-09-05. The adaptation inspected on that date kept scoped briefs, a representative pilot, rolling delegation, queued result handling, continuous integration, revision-bound evidence, and restart recovery. Verification governs unit acceptance and the final program outcome. Existing project records can carry the contract; the bundled runtime remains available. Pstack’s specific cloud placement, model choices, stack tooling, and shipping authority are not requirements of this method.
 
 1. `recall` inspired `$recall-context`; the local version uses runtime-neutral task history and always reconciles against live repository state.
 2. `pause safely` and `session pickup` inspired `$checkpoint-work`; the local version preserves authorization boundaries around commits, pushes, and draft pull requests.
@@ -36,3 +36,13 @@ The [orchestration playbook](https://github.com/cursor/plugins/blob/main/pstack/
 9. Pstack's coordinator, brief, and context-guard guidance supports parent-owned synthesis and exclusive writable scope. The local stack adds a Codex adapter, a bounded direct-task router, and durable assignment attempts without vendor-specific execution assumptions.
 
 These observations support the workflow; they do not encode private project names, source, or user data.
+
+## Flexible baseline — 2026-09-07
+
+The user explicitly prefers selectable skills and tools, strong verification, and agents with freedom to choose an efficient execution path. The lead should actively orchestrate substantial independent work, including within one repository. Codex is the preferred runtime; exact model names, context sizes, and arbitrary child-count ceilings do not belong in the portable core.
+
+The resulting design removes the task classifier and mandatory skill chains, centralizes personal defaults, shares continuity records, makes harness maintenance scope explicit, and retains optional platform and orchestration tools. Repeated source research gains a revision-aware cache helper. Reflection considers deletion, user interventions, and resource use as well as missing capabilities.
+
+Pstack's evaluation and project verification ideas remain useful. Agent-stuff's source cache and human-centered session analysis informed the optional research helper and reflection guidance. Superpowers' compulsory invocation methodology was not adopted. These are adaptations; helper implementations are maintained here and must pass their own checks.
+
+The [flexible baseline verification record](evidence/flexible-baseline-2026-09-07.md) records package checks, isolated Codex outcomes, observed delegation, continuity, and context measurements. Shorter source text alone does not establish better task performance.

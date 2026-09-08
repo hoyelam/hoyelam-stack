@@ -10,7 +10,6 @@ description: Guide iOS and macOS implementation when a repository uses or is ado
 1. Read the repository's `AGENTS.md`, architecture docs, package manifest, neighboring features, and tests before selecting a pattern.
 2. Preserve an established architecture unless the request explicitly includes migration or the existing boundary cannot satisfy the requirement safely.
 3. Prefer Composable Architecture for new stateful feature boundaries when the repository already uses it or has explicitly chosen it.
-4. Treat “BFW” as the Point-Free `pfw-*` skill family unless the repository defines another meaning.
 
 ## Point-Free routing
 

@@ -1,7 +1,7 @@
 {
   "name": "hoyelam-stack",
-  "version": "0.10.1",
-  "description": "A personal agent workflow with verification governing implementation, review, and orchestration across substantial projects.",
+  "version": "0.11.0",
+  "description": "Personal agent defaults, active orchestration, and optional tools for verified outcomes.",
   "author": {
     "name": "hoyelam"
   },
@@ -25,8 +25,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "hoyelam-stack",
-    "shortDescription": "Verification-led work and orchestration.",
-    "longDescription": "Understand the issue, define success, plan verification, implement, review, and verify the final behavior. Coordinate substantial programs through scoped delegation and durable evidence, with bundled iOS, macOS, and Electron verification tools that fit existing project workflows.",
+    "shortDescription": "Useful delegation and verified outcomes.",
+    "longDescription": "Choose focused methods and useful subagents, then prove the integrated result. Optional investigation, review, continuity, and platform verification skills keep context lean and fit existing project tools.",
     "developerName": "hoyelam",
     "category": "Developer Tools",
     "capabilities": [
@@ -34,7 +34,7 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use $hoyelam-mode to select and run a proportionate workflow for this task.",
+      "Use $hoyelam-mode to delegate useful independent work and verify this outcome.",
       "Use $comment-discipline to audit this diff.",
       "Use $prove-the-work to verify this change."
     ]

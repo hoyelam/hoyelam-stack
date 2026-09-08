@@ -6,7 +6,9 @@ import re
 import sys
 from collections.abc import Iterator
 from dataclasses import dataclass
+from html import unescape
 from pathlib import Path
+from urllib.parse import unquote
 
 
 @dataclass(frozen=True)
@@ -61,14 +63,77 @@ def find_scaffold_placeholders(root: Path) -> list[Path]:
     return found
 
 
-def find_local_markdown_links(path: Path) -> list[Path]:
-    links: list[Path] = []
-    for target in re.findall(r"\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
-        location = target.split("#", 1)[0]
-        if not location or "://" in location or location.startswith("mailto:"):
+def markdown_without_fenced_code(text: str) -> str:
+    lines: list[str] = []
+    fence_character = ""
+    fence_length = 0
+    for line in text.splitlines():
+        if fence_character:
+            if re.fullmatch(rf" {{0,3}}{fence_character}{{{fence_length},}}[ \t]*", line):
+                fence_character = ""
+            lines.append("")
             continue
-        links.append((path.parent / location).resolve())
-    return links
+        opening = re.match(r" {0,3}(`{3,}|~{3,})(.*)$", line)
+        if opening and (opening[1][0] != "`" or "`" not in opening[2]):
+            fence_character = opening[1][0]
+            fence_length = len(opening[1])
+            lines.append("")
+        else:
+            lines.append(line)
+    return "\n".join(lines)
+
+
+def local_markdown_targets(path: Path) -> Iterator[tuple[Path, str]]:
+    text = markdown_without_fenced_code(path.read_text(encoding="utf-8"))
+    for target in re.findall(r"\]\(([^)]+)\)", text):
+        target = target.strip()
+        if target.startswith("<") and target.endswith(">"):
+            target = target[1:-1]
+        if re.match(r"[a-zA-Z][a-zA-Z0-9+.-]*:", target) or target.startswith("//"):
+            continue
+        location, _, fragment = target.partition("#")
+        destination = path.parent / unquote(location) if location else path
+        yield destination.resolve(), unquote(fragment)
+
+
+def find_local_markdown_links(path: Path) -> list[Path]:
+    return [destination for destination, _ in local_markdown_targets(path)]
+
+
+def markdown_heading_fragments(path: Path) -> set[str]:
+    text = markdown_without_fenced_code(path.read_text(encoding="utf-8"))
+    fragments: set[str] = set()
+    for line in text.splitlines():
+        heading = re.match(r" {0,3}#{1,6}[ \t]+(.+?)\s*$", line)
+        if heading is None:
+            continue
+        title = re.sub(r"[ \t]+#+[ \t]*$", "", heading[1])
+        title = re.sub(r"\[([^]]+)\]\([^)]+\)", r"\1", title)
+        title = unescape(re.sub(r"<[^>]+>", "", title))
+        slug = re.sub(r"[^\w -]", "", title.lower()).replace(" ", "-")
+        fragment = slug
+        suffix = 0
+        while fragment in fragments:
+            suffix += 1
+            fragment = f"{slug}-{suffix}"
+        fragments.add(fragment)
+    return fragments
+
+
+def validate_markdown_links(path: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    fragments: dict[Path, set[str]] = {}
+    for destination, fragment in local_markdown_targets(path):
+        if not destination.is_file():
+            issues.append(ValidationIssue(path, f"linked local resource is missing: {destination}"))
+        elif fragment and destination.suffix.lower() == ".md":
+            if destination not in fragments:
+                fragments[destination] = markdown_heading_fragments(destination)
+            if fragment not in fragments[destination]:
+                issues.append(
+                    ValidationIssue(path, f"linked Markdown heading is missing: {destination}#{fragment}")
+                )
+    return issues
 
 
 def find_repository_references(path: Path, root: Path) -> list[Path]:
@@ -207,9 +272,7 @@ def validate_repository(root: Path) -> list[ValidationIssue]:
             issues.append(ValidationIssue(prompt_path, "automation prompt is missing or empty"))
 
     for markdown_path in sorted(path for path in repository_files(root) if path.suffix == ".md"):
-        for link in find_local_markdown_links(markdown_path):
-            if not link.is_file():
-                issues.append(ValidationIssue(markdown_path, f"linked local resource is missing: {link}"))
+        issues.extend(validate_markdown_links(markdown_path))
 
     for placeholder_path in find_scaffold_placeholders(root):
         issues.append(ValidationIssue(placeholder_path, "unfinished scaffold placeholder"))

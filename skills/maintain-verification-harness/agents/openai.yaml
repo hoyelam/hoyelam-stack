@@ -1,6 +1,6 @@
 interface:
   display_name: "Maintain Verification Harness"
-  short_description: "Keep control skills and feature maps honest"
-  default_prompt: "Use $maintain-verification-harness to audit this project's verification skill and prove every mapped feature."
+  short_description: "Repair harness drift and verify affected behavior"
+  default_prompt: "Use $maintain-verification-harness to repair this project's affected verification paths and prove the selected coverage."
 policy:
   allow_implicit_invocation: true

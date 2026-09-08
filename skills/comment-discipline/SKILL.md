@@ -1,45 +1,14 @@
 ---
 name: comment-discipline
-description: Audit a scoped diff or set of files for unnecessary comments, prove rare exceptions, remove accepted comment findings, and encode constraints in executable form when practical.
+description: Review comments and directives in a scoped diff, removing narration while preserving useful constraints and contracts.
 ---
 
 # Comment Discipline
 
-## Default
+Prefer clear code, names, types, tests, and runtime checks over explanatory narration. Keep legal and license headers, required tool directives, and comments that explain a useful non-obvious constraint or public contract. Use the repository's conventions; no special prefix or metadata template is required by this skill.
 
-Comments are a last resort. Prefer clearer names, smaller functions, stronger types, explicit state, tests, runtime checks, and tooling.
+Review the requested files or scoped diff, including the working tree. Read enough surrounding code and relevant evidence to understand a comment before changing it. Remove repetition, section banners, commented-out code, stale tasks, and explanations of avoidable complexity. Improve code instead when a small in-scope change makes the explanation unnecessary.
 
-## Allowed exceptions
+Judge comments by the information they preserve, not their prefix. A constraint comment should explain why the code must behave this way; add a source or removal condition when that helps future decisions. Check the purpose and effect of suppressions and directives before removal, and preserve their required syntax.
 
-1. Legal or license headers.
-2. A non-obvious external platform, protocol, dependency, vendor, or compatibility constraint that cannot be made clear or executable in the code.
-3. A required tool directive whose removal changes generated or formatted output.
-
-Public documentation comments survive only when they define a contract that cannot be expressed by the declaration and are required by the repository's public API policy.
-
-## Required prefixes
-
-Rare non-legal comments use exactly one prefix:
-
-1. `IMPORTANT` for a proven invariant imposed outside the code.
-2. `DO NOT REMOVE` when removal causes a specific externally imposed failure.
-3. `TOO RISKY` for a rejected alternative with current evidence of unacceptable risk.
-4. `FINE FOR NOW` for a bounded temporary tradeoff with an owner, removal condition, or tracking reference.
-
-A prefix starts investigation; it does not justify the comment. The text must identify the external constraint, evidence source, failure mode, and removal condition when one exists.
-
-## Audit
-
-1. Scope to caller-provided files or the current diff against the base branch, including the working tree.
-2. Find line comments, block comments, documentation comments, disabled-code blocks, TODO variants, lint suppressions, formatter directives, and the four prefixes.
-3. Read the surrounding symbol, callers, tests, and relevant history before judging a non-obvious comment.
-4. Delete narration, banners, repetition, commented-out code, workaround stories, stale tasks, and comments explaining avoidable complexity.
-5. Replace our-code surprises with clearer code, types, or structure in the smallest in-scope change.
-6. Treat lint and compiler suppressions as findings unless the rule is proven faulty, style-only, or unavoidable at an external boundary.
-7. Preserve an exception only with scoped evidence that is true today.
-8. Offer a test, type, runtime assertion, generated check, or CI rule when it can replace a surviving constraint comment.
-9. Rerun affected checks after changes.
-
-## Report
-
-Report reviewed files, deleted comments, rewritten code, preserved exceptions with evidence, encoded constraints, unresolved out-of-scope findings, and verification.
+When edits are authorized, resolve supported findings and rerun affected checks. For a read-only audit, report findings without edits. Keep the report focused on meaningful changes, useful retained constraints, and any remaining verification gaps.

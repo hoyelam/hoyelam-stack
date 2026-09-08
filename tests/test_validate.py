@@ -9,6 +9,7 @@ from scripts.validate import (
     find_repository_references,
     find_scaffold_placeholders,
     parse_frontmatter,
+    validate_markdown_links,
     validate_marketplace,
     validate_repository,
 )
@@ -62,11 +63,82 @@ class ReferenceTests(unittest.TestCase):
                 ],
             )
 
+    def test_validates_same_file_fragments_and_duplicate_heading_suffixes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "guide.md"
+            content = (
+                "# Status\n## Status\n## Status-1\n## Status\n"
+                "[First](#status)\n[Second](#status-1)\n"
+                "[Collision](#status-1-1)\n[Third](#status-2)\n"
+            )
+            path.write_text(content, encoding="utf-8")
+            self.assertEqual(validate_markdown_links(path), [])
+
+            path.write_text(content + "[Missing](#status-3)\n", encoding="utf-8")
+            issues = validate_markdown_links(path)
+            self.assertEqual(len(issues), 1)
+            self.assertIn("#status-3", issues[0].message)
+
+    def test_fenced_examples_supply_neither_headings_nor_links(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "guide.md"
+            path.write_text(
+                "````markdown\n# Example\n```\n# Still example\n"
+                "[Example link](missing.md)\n````\n"
+                "~~~markdown\n# Other example\n~~~\n"
+                "# Real heading\n[Valid](#real-heading)\n"
+                "[Missing](#example)\n[Also missing](#still-example)\n"
+                "[Tilde example](#other-example)\n",
+                encoding="utf-8",
+            )
+            issues = validate_markdown_links(path)
+            self.assertEqual(len(issues), 3)
+            for fragment in ("#example", "#still-example", "#other-example"):
+                self.assertTrue(any(fragment in issue.message for issue in issues))
+
+    def test_decodes_formatted_headings_and_ignores_external_fragments(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "guide.md"
+            target = root / "reference file.md"
+            target.write_text("## Use `CLI` &amp; **tools** ###\n", encoding="utf-8")
+            path.write_text(
+                "[Local](reference%20file.md#use-cli--tools)\n"
+                "[Web](https://example.com/reference.md#missing)\n"
+                "[Web without scheme](//example.com/reference.md#missing)\n"
+                "[Mail](mailto:example@example.com#fragment)\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(validate_markdown_links(path), [])
+
 
 class RepositoryTests(unittest.TestCase):
     def test_hoyelam_stack_repository_is_valid(self) -> None:
         root = Path(__file__).resolve().parent.parent
         self.assertEqual(validate_repository(root), [])
+
+    def test_rejects_missing_heading_in_existing_file_until_link_is_corrected(self) -> None:
+        source = Path(__file__).resolve().parent.parent
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "stack"
+            shutil.copytree(
+                source, root,
+                ignore=shutil.ignore_patterns(".git", ".work", ".hoyelam", "__pycache__"),
+            )
+            reference = root / "docs" / "fragment-source.md"
+            target = root / "docs" / "fragment-target.md"
+            target.write_text("# Current section\n", encoding="utf-8")
+            reference.write_text("[Details](fragment-target.md#old-section)\n", encoding="utf-8")
+
+            issues = [issue for issue in validate_repository(root) if issue.path == reference]
+            self.assertEqual(len(issues), 1)
+            self.assertIn("#old-section", issues[0].message)
+
+            reference.write_text("[Details](fragment-target.md#current-section)\n", encoding="utf-8")
+            self.assertEqual(
+                [issue for issue in validate_repository(root) if issue.path == reference],
+                [],
+            )
 
     def test_ignores_local_state_and_git_metadata(self) -> None:
         source = Path(__file__).resolve().parent.parent

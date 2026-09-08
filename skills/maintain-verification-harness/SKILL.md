@@ -1,39 +1,27 @@
 ---
 name: maintain-verification-harness
-description: Audit and repair an existing project-local verification skill and feature map when application behavior or its control path may have drifted.
+description: Repair a project verification skill when its control paths or feature map drift, or audit its coverage when requested.
 ---
 
 # Maintain Verification Harness
 
-This skill maintains the bundled verification-skill and feature-map format. For an existing harness with a different structure, use its supported maintenance checks and `$prove-the-work`; do not migrate it just to satisfy this template.
+Maintain the bundled verification-skill and feature-map format using its [harness contract](../build-verification-harness/references/harness-contract.md). Keep an equivalent existing harness's conventions and supported maintenance checks; it needs no migration.
 
-## Locate and bound the pass
+## Bound the work
 
-1. Find the project-local verification skill that owns launch, doctor, drive, evidence, cleanup, and an indexed feature map. If several are plausible and the requested scope does not identify one, ask which surface is in scope.
-2. Read the repository instructions, the target skill, its feature map, and the [project harness contract](../build-verification-harness/references/harness-contract.md).
-3. Edit only files owned by the verification skill. Read product source to reconcile behavior, but do not change product behavior during maintenance.
-4. Choose one outcome: `clean`, `changed`, or `blocked`.
+Locate the owning harness and inspect repository instructions, the affected scenarios, recent changes, and their current source paths. Default to a scoped repair: selected control commands, mapped features, and relevant regressions. Perform a full-map audit when requested or when evidence of wider drift prevents bounding the affected surface. State the chosen coverage and required checks before editing.
 
-## Reconcile source and map
+Edit harness-owned files within the task's authority. Read product source to reconcile behavior, but keep product fixes separate unless authorized. Update expectations for intentional changes; report broken product behavior instead of documenting the regression as expected.
 
-1. Check that every indexed feature file exists, every feature file is indexed once, identifiers are stable, and links resolve.
-2. For each feature, locate its current source entry points, visible labels or identifiers, variants, prerequisites, and observable effects.
-3. Update documentation when the application changed intentionally. Treat working behavior that the harness cannot drive as a harness gap. Report behavior that is actually broken as a product finding instead of describing the regression as expected behavior.
-4. Sweep recent user-facing changes for concrete features missing from the map. Add one only when a current source path and user route support it.
+## Reconcile and exercise
 
-## Run the live pass
+- Check feature-index integrity and reconcile selected entries with actual user routes, labels or identifiers, prerequisites, variants, and observable effects. Add missing coverage only when a current source path and user route support it.
+- Use the harness's isolation model. Drive shared state serially unless independent instances are supported. Establish readiness and instance identity before driving, and recheck after relaunch or surprising results using the supported doctor or equivalent check.
+- Exercise every selected feature through its real user path and every changed control path against the current artifact. Include nearby regressions relevant to the repair; a full audit selects every mapped feature. Record unreachable paths and their exact missing prerequisites.
+- Preserve evidence through failures and cleanup. Stop only processes the pass started and remove only its scratch state. Rerun affected paths after fixes.
 
-1. Use the target skill's isolation model. Run one serial instance unless the skill explicitly proves independent instances are safe.
-2. Run doctor before the first drive, after a surprising result, and after any relaunch or fresh session.
-3. Exercise every mapped feature at least once through a real user path. Record unreachable features with the exact account, permission, entitlement, platform, or external-state prerequisite.
-4. Preserve evidence across failed attempts and cleanup. Remove only residue created by the pass and stop only processes the harness started.
-5. Re-run every changed harness path against the real artifact before accepting it.
+## Report the coverage
 
-## Finish
+Run `python3 <build-verification-harness-skill>/scripts/validate_harness.py <project-verification-skill>` for the bundled format, plus the selected live checks. Report `clean` when selected coverage passes without corrections, `changed` when repairs pass those checks, or `blocked` when required proof remains unavailable or failing.
 
-1. `clean`: every feature received source and live coverage, and no correction remains.
-2. `changed`: all harness or map corrections are within the verification skill, validated, and proven live.
-3. `blocked`: name the uncovered features, attempted routes, evidence collected, and exact blocker.
-4. Run `python3 <build-verification-harness-skill>/scripts/validate_harness.py <project-verification-skill>` before reporting `clean` or `changed`.
-5. Report product findings separately from harness maintenance.
-6. Do not commit, publish, open a pull request, schedule recurring work, or contact an external system without the user's authority.
+Name the scope, features and control paths checked, artifact identity, observations, and material untested boundaries. A successful scoped repair does not establish a clean full map. Include product findings and the next action for blockers separately. Existing task authority governs commits and external actions; this skill grants no additional authority.

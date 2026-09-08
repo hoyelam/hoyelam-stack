@@ -1,33 +1,15 @@
-# Codex delegation adapter
+# Codex delegation
 
-Apply this adapter only when Codex exposes subagent tools and delegation is authorized by the user, repository instructions, or the active skill.
+Use Codex's available subagent tools and configured capacity. Do not hardcode a model name, context-window size, or child-count ceiling into the portable stack. Actual tool schemas and session instructions govern capabilities.
 
-## Route
+## Context
 
-1. Treat three active children as the hoyelam-stack default ceiling, not a universal Codex limit. Honor a lower runtime or configured cap. Exceed three only when the user or repository explicitly selects a larger Codex concurrency profile and the extra independent streams justify it.
-2. Keep the parent active for metadata discovery, decisions, integration, verification, and user reporting. Capacity is a ceiling, not a target.
-3. Prefer read-heavy evidence streams. Give concurrent writers exclusive worktrees, branches, files, simulators, or mutable resources.
+Send a self-contained brief with the goal, discovered context, owning paths, writable boundaries, and required evidence. Prefer `fork_turns: "none"` for that brief, or the smallest supported recent-history fork that carries needed decisions. Use full history only when relevant context cannot be conveyed reliably in a compact brief. Honor the runtime's rules for model inheritance and overrides.
 
-## Fork
+Keep large logs and artifacts in task-owned files. Return the conclusion, useful excerpts, and paths the lead can inspect. Load only the skills and references that inform the assignment. A smaller prompt is useful only if it retains the context needed for correct work.
 
-1. Use the smallest positive `fork_turns` value that includes the relevant recent request and decisions.
-2. Use `fork_turns: "none"` only when the brief is fully self-contained. Use `fork_turns: "all"` only when the complete history is materially required.
-3. Include discovered repository instructions, exact scope, acceptance criteria, required evidence, forbidden actions, and report shape in the brief. Do not ask a child to rediscover parent-owned metadata.
+## Control
 
-## Reuse and control
+Reuse an idle worker when its role and context still fit. Send corrections to running workers; interrupt work that is wrong, unsafe, or no longer useful. Prefer completion notifications or bounded waits over polling, while keeping the lead's useful work moving.
 
-1. Reuse an idle child with `followup_task` when its established role and context fit the next bounded stream. Spawn a new child when reuse would carry misleading context or a conflicting scope.
-2. Use `send_message` for a correction to running work. Use `interrupt_agent` only when the current work is wrong, unsafe, or no longer needed.
-3. Wait with `wait_agent` instead of polling. Keep useful parent work moving while children run.
-
-## Report
-
-Every child returns:
-
-1. Status: `PASS`, `ISSUES`, or `BLOCKED`.
-2. Scope inspected or changed.
-3. Evidence collected, including commands, artifacts, file and symbol references, and revision when applicable.
-4. Findings and contradictions, separated from hypotheses.
-5. Remaining uncertainty and the next bounded action when blocked.
-
-The parent reports the routing choice, reconciles child results against live state, and never forwards raw child output as its own conclusion.
+Give concurrent writers exclusive files, worktrees, or mutable resources. Inspect returned changes and evidence before accepting them, and verify integration. Tool completion and worker confidence do not establish correctness.

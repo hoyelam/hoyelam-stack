@@ -1,0 +1,784 @@
+{
+  "date": "2026-09-07",
+  "baseline_commit": "9558611deb527380bb28f064b0bfacd4f42956b7",
+  "revised_version": "uncommitted working tree; file hashes below identify the evaluated instruction and helper state",
+  "codex_cli_version": "0.153.4",
+  "model": "inherited configured default; no model override",
+  "source_word_counts": {
+    "skill_entrypoints": {
+      "before_words": 6888,
+      "after_words": 5112,
+      "reduction_percent": 25.8
+    },
+    "role_briefs": {
+      "before_words": 1694,
+      "after_words": 580,
+      "reduction_percent": 65.8
+    },
+    "main_skill": {
+      "before_words": 732,
+      "after_words": 427,
+      "reduction_percent": 41.7
+    },
+    "orientation_docs": {
+      "before_words": 2362,
+      "after_words": 898,
+      "reduction_percent": 62.0
+    }
+  },
+  "verification": {
+    "repository": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests": 74,
+      "skips": 0,
+      "skills": 16,
+      "agent_definitions": 10,
+      "automation_packs": 3,
+      "raw_log": ".work/stack-simplification/final-validation.log",
+      "elapsed_test_seconds": 22.331
+    },
+    "skill_frontmatter": {
+      "status": "passed",
+      "count": 16,
+      "tool": "/Users/hoyelam/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+      "environment": "uv with PyYAML in task-local cache, offline after initial dependency preparation"
+    },
+    "diff_whitespace": {
+      "command": "git diff --check",
+      "status": "passed"
+    },
+    "fresh_codex_discovery": {
+      "status": "passed",
+      "name": "hoyelam-stack:hoyelam-mode",
+      "description": "Personal agent defaults: focused changes, active orchestration, and verified outcomes.",
+      "raw_artifact_prefix": ".work/stack-simplification/discovery"
+    }
+  },
+  "paired_cases": [
+    {
+      "variant": "a",
+      "case": "docs",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 24.22,
+      "reported_session_usage": {
+        "input_tokens": 85071,
+        "cached_input_tokens": 73216,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 614,
+        "reasoning_output_tokens": 0
+      },
+      "completed_item_types": {
+        "error": 1,
+        "agent_message": 3,
+        "command_execution": 5,
+        "file_change": 1
+      },
+      "thread_id": "01a07d9e-093e-76f2-af06-ea2bcad0741d",
+      "variant_label": "original",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-c0zbip_m",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/a-docs/result.md",
+        "The JSON example under Quick start in README.md fails. Correct that example to match the executable CLI help. Keep the change scoped to README.md and verify the documented command."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "README.md"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          3
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/a-docs"
+    },
+    {
+      "variant": "b",
+      "case": "docs",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 25.67,
+      "reported_session_usage": {
+        "input_tokens": 103587,
+        "cached_input_tokens": 92672,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 552,
+        "reasoning_output_tokens": 16
+      },
+      "completed_item_types": {
+        "agent_message": 3,
+        "command_execution": 7,
+        "file_change": 1
+      },
+      "thread_id": "01a07d9e-67d8-7881-a039-736b591d0a1a",
+      "variant_label": "revised",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-dfhys82w",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/b-docs/result.md",
+        "The JSON example under Quick start in README.md fails. Correct that example to match the executable CLI help. Keep the change scoped to README.md and verify the documented command."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "README.md"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          3
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/b-docs"
+    },
+    {
+      "variant": "a",
+      "case": "parser",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 39.6,
+      "reported_session_usage": {
+        "input_tokens": 135117,
+        "cached_input_tokens": 107904,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1426,
+        "reasoning_output_tokens": 19
+      },
+      "completed_item_types": {
+        "error": 1,
+        "agent_message": 3,
+        "command_execution": 7,
+        "file_change": 2
+      },
+      "thread_id": "01a07d9e-67d8-7252-acd5-66174eef6b58",
+      "variant_label": "original",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-8z_zz0mr",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/a-parser/result.md",
+        "LabelKit returns empty labels for whitespace-only comma segments. Fix the parser while preserving label order, duplicates, case, and internal spaces. Add regression coverage and verify the CLI behavior."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "labels.py",
+          "tests/test_labels.py"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          7
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/a-parser"
+    },
+    {
+      "variant": "b",
+      "case": "parser",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 38.01,
+      "reported_session_usage": {
+        "input_tokens": 126618,
+        "cached_input_tokens": 104448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1037,
+        "reasoning_output_tokens": 26
+      },
+      "completed_item_types": {
+        "agent_message": 3,
+        "command_execution": 5,
+        "file_change": 2
+      },
+      "thread_id": "01a07d9e-cc29-7c31-9639-e6b4e4eff5d2",
+      "variant_label": "revised",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-0v0m76cg",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/b-parser/result.md",
+        "LabelKit returns empty labels for whitespace-only comma segments. Fix the parser while preserving label order, duplicates, case, and internal spaces. Add regression coverage and verify the CLI behavior."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "labels.py",
+          "tests/test_labels.py"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          5
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/b-parser"
+    },
+    {
+      "variant": "a",
+      "case": "parser-blocked",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 44.49,
+      "reported_session_usage": {
+        "input_tokens": 137641,
+        "cached_input_tokens": 121600,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1362,
+        "reasoning_output_tokens": 8
+      },
+      "completed_item_types": {
+        "error": 1,
+        "agent_message": 3,
+        "command_execution": 11,
+        "file_change": 2
+      },
+      "thread_id": "01a07d9f-0298-7fe0-8c6a-64e69f8834e8",
+      "variant_label": "original",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-t4ciq48f",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/a-parser-blocked/result.md",
+        "LabelKit returns empty labels for whitespace-only comma segments. Fix the parser while preserving label order, duplicates, case, and internal spaces. Add regression coverage and complete the available verification under AGENTS.md."
+      ],
+      "acceptance": {
+        "status": "blocked",
+        "implementation_ok": true,
+        "changed_files": [
+          "labels.py",
+          "tests/test_labels.py"
+        ],
+        "problems": [],
+        "required_missing": [
+          "python3 acceptance_check.py"
+        ],
+        "discovered_tests": [
+          6
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/a-parser-blocked"
+    },
+    {
+      "variant": "b",
+      "case": "parser-blocked",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 29.06,
+      "reported_session_usage": {
+        "input_tokens": 112854,
+        "cached_input_tokens": 97920,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 982,
+        "reasoning_output_tokens": 8
+      },
+      "completed_item_types": {
+        "agent_message": 3,
+        "command_execution": 8,
+        "file_change": 2
+      },
+      "thread_id": "01a07d9f-60a2-7823-ad34-6eaeeda331a1",
+      "variant_label": "revised",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-agc_9i31",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/b-parser-blocked/result.md",
+        "LabelKit returns empty labels for whitespace-only comma segments. Fix the parser while preserving label order, duplicates, case, and internal spaces. Add regression coverage and complete the available verification under AGENTS.md."
+      ],
+      "acceptance": {
+        "status": "blocked",
+        "implementation_ok": true,
+        "changed_files": [
+          "labels.py",
+          "tests/test_labels.py"
+        ],
+        "problems": [],
+        "required_missing": [
+          "python3 acceptance_check.py"
+        ],
+        "discovered_tests": [
+          6
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/b-parser-blocked"
+    },
+    {
+      "variant": "a",
+      "case": "modules",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 103.75,
+      "reported_session_usage": {
+        "input_tokens": 523323,
+        "cached_input_tokens": 483584,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3725,
+        "reasoning_output_tokens": 237
+      },
+      "completed_item_types": {
+        "error": 1,
+        "agent_message": 4,
+        "command_execution": 12,
+        "file_change": 2
+      },
+      "thread_id": "01a07d9f-b075-7ca3-8b67-a4f02d97ebac",
+      "variant_label": "original",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-zyyn70i3",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/a-modules/result.md",
+        "Implement pricing and inventory allocation according to README.md, and integrate them into the order-report CLI. Add meaningful tests for each domain module and verify the composed command. The domain modules can be implemented independently."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "inventory.py",
+          "order_report.py",
+          "pricing.py",
+          "tests/test_inventory.py",
+          "tests/test_order_report.py",
+          "tests/test_pricing.py"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          25
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/a-modules"
+    },
+    {
+      "variant": "b",
+      "case": "modules",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 75.62,
+      "reported_session_usage": {
+        "input_tokens": 129854,
+        "cached_input_tokens": 115456,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3608,
+        "reasoning_output_tokens": 27
+      },
+      "completed_item_types": {
+        "agent_message": 3,
+        "command_execution": 4,
+        "file_change": 2
+      },
+      "thread_id": "01a07d9f-d219-7c92-980c-a1b68a712478",
+      "variant_label": "revised",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-lyfilhv0",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/b-modules/result.md",
+        "Implement pricing and inventory allocation according to README.md, and integrate them into the order-report CLI. Add meaningful tests for each domain module and verify the composed command. The domain modules can be implemented independently."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "inventory.py",
+          "order_report.py",
+          "pricing.py",
+          "tests/test_inventory.py",
+          "tests/test_order_report.py",
+          "tests/test_pricing.py"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          13
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/b-modules"
+    },
+    {
+      "variant": "a",
+      "case": "harness",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 45.72,
+      "reported_session_usage": {
+        "input_tokens": 118073,
+        "cached_input_tokens": 100608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1510,
+        "reasoning_output_tokens": 13
+      },
+      "completed_item_types": {
+        "error": 1,
+        "agent_message": 3,
+        "command_execution": 5,
+        "file_change": 1
+      },
+      "thread_id": "01a07da0-f99f-71b1-b55a-7fa56fc775f7",
+      "variant_label": "original",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-h0w9wyxv",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/a-harness/result.md",
+        "The LabelKit verification harness's split command fails even though the product split command works. Repair only this harness path and verify the repair. Keep product files unchanged. Account publishing is outside this repair and its required account is unavailable."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          ".agents/skills/verify-labelkit/commands.json"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          3
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/a-harness"
+    },
+    {
+      "variant": "b",
+      "case": "harness",
+      "cli_exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 48.11,
+      "reported_session_usage": {
+        "input_tokens": 140363,
+        "cached_input_tokens": 124160,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1660,
+        "reasoning_output_tokens": 17
+      },
+      "completed_item_types": {
+        "error": 1,
+        "agent_message": 3,
+        "command_execution": 8,
+        "file_change": 1
+      },
+      "thread_id": "01a07da1-45a9-7bf2-bafc-91cae1077024",
+      "variant_label": "revised",
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-workspaces-rk6otf4f/project-v90i4ayf",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/runs/b-harness/result.md",
+        "The LabelKit verification harness's split command fails even though the product split command works. Repair only this harness path and verify the repair. Keep product files unchanged. Account publishing is outside this repair and its required account is unavailable."
+      ],
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          ".agents/skills/verify-labelkit/commands.json"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          3
+        ]
+      },
+      "raw_artifact_directory": ".work/stack-simplification/runs/b-harness"
+    }
+  ],
+  "native_delegation": {
+    "acceptance": {
+      "status": "passed",
+      "implementation_ok": true,
+      "changed_files": [
+        "inventory.py",
+        "order_report.py",
+        "pricing.py",
+        "tests/test_inventory.py",
+        "tests/test_order_report.py",
+        "tests/test_pricing.py"
+      ],
+      "problems": [],
+      "required_missing": [],
+      "discovered_tests": [
+        39
+      ]
+    },
+    "observed_workers": [
+      "pricing",
+      "inventory"
+    ],
+    "concurrent_workers_observed": 2,
+    "lead_owned": [
+      "order_report.py",
+      "tests/test_order_report.py"
+    ],
+    "observation": "Native collaboration calls and agent status showed simultaneous children; lead inspected returns, integrated CLI, and reused workers for review.",
+    "approval_recovery": "Automatic review initially rejected fixture edits for missing task authority. The original user authorization and exact bounded fixture scope were supplied; the same tool and patch were then accepted without bypass.",
+    "limitation": "Authorization recovery disclosed that this was an exercise, so the latter portion was not blinded.",
+    "raw_setup": ".work/stack-simplification/native-setup.json",
+    "raw_acceptance": ".work/stack-simplification/native-check.json"
+  },
+  "continuity": {
+    "pause": {
+      "cli_exit_status": 0,
+      "elapsed_seconds": 37.61,
+      "tests": 4,
+      "expected_failures": 1,
+      "product_and_test_fingerprints_unchanged": true,
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-session-55ln9x88",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/continuity/pause.md",
+        "Use the local $checkpoint-work skill. Pause this unfinished parser fix. The regression test is already present. Do not change implementation or tests, and do not commit or publish. Record the current state, checks, remaining work, and next useful action in .work/handoff.md."
+      ]
+    },
+    "resume": {
+      "cli_exit_status": 0,
+      "elapsed_seconds": 41.07,
+      "acceptance": {
+        "status": "passed",
+        "implementation_ok": true,
+        "changed_files": [
+          "labels.py",
+          "tests/test_labels.py",
+          "tests/test_pending.py"
+        ],
+        "problems": [],
+        "required_missing": [],
+        "discovered_tests": [
+          7
+        ]
+      },
+      "command": [
+        "codex",
+        "exec",
+        "--ephemeral",
+        "--approve-for-me",
+        "--skip-git-repo-check",
+        "--json",
+        "--color",
+        "never",
+        "-C",
+        "/var/folders/sg/flt8fjh54s33dsdj2qkltphw0000gn/T/labelkit-session-55ln9x88",
+        "-o",
+        "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/continuity/resume.md",
+        "Resume from .work/handoff.md and finish the parser fix. Preserve label order, duplicates, case, and internal spaces. Retain meaningful regression coverage and verify the CLI behavior. Use related skills from this project as needed. Do not commit or publish."
+      ]
+    },
+    "raw_artifact_directory": ".work/stack-simplification/continuity"
+  },
+  "github_cache_integration": {
+    "created": {
+      "cache_status": "created",
+      "path": "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/remote-cache/4ebd76f8546f2f51d6e7a9ac03e0fb0281d7ddfd752d74feacb34ff6ef35a16b/snapshots/9558611deb527380bb28f064b0bfacd4f42956b7",
+      "repository": "https://github.com/hoyelam/hoyelam-stack.git",
+      "requested_ref": "9558611deb527380bb28f064b0bfacd4f42956b7",
+      "revision": "9558611deb527380bb28f064b0bfacd4f42956b7",
+      "snapshot_status": "created"
+    },
+    "reused": {
+      "cache_status": "reused",
+      "path": "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/remote-cache/4ebd76f8546f2f51d6e7a9ac03e0fb0281d7ddfd752d74feacb34ff6ef35a16b/snapshots/9558611deb527380bb28f064b0bfacd4f42956b7",
+      "repository": "https://github.com/hoyelam/hoyelam-stack.git",
+      "requested_ref": "9558611deb527380bb28f064b0bfacd4f42956b7",
+      "revision": "9558611deb527380bb28f064b0bfacd4f42956b7",
+      "snapshot_status": "reused"
+    },
+    "refreshed": {
+      "cache_status": "refreshed",
+      "path": "/Users/hoyelam/GitHub/hoyelam-stack/.work/stack-simplification/remote-cache/4ebd76f8546f2f51d6e7a9ac03e0fb0281d7ddfd752d74feacb34ff6ef35a16b/snapshots/9558611deb527380bb28f064b0bfacd4f42956b7",
+      "repository": "https://github.com/hoyelam/hoyelam-stack.git",
+      "requested_ref": "9558611deb527380bb28f064b0bfacd4f42956b7",
+      "revision": "9558611deb527380bb28f064b0bfacd4f42956b7",
+      "snapshot_status": "reused"
+    }
+  },
+  "review_fixes": [
+    "Removed remaining unconditional Electron skill invocation from platform navigation.",
+    "Workflow checker rejects zero discovered tests.",
+    "Workflow checker checks for product mutation after harness execution.",
+    "Module integration checker exercises an independent order input and invalid input, rather than accepting only the visible example."
+  ],
+  "limitations": [
+    "One synthetic run per case and variant; timing and usage are diagnostic observations, not a performance ranking.",
+    "Session-reported token usage has unspecified child coverage and is not total multiagent cost or peak context occupancy.",
+    "Existing user catalog and configuration remained; project-local skill variants overrode relevant skills, but the environment was not fully controlled.",
+    "Skill description budget warnings occurred in all five original runs and the revised harness run; context pressure remains possible.",
+    "CLI JSON does not expose native spawn and return events, so paired CLI module runs do not prove delegation. The separate native exercise supplies that evidence.",
+    "Runtime and test breadth differed: the original harness used Python 3.9.10, the revised harness used Python 3.14, and module test counts differed.",
+    "The original module run inherited a managed Herdr environment but rejected a parent-pane mismatch after a read-only probe; no unrelated writes were observed.",
+    "Non-Git fixture status checks and one initial parser CLI invocation failed harmlessly before recovery.",
+    "Initial CLI launches combined incompatible --sandbox and --approve-for-me options and exited before agent startup; corrected launches used --approve-for-me, which already selects workspace-write. Startup errors were retained separately.",
+    "Raw logs and disposable workspaces are task-local and may expire. This record retains summaries, commands, usage, and instruction hashes.",
+    "Behavioral exercises cover the changed general workflow. They do not revalidate unchanged Apple, Electron, or managed Herdr runtime behavior."
+  ],
+  "sha256": {
+    ".codex-plugin/plugin.json": "21c2865a7a113b4dbe615ab39a51052258ddc1f6fe4a112b3da170fa1266d856",
+    "AGENTS.md": "100e4c127599808832935f20eb89108d5009dc99e86cf932d248b6c74361bcde",
+    "README.md": "3db607c662440d0145fd7f9725e4719484191b27eff4f29e5fc06452496d4ae8",
+    "agents/apple-runtime-verifier.md": "f3154d04dc5440746f6d778ea1e3c9d21dbca52b7f21001e6b0316dafb82b0ee",
+    "agents/code-reviewer.md": "1658e43561a5ac80af6a37751eb54fc0a1bc3887d80dd1549922113cfe87ad65",
+    "agents/comment-auditor.md": "29200170485da49c753f83d632f6b383b82d64ccd7c0389d3d45218533df20d7",
+    "agents/context-reconstructor.md": "8d39bc58878bc26b9499f20a8eb223f3d89fcc8e939ee68fcc255b9aa01963c8",
+    "agents/electron-runtime-verifier.md": "63a245a175cfc6b9cd68be5881a2279a26bf3044fd26f89b003939ca40fbf695",
+    "agents/hoyelam-agent.md": "fa4370781238bfc72f1504a149e7273d7564cbd1e14091da36deccc51927183f",
+    "agents/project-orchestrator.md": "287040aee8f0276fe87aa3ebb7b6575a05bebe777b8aea69c3e653319e6ba4d0",
+    "agents/root-cause-investigator.md": "4ebbf0494d1e379fe6e84f99eec30fdfae64097ab6b26a272f19d1ca50ed74d2",
+    "agents/runtime-verifier.md": "3fe4fd7b8e646ddd322ee2bc8be8792562f2ea488691f83c0c8643d7cf5770b5",
+    "agents/verification-designer.md": "06464831cda7971970e206f1869aa81fcc10b6d94a1e9c6846dc57748f6480bf",
+    "automations/full-quality-pass/FOR_AGENTS.md": "3b9e6ee318663eee46e005525af09e0515e136098cc045c3e1ffddadda019a84",
+    "automations/pr-quality-watch/FOR_AGENTS.md": "9b5f5753624310902a0ba3539828fd2f16bc72a66c42b36e418afeb7291a7edd",
+    "automations/workflow-reflection/FOR_AGENTS.md": "d24402d07dd118e557158b8ab3d01d68fe08e16a3c28c69246d599f8f1e2431a",
+    "docs/architecture.md": "9c73d2d2c145dc8e09cb9f4f8263d6a61672087cee953465b7685247985fb38d",
+    "docs/comment-policy.md": "5402dbe15b565f3235e36f0e7ffdf4e11ac09599a67114bec7d9935e880f855d",
+    "docs/platform-verification.md": "cd41dfe23562907374c0ad77619e41daf0e3a1592bcfbfc2cb8c840d5d66c2e1",
+    "docs/workflow.md": "fa98e97549d8bcba17dcfda473e15d7a41b9eaeb6f504fa6c19017445a0041a0",
+    "plugin.json": "6239f6dd8af062cc10cd8f1e0c3da2ac8ab82d1b07d70314ac6f8cb1da898356",
+    "scripts/validate.py": "86a5c5ca7b1f240f1a8c6640a7c46012487f28c68e3584468ef184b4ffcc6387",
+    "scripts/workflow_exercises.py": "a18543d739b445ddd972da5d4f5c7ac61d11ef0840e4be69a7a997273d7bf26e",
+    "skills/build-verification-harness/SKILL.md": "7b2d9113cde1dda3a23c7ad303b3b85ecf60f7f4e79044676b252393c2606fa7",
+    "skills/build-verification-harness/agents/openai.yaml": "0ff27fbff845f3621c2243af312055a3b5b07078dbb6f6b568aea8bc65cc685d",
+    "skills/build-verification-harness/references/harness-contract.md": "ad85af029f1ea0d11925381c202308d4e3b29f27143f77caba46d7bdc0da057a",
+    "skills/checkpoint-work/SKILL.md": "37e97a9700d553e485e0c228e4fa46043656682876c47908129066a8f95456ac",
+    "skills/checkpoint-work/agents/openai.yaml": "7491e3db4d95ce0a91078d63db472c1c2f4d5a2ed261d15c73d14d8db1d0c289",
+    "skills/comment-discipline/SKILL.md": "6c8764a677e523a247c21d383b8184eca80ebbad7c35dab94bbbe18aa89f706f",
+    "skills/comment-discipline/agents/openai.yaml": "6837141a7fdf8d389ab8d03427b31ad7279f717bb401f3e0464e2529e2889f85",
+    "skills/hoyelam-mode/SKILL.md": "0e95512aea16bf8920d3cc330a261d049e6b87b773aed3b13b9166f4f6300d60",
+    "skills/hoyelam-mode/agents/openai.yaml": "5a98f6d6730018a952e88338f3d227b4b1a31563b4052333c3b304741a7430a5",
+    "skills/hoyelam-mode/references/codex-delegation.md": "bd929b183dadf4c72c47b27630e12549781bf3875ad17e42323f3578758d7b5e",
+    "skills/hoyelam-mode/references/herdr-delegation.md": "5ef1005abc548257afe48c5f05f00dcf56cc5ed0f1185bb5fc697b90b3182549",
+    "skills/hoyelam-mode/references/single-task-delegation.md": "56f17df9173e6c747444dd087fe15aa759d30b0bb33f0e7e65ddd7a228850102",
+    "skills/hoyelam-mode/references/workflow-validation.md": "9a5614e5d82ea4bda3874df9cc8c688f7829c6ac53dd7ae1242e74fdbbf25b57",
+    "skills/investigate-first/SKILL.md": "e935b029b1a4d1f480021f5621c4d12c4ffd84c72a31839c26dab6ab138b1775",
+    "skills/investigate-first/agents/openai.yaml": "d433f5a81ec778e9c456fe4ef1d38bb898c55074c700dfd2be864fc372ec1568",
+    "skills/investigate-first/references/condition-based-observation.md": "186867e834b13545ffebb5682afe5539247407870ebd52f3af051a5bda8d45ad",
+    "skills/investigate-first/references/source-research.md": "3ed221d188baf736a7a0ce0b6f5f8131b778742676e8f54627700df4b17f37a1",
+    "skills/investigate-first/scripts/reference_repo.py": "0cb9b74e2786754b9e3105dd5267a1a408b2411773f0c317dff929fa794a6f58",
+    "skills/ios-architecture/SKILL.md": "9b73bd1aa631a862f3d6f5cdaa9d805461dbdfec4a32e512ab08632bb0caaf0b",
+    "skills/ios-architecture/agents/openai.yaml": "76da0ded1cfe33e76a0484104f0c36f21ddc65caa49d854ce271df3c843f0113",
+    "skills/maintain-verification-harness/SKILL.md": "44127b66da52060f2fc9389cbcc3b6eaf80c459b635fddf9ae7c085b1fc8051a",
+    "skills/maintain-verification-harness/agents/openai.yaml": "1151f0c515a3713523b0ecd4cd596e52e9f62bee646be6a51ff5c19428f35891",
+    "skills/orchestrate-project/SKILL.md": "eab579e15200213e30e390bd41d84f9541dd09465feeeef4849ec24bb9aa42e7",
+    "skills/orchestrate-project/agents/openai.yaml": "03647531d3ca70006630aab7b344996caa227615a4ef33401b30830f3212a052",
+    "skills/orchestrate-project/references/bundled-runtime.md": "5246b9976c9ea17d43f3fc4b692e18033c51aa6806613174d6d1d2b9f6aaaaac",
+    "skills/orchestrate-project/references/scope-leases.md": "a601d4109309d5c5903c638cbf7e6aa223f27357eb96b44373533422263b4fd5",
+    "skills/orchestrate-project/references/worker-brief.md": "4c9b0235e39a5bd660186f889d0440eb94738f26114a15db99abc5cb248b1974",
+    "skills/prove-the-work/SKILL.md": "942658e2a8c7b1027dee77ce8364ccd41e8903ab0f3740b1b0a79576ac3b5860",
+    "skills/prove-the-work/agents/openai.yaml": "8bc990dbf91ee8b502245b52e99bc36a938f485cf66e4beafb04275dbe177678",
+    "skills/prove-the-work/references/project-verification.md": "c68c462f3a04226631e9fe767a83da853c8aeb6be1d011fe70ee3cd3eb0b6103",
+    "skills/recall-context/SKILL.md": "4c1ecb4d14bb618ecd06e56dcae6ff8ee76518d30a8e0bc9c203133f62653b13",
+    "skills/recall-context/agents/openai.yaml": "ff101a7ad7723833324776fadd476422d46c1d6abaf2550ac7872037a11f4890",
+    "skills/recall-context/references/continuity-record.md": "5a2d603fb9dd6a2d6349ced7c2be046b11e76c8ab9c888467bd49173795dff96",
+    "skills/reflect-workflow/SKILL.md": "f4eec0c2174f285f910070c8717c6c10616d17069ebe4c37e190d9c963c32ce7",
+    "skills/reflect-workflow/agents/openai.yaml": "c4a1274922ab83a4b31f109dca7bce20217e7847e320ae0d5a79a9605b108961",
+    "skills/review-and-resolve/SKILL.md": "38d63459b812743e7bdd1534069deeebd3db33a15794acccee68c002ddd6223a",
+    "skills/review-and-resolve/agents/openai.yaml": "eab35c5081cd7a549bb507882d6fe4e6605bc446e04a5aa75730c62a1bfeb912",
+    "skills/verify-apple-apps/SKILL.md": "80fdf054723193a03ab62f346cb3695b8420d75befd443a7f60e7afd4b3c25b9",
+    "skills/verify-apple-apps/agents/openai.yaml": "255c9e9745223327b7b145991a55d442f2ed8061da74b5808007ce9c4adca3cd",
+    "skills/verify-apple-apps/references/ios-verification.md": "797a4e7072aad0a4c76202ffdb3833e467a052a92f1c3cac90439dd4577b6772",
+    "skills/verify-apple-apps/references/macos-verification.md": "b7070e56bc544ae477d0620161ff69849b37f096715eba29b4a1a8aee99f8fb8",
+    "skills/verify-apple-apps/references/verification-contract.md": "76cfb19dbc30f824f4bba93bf2ae02ba8fe182901fbc2b0783b09ed2a0afb48b",
+    "skills/verify-electron-apps/SKILL.md": "45e2b65e22c72e85b0e96edd8d2dc919ad976f2db66c1c78d8a9d51363a9d02d",
+    "skills/verify-electron-apps/agents/openai.yaml": "740bc7e789a426052a10cf96ff0f8f99d6fc9e3c72756f3b4e7de4b715f1769f",
+    "skills/verify-electron-apps/references/electron-verification.md": "8b2666dc5ec78bec7f5c8cde1645de35bc37efb663162ffae519affdd1498d70",
+    "skills/verify-ios-apps/SKILL.md": "9d1ec74054a6e0cb3b9cc227aa9fb4ae4fffbe5f1c46d256e621df878075b335",
+    "skills/verify-ios-apps/agents/openai.yaml": "682178a1e3d1ef344481f6157f984da54cc810ae11df912dae601540fc1863cc",
+    "skills/verify-macos-apps/SKILL.md": "0f9e648b0e71cb1bda6f78baf2c2bdca5e99d59306c7b0d0f07afc2037581b52",
+    "skills/verify-macos-apps/agents/openai.yaml": "de2625949a7613039622d13f2053df9a4046625760153b5a5e2a9f7b07e86838"
+  }
+}

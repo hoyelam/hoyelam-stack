@@ -1,52 +1,30 @@
 # hoyelam-stack
 
-`hoyelam-stack` captures how I like to work with coding agents: understand the problem, think through what success looks like, implement a focused solution, and gather evidence that it works.
+`hoyelam-stack` captures how I like to work with coding agents: focused changes, active orchestration, and evidence that the result works. Codex is my preferred agent; the skills remain usable by other coding agents.
 
-I put particular emphasis on verification and quality assurance. I want to know that the original problem is actually fixed or that an addition behaves as intended. Tests, real usage, and review each help answer that question. After review changes the implementation, I want the affected behavior checked again.
+I want agents to choose useful methods and tools. A fixed sequence of phases or mandatory skill calls adds little when the agent already knows how to do the work. The [personal defaults](skills/hoyelam-mode/SKILL.md) are the maintained source for my working preferences and completion standard.
 
-Orchestration is also part of how I work. For larger projects, I want a lead agent to define clear units, delegate useful work, coordinate dependencies, and keep progress recoverable. Verification governs which results are accepted and when the overall project is complete.
+## What matters to me
 
-The stack packages this method into skills and supporting tools for Codex, with instructions that remain usable by other coding agents.
+For substantial independent work, I want a lead agent that delegates investigation, implementation, verification, and review, keeps ready work moving, and owns the integrated outcome. Small or tightly dependent work can stay direct. The [orchestration skill](skills/orchestrate-project/SKILL.md) provides more coordination when dependencies, concurrent ownership, or interruptions need it.
 
-## How I work
+Verification gives me confidence. Tests, real usage, and review provide different evidence; the depth should fit the changed behavior and risk. I expect accurate results, checks against the final state, and clear reporting when required proof is blocked. [Prove the work](skills/prove-the-work/SKILL.md) helps design or assess that evidence.
 
-1. **Understand the issue.** Read the relevant code and context, reproduce the problem where possible, and identify its cause. For an addition, understand the need and how it fits the existing project.
-2. **Define success.** Describe the behavior I expect to see when the work is done, including important failure cases and behavior that must keep working.
-3. **Plan verification.** Decide how to prove those expectations before implementation: which tests or interactions to run, what they need, and what results would count as success.
-4. **Implement.** Make the smallest complete change that solves the problem and fits the existing architecture. For larger work, verify small units before building on them.
-5. **Verify quality.** Run the relevant tests, checks, and builds, and exercise the actual behavior. Check failure paths and nearby behavior that the change could affect.
-6. **Review and resolve.** Review the complete change for correctness, clarity, and unnecessary complexity. Verify findings before fixing them, and resolve confirmed issues within scope. Use an independent reviewer for substantial or risky changes when available and authorized.
-7. **Verify again.** After review fixes, rerun the affected checks against the final implementation. Return to the original issue or intended addition and confirm that the evidence still proves it works.
-8. **Report the evidence.** Explain what changed, what was actually checked, what the results show, and what remains unverified.
+Context is a working resource. Skills should be independently useful, keep their entrypoints small, and expose details when needed. Workers should receive focused briefs and return concise evidence with artifact paths. [Codex delegation guidance](skills/hoyelam-mode/references/codex-delegation.md) covers context and worker reuse without pinning a model or context-window size.
 
-## What gives me confidence
+## Capabilities
 
-I want as much meaningful verification as practical for the change. A passing build tells me the project builds. Tests give evidence for the cases they cover. Exercising the real application, service, or command shows what happens through the interface people actually use. Review adds another opportunity to catch mistakes and challenge assumptions.
+The [capability guide](skills/hoyelam-mode/SKILL.md#available-capabilities) helps agents select investigation, verification, review, platform, continuity, and reflection skills. Each can also be invoked directly.
 
-The depth should match the work and its risk. A documentation edit needs different checks from a migration or an application feature. If review makes no relevant changes, existing evidence can remain valid. Failed or blocked required checks mean verification is incomplete, and I expect that to be stated clearly.
+The stack includes iOS, macOS, and Electron verification guidance, optional readiness diagnostics, and skills for building or repairing a project-local verification harness. They reuse supported project tooling. See [platform verification](docs/platform-verification.md).
 
-The [project verification contract](skills/prove-the-work/references/project-verification.md) helps make this repeatable through supported commands, observable outcomes, and clear verification requirements. Changes to the workflow itself are checked through [isolated implementation tasks](skills/hoyelam-mode/references/workflow-validation.md), with the limits of that evidence recorded.
+The source-research helper caches reference repositories at explicit revisions. The orchestration runtime supplies durable assignments, ownership checks, and recovery when those capabilities are useful. These tools support the work without becoming prerequisites for ordinary tasks.
 
-## How I coordinate larger work
+## Use and maintain
 
-I use [orchestrate-project](skills/orchestrate-project/SKILL.md) when work needs ongoing coordination across units or sessions. The lead defines success and verification before assigning work, proves one representative unit before scaling, and keeps each worker’s scope clear. It reviews results, resolves confirmed findings, integrates accepted changes, and verifies the combined outcome. Progress and evidence survive interruptions.
+Follow the [installation guide](docs/local-install.md), then invoke `$hoyelam-mode` or reference it in project instructions. Installing the stack makes capabilities available; the agent loads their bodies as needed. The [usage guide](docs/workflow.md) gives examples.
 
-Small tasks stay direct. The project’s existing tools can carry the records; the bundled orchestration runtime is available when needed. My method does not depend on a particular agent platform, hosting service, or CI provider.
-
-## My main platforms
-
-iOS, macOS, and Electron are my main application platforms. The stack bundles `$verify-ios-apps`, `$verify-macos-apps`, and `$verify-electron-apps` to help agents select meaningful checks and exercise the actual application. They work with existing project harnesses and supported platform tools. Bundled diagnostics help where relevant; the evidence must still show that the intended behavior works.
-
-## Using the stack
-
-Follow the [installation guide](docs/local-install.md), then invoke `$hoyelam-mode` for implementation work. Installing the stack makes the method available; project instructions or skill invocation put it into use. The [workflow guide](docs/workflow.md) describes the full process.
-
-- Use `$prove-the-work`, `$review-and-resolve`, or `$comment-discipline` for a focused pass.
-- Use `$build-verification-harness` to establish a reusable real-app verification path, and `$maintain-verification-harness` to keep it accurate.
-- Use `$verify-ios-apps`, `$verify-macos-apps`, or `$verify-electron-apps` for platform verification. See the [platform verification guide](docs/platform-verification.md).
-- Use `$recall-context` to resume older work, `$checkpoint-work` to pause safely, and `$orchestrate-project` when work spans independent units or sessions.
-
-See the [release process](docs/releases.md) and [changelog](CHANGELOG.md) for distribution and updates.
+Run `./scripts/validate.sh` to validate the package and helper tests. Behavioral changes also use [isolated workflow exercises](skills/hoyelam-mode/references/workflow-validation.md), comparing actual outcomes and costs when evaluating efficiency. See [architecture](docs/architecture.md), [design evidence](docs/design-evidence.md), [releases](docs/releases.md), and the [changelog](CHANGELOG.md).
 
 ## License
 

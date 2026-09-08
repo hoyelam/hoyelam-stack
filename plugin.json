@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hoyelam-stack",
-  "description": "A personal agent workflow with verification governing implementation, review, and orchestration across substantial projects.",
-  "version": "0.10.1",
+  "description": "Personal agent defaults, active orchestration, and optional tools for verified outcomes.",
+  "version": "0.11.0",
   "author": {
     "name": "hoyelam"
   },

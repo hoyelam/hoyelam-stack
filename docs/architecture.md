@@ -1,53 +1,28 @@
 # Repository architecture
 
-## Portable core
+## Portable capabilities
 
-1. `AGENTS.md` carries the repository-wide working agreement.
-2. `skills/` contains product-neutral Agent Skills.
-3. `agents/` contains specialist-agent definitions that compatible runtimes can adopt or translate.
-4. `plugin.json` exposes the portable skill package through the open Agent Plugins format.
-5. `.codex-plugin/plugin.json` adds Codex-specific presentation and discovery metadata.
+[Hoyelam Mode](../skills/hoyelam-mode/SKILL.md) owns personal defaults and the completion standard. `AGENTS.md` adds this repository's verification requirements. The README and usage guide explain discovery without duplicating the working rules.
 
-iOS, macOS, and Electron have dedicated verification entrypoints. iOS and macOS share Apple references, diagnostics, and a read-only verifier agent. The existing Apple skill remains a shared route. These tools supplement supported project harnesses; the generic runtime verifier routes to the relevant platform.
+`skills/` contains independently selectable capabilities. Entrypoints hold the essential guidance; references hold conditional procedures; scripts automate repeated operations. iOS and macOS share Apple references and diagnostics. The focused platform entrypoints remain discoverable alongside Electron verification.
 
-## Local layer
+`agents/` contains optional role briefs referencing their owning skills. These are source definitions, not a promise that Codex registers ten callable agent types. Use native subagents with a scoped brief where the runtime does not load custom agents.
 
-1. `scripts/install-local.sh` installs idempotent symlinks.
-2. Codex receives each skill through its local skill directory.
-3. Other coding agents can consume `AGENTS.md`, the open plugin manifest, or the skill directories through their supported discovery mechanism.
-4. The source repository remains authoritative; edits appear locally without copying files.
+## Codex and other runtimes
 
-## Verification infrastructure layer
+`.codex-plugin/plugin.json` exposes the skills to Codex. `plugin.json` describes the portable package. `scripts/install-local.sh` links source skills into the local Codex skill directory; installed symlinks follow source changes. Other agents can consume supported skill directories and translate optional role briefs.
 
-1. `build-verification-harness` creates or extends a repeatable project verification path, with an optional control-skill and feature-map template when repeated runtime proof would otherwise be improvised.
-2. `maintain-verification-harness` reconciles that control surface with current source and exercises every mapped feature without changing product behavior.
-3. Apple and Electron platform skills define platform safety and evidence contracts; project-local harnesses compose them with application-specific launch, interaction, fixtures, and proof paths.
-4. Orchestration evidence identifies the application artifact, harness when relevant, exercised behavior, and preserved results. The bundled harness schema also records doctor status and mapped features; existing formats can carry equivalent evidence.
+[Delegation guidance](../skills/hoyelam-mode/references/single-task-delegation.md) keeps assignment and integration responsibilities portable. Conditional Codex and Herdr references hold host mechanics. Worker count follows useful independent work and runtime capacity, without a model-specific ceiling or task classifier.
 
-## Orchestration layer
+## Optional tools
 
-1. `orchestrate-project` coordinates programs that span independently executable units or task contexts.
-2. Existing project records can satisfy the playbook’s ownership, dependency, recovery, and evidence requirements. Its optional dependency-free runtime stores project-local program state, units, worker assignments, numbered attempts, thread identities, exclusive scope leases, inbox events, gates, verification receipts, standing orders, and generated status under `.hoyelam/orchestrate/`.
-3. File locking, atomic writes, orphan cleanup, and full-store preflight protect concurrent and interrupted state updates; exact opaque lease conflicts and hierarchical `repo:` path conflicts prevent two active units from claiming the same canonical mutable scope.
-4. Verification is keyed to the current unit revision, so an artifact change invalidates older evidence.
-5. Ordinary tasks do not pay the orchestration cost.
+- The [source-research helper](../skills/investigate-first/references/source-research.md) reuses reference repositories and identifies the exact revision inspected.
+- [Verification harnesses](../skills/build-verification-harness/SKILL.md) reuse project commands and provide launch, drive, observation, and cleanup knowledge. [Maintenance](../skills/maintain-verification-harness/SKILL.md) distinguishes scoped repairs from full audits.
+- [Orchestration](../skills/orchestrate-project/SKILL.md) supports simple task-owned records or the bundled runtime. The runtime adds assignments, attempt identity, exclusive scope leases, inbox events, revision-bound verification, and interruption recovery under `.hoyelam/orchestrate/`. Locking, atomic writes, and preflight checks protect its records. Runtime closure checks bookkeeping; acceptance still needs behavior evidence.
+- `automations/` contains dormant source packs for quality review, PR maintenance, and workflow reflection. Scheduling and external actions require configured authority.
 
-## Delegation layer
+## Verification
 
-1. `hoyelam-mode` owns direct-task routing and keeps repository metadata discovery, decisions, integration, and final reporting in the parent.
-2. A small deterministic router encodes the default `0–3` child policy for representative task shapes.
-3. Codex-specific fork, capacity, reuse, control, and report guidance lives in a conditional reference so the portable core does not prescribe unavailable tools to other agents.
+`./scripts/validate.sh` checks manifests, skills, agent briefs, automation packs, local documentation references, placeholders, and Python tests. Tests exercise installer behavior, reference caching, platform diagnostics, orchestration integrity, and workflow fixture helpers. Local `.work`, `.hoyelam`, Git metadata, and Python caches are excluded from package discovery.
 
-## Automation layer
-
-1. `automations/full-quality-pass` finishes a completed implementation through verification and review.
-2. `automations/pr-quality-watch` watches a configured pull request and keeps it review-ready.
-3. `automations/workflow-reflection` analyzes configured completed work and proposes evidence-backed improvements.
-4. All packs are dormant source material until the user explicitly creates an automation.
-5. No automation merges, deploys, or widens the requested scope.
-
-## Validation layer
-
-1. `scripts/validate.py` validates manifests, skill frontmatter, agent frontmatter, automation files, local Markdown resource links, and placeholders. File discovery excludes Git metadata and local `.work`, `.hoyelam`, and `__pycache__` state.
-2. `tests/` covers the validator, local installer, platform verification scripts, and orchestration runtime.
-3. `.github/workflows/validate.yml` runs the same local command to check this plugin repository. It is repository maintenance infrastructure; using the skills does not require GitHub Actions or any CI service.
+[Workflow exercises](../skills/hoyelam-mode/references/workflow-validation.md) validate actual agent behavior separately. They retain versioned evidence and measure context/effort where available. GitHub Actions runs the package check; using the stack does not depend on a CI provider.

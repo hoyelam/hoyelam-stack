@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.0 - 2026-09-08
+
+1. Make the personal baseline outcome-driven, with active orchestration of substantial independent work and optional deeper skills.
+2. Remove the delegation classifier and fixed child ceiling; add focused Codex context and worker-reuse guidance.
+3. Consolidate repeated instructions and role briefs, share pause/resume records, and simplify comment and review requirements.
+4. Distinguish scoped harness repair from full audits, and select orchestration records and pilots according to their benefit.
+5. Add an optional revision-aware source repository cache and reusable isolated workflow exercises.
+6. Validate local Markdown heading references and assess agent behavior separately from structural checks.
+
 ## 0.10.1 - 2026-09-07
 
 1. Front-load the hoyelam-mode discovery description so its engineering purpose remains visible when skill descriptions are shortened.

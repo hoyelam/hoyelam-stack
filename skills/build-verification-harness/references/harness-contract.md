@@ -25,11 +25,11 @@ Prefer a small CLI when the application has a meaningful runtime surface. Includ
 The CLI contract is:
 
 1. `--help` lists commands, flags, prerequisites, and examples without requiring the application to be running.
-2. Standard output is one JSON object suitable for another tool to consume. Diagnostic prose goes to standard error.
+2. Standard output is one concise JSON object suitable for another tool to consume. Return relevant observations and artifact paths; keep verbose logs in artifacts and diagnostic prose on standard error.
 3. Success and failure use stable exit codes and include a concrete recovery action when one is known.
 4. Potentially destructive reset or cleanup commands provide `--dry-run` or an equally explicit preview before they can affect persistent state. Preview mode must not require the mutable application, device, process, or service to be available.
 5. Commands report the instance they addressed and refuse ambiguous shared instances.
-6. Fixed sleeps do not stand in for observable readiness or completion conditions.
+6. Check observable readiness or completion with a bounded timeout and report the last observed condition on failure. Fixed sleeps do not prove either state.
 7. Failures retain their real category and recovery path. In particular, do not report a sandbox, permission, or bind-probe failure as an occupied port or shared instance.
 
 A compact result shape is sufficient:
@@ -75,7 +75,7 @@ Every runtime proof identifies:
 - Evidence artifact references.
 - Concrete limitations or unreachable paths.
 
-Rendered web proof also records page identity, meaningful DOM content, framework-overlay absence, console health, the interaction state transition, and a screenshot. Exercise a materially relevant responsive breakpoint when the behavior or layout changes across breakpoints.
+Rendered web proof records page identity, meaningful rendered state, relevant console or framework errors, and the interaction state transition. Include a screenshot when visual output matters. Exercise a materially relevant responsive breakpoint when the behavior or layout changes across breakpoints.
 
 Orchestrated work should record these as structured receipt fields rather than burying them in narrative prose.
 

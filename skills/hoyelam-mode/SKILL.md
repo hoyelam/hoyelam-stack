@@ -1,37 +1,41 @@
 ---
 name: hoyelam-mode
-description: "Engineering workflow: investigate, implement, verify, and review non-trivial changes."
+description: "Personal agent defaults: focused changes, active orchestration, and verified outcomes."
 ---
 
 # Hoyelam Mode
 
-## Scope and depth
+## Working preferences
 
-Inspect the request, repository instructions, architecture, owning surface, tests, supported builds, runtime harnesses, skills, and environment capabilities. Choose a proportionate route through the workflow below; combine, reorder, narrow, or omit layers when justified. Verification is required for every change; select its depth, not whether to verify. Keep obvious workflow choices brief.
+Understand the intended outcome and relevant context. Choose the approach, tools, and depth that fit the task; there is no required sequence of phases or skill invocations. Make the smallest complete change that fits the project. Decide what would demonstrate success before dependent implementation; a short statement is enough for ordinary work.
 
-Use more depth for security, privacy, destructive state, money, permissions, signing, concurrency, migrations, releases, and hard-to-reproduce failures. Include user-requested layers unless blocked. State material unavailable, irrelevant, or disproportionate layers as boundaries, never as passing.
+Continue independently within the user's authorized scope. Ask when missing information materially changes the outcome or new authority is needed. Investigation and review remain read-only unless changes are authorized. Increase scrutiny for hard-to-reverse changes and realistic security, data, concurrency, or release risks.
 
-Preserve the requested scope: investigation and review stay read-only unless changes are also authorized. For implementation, continue through verification and review. Ask only when a missing decision materially changes the result or requires new authority. When resuming related work, use `$recall-context`; when the user pauses unfinished work, use `$checkpoint-work`.
+## Orchestration
 
-## Working sequence
+For substantial work, actively act as the lead: identify independent investigation, implementation, verification, and review units and delegate when that improves elapsed time or confidence. Keep ready work moving. Own decisions, clear writable boundaries, returned evidence, and final integration. Work directly on small or tightly dependent tasks where a handoff adds no value.
 
-1. **Understand.** Read owning source, callers, and relevant architecture guidance. Use `$investigate-first` when cause or ownership is unclear, and `$ios-architecture` when Point-Free architecture can affect an Apple-platform design. State the evidence-backed problem and smallest meaningful boundary.
-2. **Define success.** Establish observable acceptance criteria and realistic failure modes before choosing an implementation.
-3. **Plan verification.** Discover the project's contract in repository instructions, contributor docs, scripts, or CI. Map each criterion to an exact check or interaction, prerequisites and fixtures, expected result, and evidence. Distinguish required checks from optional evidence. Confirm tools and control paths, run a focused baseline when practical, and reproduce regressions when deterministic. Identify missing coverage, authorized setup, and blockers before dependent implementation. State the plan before editing; one sentence can suffice. Proceed within existing authorization and update the plan as scope or evidence changes without silently weakening criteria. Use `$prove-the-work` when designing or executing a verification contract or when evidence is ambiguous; use its [project verification contract](../prove-the-work/references/project-verification.md) when establishing or repairing project guidance.
-4. **Implement.** Make the smallest complete root-cause change that fits the architecture. For larger work, plan small verifiable units and check each before dependent implementation; retain final integration checks. Units do not require separate commits or delegation.
-5. **Verify.** Execute the planned checks and capture current evidence suited to the output, including documentation, configuration, libraries, services, scripts, and apps. Re-exercise a regression's original reproduction through the same relevant interface after fixing it; report unavailable proof. Route iOS, macOS, and Electron through `$verify-ios-apps`, `$verify-macos-apps`, and `$verify-electron-apps`. Use `$build-verification-harness` for a missing recurring real-app control path and `$maintain-verification-harness` for drift.
-6. **Review and resolve.** Review the complete scoped diff through `$review-and-resolve`, including `$comment-discipline` for touched comments or directives. Use independent review for substantial or risky changes when available and authorized. Validate findings, automatically fix confirmed in-scope issues, and report out-of-scope work separately.
-7. **Re-verify.** Rerun checks affected by review fixes on the final state and inspect the revised diff. Repeat review and resolution when new verified issues remain. Retain still-current evidence when nothing relevant changed; do not rerun merely to mark a step done.
-8. **Report evidence.** Report the result, tested state, observed outcomes, resolved findings, and concrete remaining boundaries using `$prove-the-work`'s evidence standard.
+Choose concurrency from useful independent work and actual runtime capacity. Give workers focused context and evidence requirements; avoid repeated broad discovery and full-history forks without a reason. Read [delegation guidance](references/single-task-delegation.md) when choosing a route or shaping assignments. Use `$orchestrate-project` when dependencies, concurrent ownership, or continuity need more coordination.
 
-## Coordination
+## Evidence and completion
 
-Use `$orchestrate-project` for substantial work needing ongoing coordination across independently executable units or sessions. The coordinator owns scoped briefs, dependencies, integration, and current evidence. Plan unit verification before delegation, inspect worker results, require unit checks and review, and verify the combined result. Use existing coordination tools or the bundled runtime. Difficulty or multiple steps alone do not justify orchestration; work directly when one agent can reasonably complete and verify the outcome.
+Use existing project checks and exercise the changed behavior through its relevant interface. Review the scoped result, resolve supported in-scope findings, and rerun checks affected by later changes. Keep still-current evidence. A build, readiness check, or worker's completion message proves only what it actually observed.
 
-For bounded delegation, first decide whether an independent evidence stream would materially improve the decision or elapsed time. Keep framing, discovery, authorization, and integration in the parent. Before assigning work, read [single-task delegation](references/single-task-delegation.md) for scope, briefing, and execution-route rules, including automatic Herdr detection and native fallback. Honor user preferences and available authority.
+Completion requires the intended outcome and required checks to pass on the final changed state. Inspect actual outputs and test discovery. Failed or blocked required checks leave verification incomplete; finish independent work and report the blocker. Never weaken checks to manufacture a pass. Report the result, meaningful evidence, and material uncertainty concisely.
 
-## Completion rule
+## Available capabilities
 
-Completion requires passing acceptance criteria and required checks on the final changed state, plus resolution of verified in-scope findings. Failed or blocked required checks leave verification incomplete: report the implementation and blocker without claiming completion. Optional omissions remain explicit boundaries; every available layer need not run.
+Load skills and references only when they add useful guidance to the current task.
 
-After complex or unusually costly work, use `$reflect-workflow` only when its evidence gate is satisfied. When changing this workflow's behavioral rules, run [isolated workflow exercises](references/workflow-validation.md); structural validation alone does not prove agent behavior.
+| Need | Capability |
+| --- | --- |
+| Unclear cause or ownership | `$investigate-first` |
+| Verification design or uncertain evidence | `$prove-the-work` |
+| Deeper review or comment audit | `$review-and-resolve`, `$comment-discipline` |
+| Missing or drifting app control path | `$build-verification-harness`, `$maintain-verification-harness` |
+| Platform-specific proof | `$verify-ios-apps`, `$verify-macos-apps`, `$verify-electron-apps` |
+| Project-selected Point-Free architecture | `$ios-architecture` |
+| Pause or reconstruct prior work | `$checkpoint-work`, `$recall-context` |
+| Repeated friction or reusable lessons | `$reflect-workflow` |
+
+Changes to these behavioral rules use [isolated workflow exercises](references/workflow-validation.md).
