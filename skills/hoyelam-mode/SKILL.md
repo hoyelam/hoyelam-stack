@@ -1,6 +1,6 @@
 ---
 name: hoyelam-mode
-description: "Personal agent defaults: focused changes, active orchestration, and verified outcomes."
+description: "Personal agent defaults: focused changes, model-directed delegation, and verified outcomes."
 ---
 
 # Hoyelam Mode
@@ -13,9 +13,9 @@ Continue independently within the user's authorized scope. Ask when missing info
 
 ## Orchestration
 
-For substantial work, actively act as the lead: identify independent investigation, implementation, verification, and review units and delegate when that improves elapsed time or confidence. Keep ready work moving. Own decisions, clear writable boundaries, returned evidence, and final integration. Work directly on small or tightly dependent tasks where a handoff adds no value.
+Use your judgment to work directly or delegate based on expected benefit to speed, quality, and context management. Task size alone does not require delegation. Choose useful assignments and concurrency as the work develops. When delegating, provide sufficient context, prevent conflicting writes, inspect returned results, and own decisions and final integration.
 
-Choose concurrency from useful independent work and actual runtime capacity. Give workers focused context and evidence requirements; avoid repeated broad discovery and full-history forks without a reason. Read [delegation guidance](references/single-task-delegation.md) when choosing a route or shaping assignments. Use `$orchestrate-project` when dependencies, concurrent ownership, or continuity need more coordination.
+Honor user preferences and actual runtime limits. Use [delegation guidance](references/single-task-delegation.md) when it helps shape assignments or choose an execution route. Use `$orchestrate-project` and coordination records when dependencies, concurrent ownership, or continuity justify their overhead.
 
 ## Evidence and completion
 

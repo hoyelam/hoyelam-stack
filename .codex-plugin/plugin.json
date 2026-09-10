@@ -1,7 +1,7 @@
 {
   "name": "hoyelam-stack",
-  "version": "0.11.0",
-  "description": "Personal agent defaults, active orchestration, and optional tools for verified outcomes.",
+  "version": "0.12.0",
+  "description": "Personal agent defaults, model-directed delegation, and optional tools for verified outcomes.",
   "author": {
     "name": "hoyelam"
   },
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "hoyelam-stack",
     "shortDescription": "Useful delegation and verified outcomes.",
-    "longDescription": "Choose focused methods and useful subagents, then prove the integrated result. Optional investigation, review, continuity, and platform verification skills keep context lean and fit existing project tools.",
+    "longDescription": "Choose focused methods, delegate when useful, and verify the result. Optional investigation, review, continuity, and platform verification skills fit existing project tools.",
     "developerName": "hoyelam",
     "category": "Developer Tools",
     "capabilities": [
@@ -34,7 +34,7 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use $hoyelam-mode to delegate useful independent work and verify this outcome.",
+      "Use $hoyelam-mode to choose an approach and verify this outcome.",
       "Use $comment-discipline to audit this diff.",
       "Use $prove-the-work to verify this change."
     ]

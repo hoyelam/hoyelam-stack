@@ -6,14 +6,14 @@
 | --- | --- |
 | Small documentation correction | Inspect the owning source, edit, and check the affected text or links. |
 | Reproducible defect | Investigate the cause, use a meaningful regression check, and re-exercise the original path. |
-| Several independent features in one repository | Lead with scoped workers, relay dependency outputs, and verify integration. |
-| Substantial review | Give an independent reviewer the intended behavior and current diff; validate findings before accepting fixes. |
+| Several independent features in one repository | Choose direct work or scoped workers based on expected benefit; relay dependency outputs and verify integration. |
+| Substantial review | Consider an independent reviewer when another perspective helps; validate findings before accepting fixes. |
 | One broken harness command | Repair that path and exercise affected features and relevant regressions. Request a full audit when complete coverage is needed. |
 | Interrupted work | Reconcile a compact continuity record against the live repository before continuing. |
 
 Use [prove-the-work](../skills/prove-the-work/SKILL.md) when verification needs design or its evidence is ambiguous. Its [project contract](../skills/prove-the-work/references/project-verification.md) helps establish supported commands without requiring a new framework.
 
-For substantial independent work, [delegation](../skills/hoyelam-mode/references/single-task-delegation.md) gives a lightweight lead/worker pattern. [Orchestrate-project](../skills/orchestrate-project/SKILL.md) adds dependency and recovery guidance. Simple task-owned records can suffice; select the bundled runtime when its leases, assignment identity, or recovery capabilities earn their cost.
+When delegation helps, [delegation guidance](../skills/hoyelam-mode/references/single-task-delegation.md) supports assignments and integration. [Orchestrate-project](../skills/orchestrate-project/SKILL.md) adds dependency and recovery guidance when needed. Simple task-owned records can suffice; select the bundled runtime when its leases, assignment identity, or recovery capabilities earn their cost.
 
 ## Codex context
 

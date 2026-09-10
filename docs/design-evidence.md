@@ -46,3 +46,11 @@ The resulting design removes the task classifier and mandatory skill chains, cen
 Pstack's evaluation and project verification ideas remain useful. Agent-stuff's source cache and human-centered session analysis informed the optional research helper and reflection guidance. Superpowers' compulsory invocation methodology was not adopted. These are adaptations; helper implementations are maintained here and must pass their own checks.
 
 The [flexible baseline verification record](evidence/flexible-baseline-2026-09-07.md) records package checks, isolated Codex outcomes, observed delegation, continuity, and context measurements. Shorter source text alone does not establish better task performance.
+
+## Delegation discretion — 2026-09-10
+
+The user clarified that the model should decide when delegation helps. Current guidance therefore replaces the earlier preference for active orchestration of substantial work with model judgment about direct work, delegation, reviewer selection, concurrency, and handoff context. Ownership and final-state verification remain strict; coordination tooling remains optional.
+
+The [verification record](evidence/delegation-discretion-2026-09-10.md) documents final-source package checks and isolated task outcomes, along with an additional native-tool observation whose implementation was blocked by automatic approval review. It does not claim an efficiency improvement or completed native delegation evidence.
+
+The subsequent [simplification round](evidence/instruction-simplification-2026-09-10.md) shortened three overlapping coordination documents while preserving their requirements. It records source review, package checks, and a fresh module-integration exercise; shorter wording alone does not establish better model performance.

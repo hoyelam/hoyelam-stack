@@ -7,9 +7,9 @@ description: Review a scoped implementation for supported issues and resolve ver
 
 ## Choose the reviewer
 
-For substantial or risky changes, delegate an independent read-only review when available and authorized. Give the reviewer the request, acceptance criteria, complete scoped diff, relevant owning context, tested state, and evidence. Ask for supported findings without supplying the implementer's preferred verdict. The lead validates findings and owns fixes and integration, directly or through scoped delegation.
+Choose self-review or an independent read-only reviewer based on the value of another perspective, the risks present, and handoff cost. Task size alone does not require delegation. When delegating, give the reviewer the request, acceptance criteria, complete scoped diff, relevant owning context, tested state, and evidence. Ask for supported findings without supplying the implementer's preferred verdict. The lead validates findings and owns fixes and integration, directly or through useful delegation.
 
-For small low-risk changes, a deliberate self-review is sufficient. If independent review is unavailable, report that boundary and perform the strongest available review; never call self-review independent. An explicitly required independent review remains a gate.
+Perform a deliberate review whichever route is chosen; never call self-review independent. If an explicitly required independent review is unavailable, report the blocker and complete useful available review. That explicit requirement remains a gate.
 
 ## Review
 

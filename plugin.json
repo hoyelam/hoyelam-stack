@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hoyelam-stack",
-  "description": "Personal agent defaults, active orchestration, and optional tools for verified outcomes.",
-  "version": "0.11.0",
+  "description": "Personal agent defaults, model-directed delegation, and optional tools for verified outcomes.",
+  "version": "0.12.0",
   "author": {
     "name": "hoyelam"
   },

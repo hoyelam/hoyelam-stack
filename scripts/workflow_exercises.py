@@ -419,10 +419,12 @@ def check(case: str, project: Path) -> dict[str, object]:
             problems.append(f"command unavailable or timed out: {arguments}")
             return False
 
-    if run(["-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"]):
-        discovery = re.search(r"Ran (\d+) tests?", evidence[-1]["stderr"])
-        if discovery is None or int(discovery.group(1)) == 0 or "skipped=" in evidence[-1]["stderr"]:
-            problems.append("required unittest discovery was empty or skipped tests")
+    discovery_passed = run(["-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"])
+    discovery_output = evidence[-1].get("stderr", "")
+    discovery = re.search(r"Ran (\d+) tests?", discovery_output)
+    if ((discovery is not None and int(discovery.group(1)) == 0)
+            or "skipped=" in discovery_output or (discovery_passed and discovery is None)):
+        problems.append("required unittest discovery was empty or skipped tests")
     if case == "docs":
         commands = re.findall(r"^python3 label_cli\.py .+$", (project / "README.md").read_text(), re.MULTILINE)
         if len(commands) != 1:

@@ -1,6 +1,6 @@
 # hoyelam-stack working agreement
 
-Use [hoyelam-mode](skills/hoyelam-mode/SKILL.md) for the maintained personal defaults, orchestration guidance, and completion standard. Choose useful skills and tools without imposing a fixed sequence. Keep substantial independent work moving through a lead and scoped workers.
+Use [hoyelam-mode](skills/hoyelam-mode/SKILL.md) for the maintained personal defaults, orchestration guidance, and completion standard. Choose useful skills, tools, and delegation based on the task; task size alone does not require a lead/worker workflow.
 
 ## Repository verification
 

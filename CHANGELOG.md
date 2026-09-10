@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0 - 2026-09-10
+
+1. Let the model choose direct work, delegation, reviewer selection, worker count, and handoff context according to the task; task size alone no longer requires an orchestrator or workers.
+2. Shorten three coordination documents by 30% while preserving authorization, ownership, recovery, and final-state verification requirements.
+3. Keep empty-test-discovery diagnostics accurate when Python 3.14 exits with status 5, without weakening acceptance checks.
+4. Record isolated workflow outcomes, instruction hashes, and verification limitations for the revised guidance.
+
 ## 0.11.0 - 2026-09-08
 
 1. Make the personal baseline outcome-driven, with active orchestration of substantial independent work and optional deeper skills.
