@@ -1,6 +1,6 @@
 ---
 name: maintain-verification-harness
-description: Repair a project verification skill when its control paths or feature map drift, or audit its coverage when requested.
+description: Repair drifting harness commands or feature maps; audit coverage when requested.
 ---
 
 # Maintain Verification Harness

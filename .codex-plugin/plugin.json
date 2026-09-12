@@ -1,6 +1,6 @@
 {
   "name": "hoyelam-stack",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Personal agent defaults, model-directed delegation, and optional tools for verified outcomes.",
   "author": {
     "name": "hoyelam"

@@ -1,6 +1,6 @@
 ---
 name: checkpoint-work
-description: Preserve recoverable work and a compact handoff when engineering work must pause before completion.
+description: Pause unfinished work with recoverable state and a compact handoff.
 ---
 
 # Checkpoint Work

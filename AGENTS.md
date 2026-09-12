@@ -1,14 +1,12 @@
 # hoyelam-stack working agreement
 
-Use [hoyelam-mode](skills/hoyelam-mode/SKILL.md) for the maintained personal defaults, orchestration guidance, and completion standard. Choose useful skills, tools, and delegation based on the task; task size alone does not require a lead/worker workflow.
+Use [hoyelam-mode](skills/hoyelam-mode/SKILL.md) for personal defaults and the completion standard.
 
 ## Repository verification
 
-Before editing, identify observable success and the checks that will demonstrate it. Run `./scripts/validate.sh` from the repository root. It checks package structure, documentation references, and the Python unittest suite. Inspect actual test discovery and skips.
+Run `./scripts/validate.sh` from the repository root to check package structure, documentation references, and the Python unittest suite. Inspect actual test discovery and skips. The suite uses local disposable fixtures and mocked external services; run it, fix failures caused by the requested change, and rerun affected checks within the task's existing authority.
 
 Behavioral instruction changes also require [isolated workflow exercises](skills/hoyelam-mode/references/workflow-validation.md). Record the instruction version, actual actions, observed outcomes, and limitations. Historical evidence remains tied to the state it tested.
-
-After fixes, rerun affected checks on the final state and retain still-current evidence. Failed or blocked required checks leave verification incomplete. Continue independent authorized work and report the exact gap.
 
 ## Ownership
 

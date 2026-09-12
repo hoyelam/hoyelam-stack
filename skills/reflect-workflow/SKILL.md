@@ -1,6 +1,6 @@
 ---
 name: reflect-workflow
-description: Improve reusable agent guidance after user corrections, recurring friction, or a costly failure provides evidence for a change.
+description: Revise agent guidance after user corrections, recurring friction, or a costly failure.
 ---
 
 # Reflect Workflow

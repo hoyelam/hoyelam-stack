@@ -1,6 +1,6 @@
 ---
 name: build-verification-harness
-description: Create or extend a repeatable project verification path when reliable real-application proof is missing.
+description: Build missing app verification paths or extend an existing harness for required proof.
 ---
 
 # Build Verification Harness

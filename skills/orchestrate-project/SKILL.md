@@ -1,6 +1,6 @@
 ---
 name: orchestrate-project
-description: Coordinate delegated work when dependencies, concurrent ownership, or continuity need explicit management.
+description: Coordinate work with dependencies, concurrent owners, or recovery across sessions.
 ---
 
 # Orchestrate Project

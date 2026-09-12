@@ -1,6 +1,6 @@
 ---
 name: review-and-resolve
-description: Review a scoped implementation for supported issues and resolve verified findings when implementation is authorized.
+description: Review scoped implementations; resolve supported findings when edits are authorized.
 ---
 
 # Review And Resolve

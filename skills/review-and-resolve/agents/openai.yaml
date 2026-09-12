@@ -1,6 +1,6 @@
 interface:
   display_name: "Review and Resolve"
-  short_description: "Review deeply and fix every proven issue"
-  default_prompt: "Use $review-and-resolve to review this implementation and resolve all verified findings."
+  short_description: "Review scoped work and resolve supported findings"
+  default_prompt: "Use $review-and-resolve to review this implementation and fix supported in-scope findings when edits are authorized."
 policy:
   allow_implicit_invocation: true

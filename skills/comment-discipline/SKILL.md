@@ -1,6 +1,6 @@
 ---
 name: comment-discipline
-description: Review comments and directives in a scoped diff, removing narration while preserving useful constraints and contracts.
+description: Audit comments and directives in a requested diff, preserving useful constraints.
 ---
 
 # Comment Discipline

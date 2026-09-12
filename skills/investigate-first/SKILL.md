@@ -1,6 +1,6 @@
 ---
 name: investigate-first
-description: Find the supported cause and owning boundary of a defect or unfamiliar subsystem.
+description: Diagnose defects or trace ownership when the cause or responsible boundary is unclear.
 ---
 
 # Investigate First

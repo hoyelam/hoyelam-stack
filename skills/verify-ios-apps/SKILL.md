@@ -1,6 +1,6 @@
 ---
 name: verify-ios-apps
-description: Verify iOS changes with checks matched to the affected behavior, using project tests, builds, Simulator or device interaction when needed.
+description: Verify iOS behavior with relevant tests, builds, and Simulator or device evidence.
 ---
 
 # Verify iOS Apps

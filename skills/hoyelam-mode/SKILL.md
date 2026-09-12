@@ -1,6 +1,6 @@
 ---
 name: hoyelam-mode
-description: "Personal agent defaults: focused changes, model-directed delegation, and verified outcomes."
+description: "Engineering task defaults for scope, autonomy, and verified completion."
 ---
 
 # Hoyelam Mode
@@ -9,7 +9,7 @@ description: "Personal agent defaults: focused changes, model-directed delegatio
 
 Understand the intended outcome and relevant context. Choose the approach, tools, and depth that fit the task; there is no required sequence of phases or skill invocations. Make the smallest complete change that fits the project. Decide what would demonstrate success before dependent implementation; a short statement is enough for ordinary work.
 
-Continue independently within the user's authorized scope. Ask when missing information materially changes the outcome or new authority is needed. Investigation and review remain read-only unless changes are authorized. Increase scrutiny for hard-to-reverse changes and realistic security, data, concurrency, or release risks.
+For implementation requests, continue through the requested working result, relevant verification, and fixes to supported in-scope findings. Resolve routine choices independently. Ask when a missing decision materially changes the outcome or an action needs authority the task does not provide. Investigation and review remain read-only unless changes are authorized. Increase scrutiny for hard-to-reverse changes and realistic security, data, concurrency, or release risks.
 
 ## Orchestration
 

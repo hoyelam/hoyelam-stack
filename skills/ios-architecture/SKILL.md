@@ -1,13 +1,13 @@
 ---
 name: ios-architecture
-description: Guide iOS and macOS implementation when a repository uses or is adopting Composable Architecture and Point-Free libraries, while preserving the project's existing architecture and test conventions.
+description: TCA and Point-Free architecture for Apple projects that use or explicitly adopt them.
 ---
 
 # iOS Architecture
 
-## Architecture gate
+## Fit the project
 
-1. Read the repository's `AGENTS.md`, architecture docs, package manifest, neighboring features, and tests before selecting a pattern.
+1. Use neighboring features for an existing pattern, architecture docs for boundary decisions, and package manifests for dependency or adoption changes. Read tests when their contracts affect the change; no full architecture survey is required for a local edit.
 2. Preserve an established architecture unless the request explicitly includes migration or the existing boundary cannot satisfy the requirement safely.
 3. Prefer Composable Architecture for new stateful feature boundaries when the repository already uses it or has explicitly chosen it.
 
@@ -23,7 +23,7 @@ Use only the installed skills relevant to the task:
 
 ## Implementation rules
 
-1. Model state and actions before writing view behavior.
+1. Keep state, actions, and view behavior consistent with the feature's existing model.
 2. Put side effects behind dependencies that can be replaced in tests.
 3. Keep views declarative and feature logic testable outside the UI.
 4. Make invalid states difficult or impossible to represent.

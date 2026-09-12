@@ -1,6 +1,6 @@
 interface:
   display_name: "Hoyelam Mode"
-  short_description: "Orchestrate useful work and verify outcomes"
-  default_prompt: "Use $hoyelam-mode to choose useful tools, delegate independent work, and verify the outcome."
+  short_description: "Engineering defaults and verified completion"
+  default_prompt: "Use $hoyelam-mode to complete this task with appropriate tools, scope, and verification."
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: prove-the-work
-description: Choose meaningful verification and assess completion when a change's acceptance checks or evidence need clarification.
+description: Clarify acceptance checks or assess uncertain verification evidence.
 ---
 
 # Prove The Work

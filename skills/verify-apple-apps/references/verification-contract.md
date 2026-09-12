@@ -1,6 +1,6 @@
 # Shared Apple verification contract
 
-Apply [prove-the-work](../../prove-the-work/SKILL.md). Inspect repository instructions, schemes or package products, test plans, and supported verification commands before choosing checks. Use the bundled platform guidance with available tools or an existing equivalent project workflow that proves the required behavior.
+Use the project's supported verification commands and inspect schemes, package products, or test plans when needed to select a target or coverage. Use the relevant platform guidance or an equivalent project workflow that proves the required behavior. Consult [prove-the-work](../../prove-the-work/SKILL.md) when acceptance checks or the strength of the evidence need clarification.
 
 1. Define the invariant, original failure path where applicable, and observable acceptance evidence. Select checks according to the changed boundary and risk; user-requested and repository-required checks remain gates.
 2. Prefer focused Swift Testing, XCTest, reducer, dependency, or model tests when that boundary can be exercised meaningfully. For a defect, demonstrate the original failure when practical.

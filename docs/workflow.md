@@ -19,6 +19,8 @@ When delegation helps, [delegation guidance](../skills/hoyelam-mode/references/s
 
 Keep project instructions focused on project facts and verification commands. Link the personal defaults instead of copying their rules into each repository. Load specialized skills and references only when they change the task's decisions.
 
+The same core guidance supports Astra and Sol. Describe the requested working result and relevant acceptance checks; let the model choose the method and continue through in-scope repairs. Add model-specific guidance only when repeated observations show a need. Verification skills supply platform knowledge; use prove-the-work when acceptance or evidence is unclear, not as an additional phase for every change.
+
 Use focused worker briefs, bounded search output, and durable artifact paths for long logs. Reuse workers when their retained context fits; reconstruct a compact handoff when it does not. The [Codex adapter](../skills/hoyelam-mode/references/codex-delegation.md) describes runtime-specific options.
 
 ## Improving the stack

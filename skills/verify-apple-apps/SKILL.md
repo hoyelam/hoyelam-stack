@@ -1,11 +1,11 @@
 ---
 name: verify-apple-apps
-description: Route Apple-platform verification to focused iOS or macOS guidance, retaining a shared entrypoint for mixed-platform and existing workflows.
+description: Route mixed Apple-platform verification or existing verify-apple-apps workflows.
 ---
 
 # Verify Apple Apps
 
-This compatibility entrypoint routes to the focused platform skills. Existing `$verify-apple-apps` invocations remain supported.
+This explicit-only compatibility entrypoint routes to the focused platform skills. Existing `$verify-apple-apps` invocations remain supported; ordinary discovery uses the focused iOS and macOS skills.
 
 ## Route the work
 

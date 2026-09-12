@@ -1,15 +1,15 @@
 ---
 name: verify-electron-apps
-description: Verify Electron changes with tests and runtime evidence suited to the affected main, preload, renderer, or native behavior using bundled or existing project tools.
+description: Verify Electron process boundaries and affected renderer or native behavior.
 ---
 
 # Verify Electron Apps
 
-Apply `$prove-the-work`. Select checks for the affected Electron behavior and keep user-requested and repository-required checks as completion gates.
+Select checks for the affected Electron behavior and keep user-requested and repository-required checks as completion gates. Consult `$prove-the-work` when acceptance checks or the strength of the evidence need clarification.
 
 ## Route the work
 
-1. Read repository instructions, package scripts, Electron version, builder or packager configuration, test frameworks, and existing launch harnesses.
+1. Use project verification commands and relevant tests for the changed boundary. Inspect launch harnesses for runtime proof, and Electron version or packaging configuration when compatibility or distribution affects the claim.
 2. Map the changed behavior to the owning process: main, preload, renderer, utility process, worker, or native operating-system surface.
 3. Read [references/electron-verification.md](references/electron-verification.md) before launching or driving the application.
 4. Use repository-owned unit, integration, Playwright, or equivalent end-to-end infrastructure when it proves the claim. This skill bundles a CDP readiness diagnostic and protocol guidance; desktop computer use, Playwright, and other runtime tools depend on the environment. Check actual availability before depending on them. Add a harness only when a required proof is missing and setup is within scope.

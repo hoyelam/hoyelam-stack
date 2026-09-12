@@ -3,4 +3,4 @@ interface:
   short_description: "Route verification for iOS and macOS changes"
   default_prompt: "Use $verify-apple-apps to select and run the checks needed to verify this Apple-platform change."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

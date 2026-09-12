@@ -25,6 +25,16 @@ The marketplace resolves the plugin from its tagged GitHub release. It does not 
 
 Pulling the repository updates linked skills immediately. Check out a tag such as `v0.5.0` when you want a fixed version instead of the latest `main` branch.
 
+## Keep discovery focused
+
+Skill descriptions should name the distinguishing task first. Keep invocation prompts and UI descriptions consistent with the skill body. Install specialized capabilities for their distinct workflows; overlapping general-purpose coaching need not be another default.
+
+The Apple compatibility router is explicit-only in Codex: `$verify-apple-apps` remains available, while ordinary selection uses `verify-ios-apps` and `verify-macos-apps`. Its `agents/openai.yaml` sets `policy.allow_implicit_invocation: false`. Other runtimes may handle this metadata differently.
+
+For a user-selected explicit-only skill, preserve its metadata and set the same policy in its own `agents/openai.yaml`. This preserves the installed files and explicit invocation. Restore the previous policy to undo the change, and start a fresh task to verify discovery. Third-party updates may replace local metadata overrides; do not edit plugin caches as a durable configuration strategy. See [OpenAI's skill configuration documentation](https://learn.chatgpt.com/docs/build-skills).
+
+Keep personal instructions in the user-level `AGENTS.md` and project facts and commands in the repository. Reference hoyelam-mode for engineering defaults instead of repeating its workflow. Local catalog choices and user-level changes are machine settings, not changes the stack installer applies to everyone.
+
 ## Use with other coding agents
 
 1. Point the agent at the repository `AGENTS.md` for the working agreement.

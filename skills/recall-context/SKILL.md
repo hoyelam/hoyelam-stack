@@ -1,6 +1,6 @@
 ---
 name: recall-context
-description: Recover decisions, current evidence, and the next action when resuming prior work with incomplete or stale context.
+description: Resume prior work by reconciling incomplete or stale context with current state.
 ---
 
 # Recall Context

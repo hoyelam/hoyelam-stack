@@ -1,6 +1,6 @@
 ---
 name: verify-macos-apps
-description: Verify macOS changes with checks matched to the affected behavior, using project tests, app builds, desktop interaction and system evidence when needed.
+description: Verify macOS behavior with relevant tests, app builds, and desktop or system evidence.
 ---
 
 # Verify macOS Apps

@@ -20,7 +20,7 @@ From this repository, use `python3 scripts/workflow_exercises.py prepare --case 
 | `modules` | Independent domain work in one repository is integrated and verified. |
 | `harness` | One broken control path is repaired without changing the product or auditing an unrelated unavailable feature. |
 
-Run each worker in its own project using authorized local actions. In Codex, use a fresh session with the supported workspace sandbox, preserve the configured model, and capture task-local JSON events and the final answer outside the candidate workspace. Do not disable safeguards to make an exercise pass. Record tool/runtime limitations, including unavailable native delegation.
+Run each worker in its own project using authorized local actions. In Codex, use a fresh session with the supported workspace sandbox and capture task-local JSON events and the final answer outside the candidate workspace. Preserve the configured model unless the task explicitly calls for a model comparison; then record the exact model and reasoning settings for each matched pair. Do not disable safeguards to make an exercise pass. Record tool/runtime limitations, including unavailable native delegation.
 
 After the worker stops, run `python3 scripts/workflow_exercises.py check --case CASE --project PROJECT_PATH`. This independently exercises the artifact and checks scope. Review the actual diff, assertions, final response, and tool activity as well: a checker alone cannot establish useful delegation, truthful reporting, or actions outside its observed workspace. Observe worker assignments and integration for the modules case; inspect selected coverage for harness repair.
 

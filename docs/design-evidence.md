@@ -54,3 +54,7 @@ The user clarified that the model should decide when delegation helps. Current g
 The [verification record](evidence/delegation-discretion-2026-09-10.md) documents final-source package checks and isolated task outcomes, along with an additional native-tool observation whose implementation was blocked by automatic approval review. It does not claim an efficiency improvement or completed native delegation evidence.
 
 The subsequent [simplification round](evidence/instruction-simplification-2026-09-10.md) shortened three overlapping coordination documents while preserving their requirements. It records source review, package checks, and a fresh module-integration exercise; shorter wording alone does not establish better model performance.
+
+## Astra-first reassessment — 2026-09-12
+
+The [reassessment record](evidence/astra-reassessment-2026-09-12.md) covers clearer discovery triggers, aligned invocation metadata, conditional reading, explicit-only alternatives, and implementation persistence. It separates portable changes from installed personal settings and records passing local checks, 14 expected functional workflow outcomes across Astra and Sol, and an explicit Apple-router smoke test. Mixed timing and bounded workflow deviations prevent claiming a universal efficiency improvement or perfect instruction adherence.

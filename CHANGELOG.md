@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.0 - 2026-09-12
+
+1. Clarify implementation persistence while keeping one shared core for Astra and Sol and model-selected methods and delegation.
+2. Front-load all 16 skill descriptions with their distinguishing tasks and align invocation prompts with their current scope.
+3. Make architecture reads conditional, consult general verification guidance only when needed, and keep the Apple compatibility router explicit-only.
+4. Simplify repository instructions and document reversible discovery choices without changing other users' local settings.
+5. Record paired Astra/Sol workflow observations, discovery checks, an explicit-router smoke test, and their limitations.
+
 ## 0.12.0 - 2026-09-10
 
 1. Let the model choose direct work, delegation, reviewer selection, worker count, and handoff context according to the task; task size alone no longer requires an orchestrator or workers.
