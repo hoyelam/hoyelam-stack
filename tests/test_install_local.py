@@ -55,6 +55,61 @@ class InstallLocalTests(unittest.TestCase):
             self.assertIn("Conflict:", result.stderr)
             self.assertTrue(conflict.is_dir())
 
+    def test_reinstall_through_repository_alias_preserves_existing_links(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory)
+            alias = destination / "repository-alias"
+            alias.symlink_to(self.root, target_is_directory=True)
+            environment = self.environment(destination)
+            subprocess.run(
+                [str(alias / "scripts/install-local.sh")],
+                check=True, capture_output=True, text=True, env=environment,
+            )
+            links = {path: os.readlink(path) for path in (destination / "codex").iterdir()}
+            self.assertTrue(all(target.startswith(str(alias)) for target in links.values()))
+            result = subprocess.run(
+                [str(self.script)],
+                check=False, capture_output=True, text=True, env=environment,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual({path: os.readlink(path) for path in links}, links)
+            for path in links:
+                self.assertTrue(path.samefile(self.root / "skills" / path.name))
+
+    def test_accepts_relative_link_to_same_skill(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory).resolve()
+            target = destination / "codex" / "comment-discipline"
+            target.parent.mkdir()
+            relative = os.path.relpath(self.root / "skills" / target.name, target.parent)
+            target.symlink_to(relative, target_is_directory=True)
+            self.assertTrue(target.samefile(self.root / "skills" / target.name))
+            result = subprocess.run(
+                [str(self.script)], check=False, capture_output=True, text=True,
+                env=self.environment(destination),
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(os.readlink(target), relative)
+
+    def test_refuses_unrelated_and_dangling_symlinks_without_replacing_them(self) -> None:
+        for exists in (True, False):
+            with self.subTest(exists=exists), tempfile.TemporaryDirectory() as directory:
+                destination = Path(directory)
+                unrelated = destination / "other-skill"
+                if exists:
+                    unrelated.mkdir()
+                target = destination / "codex" / "comment-discipline"
+                target.parent.mkdir()
+                target.symlink_to(unrelated, target_is_directory=True)
+                result = subprocess.run(
+                    [str(self.script)], check=False, capture_output=True, text=True,
+                    env=self.environment(destination),
+                )
+                self.assertEqual(result.returncode, 1)
+                self.assertIn(str(target), result.stderr)
+                self.assertTrue(target.is_symlink())
+                self.assertEqual(os.readlink(target), str(unrelated))
+
 
 if __name__ == "__main__":
     unittest.main()

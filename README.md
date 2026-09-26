@@ -2,7 +2,7 @@
 
 `hoyelam-stack` captures how I like to work with coding agents: focused changes, model-directed delegation, and evidence that the result works. Codex is my preferred agent; the skills remain usable by other coding agents.
 
-I want agents to choose useful methods and tools. A fixed sequence of phases or mandatory skill calls adds little when the agent already knows how to do the work. The [personal defaults](skills/hoyelam-mode/SKILL.md) are the maintained source for my working preferences and completion standard.
+I want agents to choose useful methods and tools from the task, project harness, and focused skill descriptions. A fixed sequence of phases or mandatory skill calls adds little when the agent already knows how to do the work. [Hoyelam Mode](skills/hoyelam-mode/SKILL.md) preserves my complete preference bundle for explicit use, but it is not a prerequisite for engineering tasks.
 
 ## What matters to me
 
@@ -22,7 +22,7 @@ The source-research helper caches reference repositories at explicit revisions. 
 
 ## Use and maintain
 
-Follow the [installation guide](docs/local-install.md), then invoke `$hoyelam-mode` or reference it in project instructions. Installing the stack makes capabilities available; the agent loads their bodies as needed. The [usage guide](docs/workflow.md) gives examples.
+Follow the [installation guide](docs/local-install.md). Installing the stack makes capabilities available so the harness and model can select focused guidance as needed. Invoke `$hoyelam-mode` explicitly only when you want the complete personal preference bundle. The [usage guide](docs/workflow.md) gives examples.
 
 Run `./scripts/validate.sh` to validate the package and helper tests. Behavioral changes also use [isolated workflow exercises](skills/hoyelam-mode/references/workflow-validation.md), comparing actual outcomes and costs when evaluating efficiency. See [architecture](docs/architecture.md), [design evidence](docs/design-evidence.md), [releases](docs/releases.md), and the [changelog](CHANGELOG.md).
 

@@ -9,7 +9,7 @@ link_path() {
     hoyelam_stack_target=$2
     hoyelam_stack_parent=$(dirname -- "$hoyelam_stack_target")
     mkdir -p "$hoyelam_stack_parent"
-    if [ -L "$hoyelam_stack_target" ] && [ "$(readlink "$hoyelam_stack_target")" = "$hoyelam_stack_source" ]; then
+    if [ -L "$hoyelam_stack_target" ] && [ "$hoyelam_stack_target" -ef "$hoyelam_stack_source" ]; then
         printf 'Already linked: %s\n' "$hoyelam_stack_target"
         return
     fi

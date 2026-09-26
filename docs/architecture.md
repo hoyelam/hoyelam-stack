@@ -2,7 +2,7 @@
 
 ## Portable capabilities
 
-[Hoyelam Mode](../skills/hoyelam-mode/SKILL.md) owns personal defaults and the completion standard. `AGENTS.md` adds this repository's verification requirements. The README and usage guide explain discovery without duplicating the working rules.
+[Hoyelam Mode](../skills/hoyelam-mode/SKILL.md) preserves an optional bundle of personal defaults and a completion standard. It is explicit-only in Codex so ordinary work follows the task, repository harness, and focused skill selection. `AGENTS.md` owns this repository's verification requirements. The README and usage guide explain discovery without duplicating the working rules.
 
 `skills/` contains independently selectable capabilities. Entrypoints hold the essential guidance; references hold conditional procedures; scripts automate repeated operations. iOS and macOS share Apple references and diagnostics. The focused platform entrypoints remain discoverable alongside Electron verification.
 

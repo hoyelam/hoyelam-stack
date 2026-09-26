@@ -58,3 +58,11 @@ The subsequent [simplification round](evidence/instruction-simplification-2026-0
 ## Astra-first reassessment — 2026-09-12
 
 The [reassessment record](evidence/astra-reassessment-2026-09-12.md) covers clearer discovery triggers, aligned invocation metadata, conditional reading, explicit-only alternatives, and implementation persistence. It separates portable changes from installed personal settings and records passing local checks, 14 expected functional workflow outcomes across Astra and Sol, and an explicit Apple-router smoke test. Mixed timing and bounded workflow deviations prevent claiming a universal efficiency improvement or perfect instruction adherence.
+
+## Harness-led routing — 2026-09-14
+
+The user removed the blanket requirement to load Hoyelam Mode for non-trivial engineering work. The mode remains an explicit-only preference bundle, while ordinary work follows the task, repository harness, and focused skill descriptions. The [verification record](evidence/harness-led-routing-2026-09-14.json) captures final instruction hashes, package validation, fresh prompt discovery, a direct documentation exercise, an explicit-invocation smoke test, and their limitations.
+
+## PStack audit — 2026-09-26
+
+The [audit](evidence/pstack-audit-2026-09-26.md) compares the current local stack with an immutable upstream revision. It records a reproduced installer alias defect, focused additions to existing investigation, review, and verification skills, and isolated behavioral observations. Existing optional mode routing and model-directed methods remain intact. The observations establish exercised behavior, not an improvement over the previous instructions or a general performance ranking.

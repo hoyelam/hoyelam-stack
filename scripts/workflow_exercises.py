@@ -126,9 +126,10 @@ def project_files(case: str) -> dict[str, str]:
     instructions = normalized('''
     # Project working agreement
 
-    Use `$hoyelam-mode` from `.agents/skills/hoyelam-mode/SKILL.md` for this work.
-    Resolve related skills from `.agents/skills/<skill-name>/SKILL.md` in this project,
-    without substituting globally installed copies. If a skill is absent, use direct work.
+    Skills are available under `.agents/skills/<skill-name>/SKILL.md`. Use relevant
+    project-local skills when their guidance changes the work, without substituting
+    globally installed copies. Their presence does not make invocation mandatory.
+    If a skill is absent or unnecessary, use direct work.
     The installed workflow skills are reference guidance; keep them unchanged.
     Work within this project and keep scratch or evidence files under `.work/`.
     Python 3 with the standard library is sufficient; no network setup is needed.
@@ -342,8 +343,6 @@ def prepare(case: str, stack: Path, destination: Path, skills: list[str] | None 
     if manifest.exists():
         raise ValueError("external manifest already exists")
     selected = list(dict.fromkeys(skills if skills is not None else DEFAULT_SKILLS))
-    if "hoyelam-mode" not in selected:
-        selected.insert(0, "hoyelam-mode")
     if case == "harness":
         selected = list(dict.fromkeys([*selected, "build-verification-harness", "maintain-verification-harness"]))
     for name in selected:
@@ -536,7 +535,7 @@ def main() -> int:
     create.add_argument("--case", choices=CASES, required=True)
     create.add_argument("--stack", type=Path, required=True)
     create.add_argument("--dest", type=Path, required=True)
-    create.add_argument("--skill", action="append", help="Copy this skill; repeat as needed. hoyelam-mode is always included.")
+    create.add_argument("--skill", action="append", help="Copy only this skill; repeat as needed. Omit to copy the default catalog.")
     inspect = commands.add_parser("check")
     inspect.add_argument("--case", choices=CASES, required=True)
     inspect.add_argument("--project", type=Path, required=True)

@@ -1,6 +1,6 @@
 # hoyelam-stack working agreement
 
-Use [hoyelam-mode](skills/hoyelam-mode/SKILL.md) for personal defaults and the completion standard.
+The repository checks below are authoritative. [Hoyelam Mode](skills/hoyelam-mode/SKILL.md) remains available when the user or project explicitly wants that complete preference bundle; do not load it merely because a task is non-trivial. Let the harness and the model select focused skills when their guidance changes the work.
 
 ## Repository verification
 

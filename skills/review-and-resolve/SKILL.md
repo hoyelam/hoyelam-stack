@@ -15,6 +15,8 @@ Perform a deliberate review whichever route is chosen; never call self-review in
 
 Review the complete scoped diff and enough surrounding context to understand the changed boundaries. Prioritize correctness, the original failure or requested behavior, architecture fit, unnecessary complexity, and the risks actually present. Inspect touched comments and directives; `$comment-discipline` is available for a deeper comment audit.
 
+When a change crosses a contract boundary, trace its consumers beyond direct symbol references: persisted or serialized data, other processes or languages, configuration, and lifecycle ordering where relevant. Check the pinned dependency implementation when safety depends on its behavior. Identify the assumption that makes the change safe and try to disprove it with a focused execution of the real boundary. Report an unverified assumption as a gap; do not turn hypothetical consumers into findings.
+
 Challenge whether tests and other evidence prove the requested outcome on the final state. Watch for missing regression coverage, zero-test passes, unexpected skips, weakened assertions, stale artifacts, and unsupported CI claims. Consult [prove-the-work](../prove-the-work/SKILL.md) when evidence is ambiguous.
 
 Verify candidate findings against source contracts, tests, or direct observations. Drop speculative findings and style preferences without a concrete benefit.

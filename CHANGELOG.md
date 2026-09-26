@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+1. Make Hoyelam Mode an explicit-only preference bundle instead of a mandatory baseline for non-trivial engineering work.
+2. Let project harnesses, task context, and focused skill descriptions drive ordinary skill selection, including isolated workflow exercises.
+3. Accept existing local skill links through repository aliases or relative paths without replacing them; retain conflict protection for unrelated paths.
+4. Strengthen contract-boundary review and repeated-failure investigation, and add optional guidance for comparable performance measurements.
+5. Record the revision-pinned PStack comparison, installer regression checks, and isolated behavioral observations.
+
 ## 0.13.0 - 2026-09-12
 
 1. Clarify implementation persistence while keeping one shared core for Astra and Sol and model-selected methods and delegation.

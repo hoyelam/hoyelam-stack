@@ -33,7 +33,7 @@ The Apple compatibility router is explicit-only in Codex: `$verify-apple-apps` r
 
 For a user-selected explicit-only skill, preserve its metadata and set the same policy in its own `agents/openai.yaml`. This preserves the installed files and explicit invocation. Restore the previous policy to undo the change, and start a fresh task to verify discovery. Third-party updates may replace local metadata overrides; do not edit plugin caches as a durable configuration strategy. See [OpenAI's skill configuration documentation](https://learn.chatgpt.com/docs/build-skills).
 
-Keep personal instructions in the user-level `AGENTS.md` and project facts and commands in the repository. Reference hoyelam-mode for engineering defaults instead of repeating its workflow. Local catalog choices and user-level changes are machine settings, not changes the stack installer applies to everyone.
+Keep durable personal instructions in the user-level `AGENTS.md` and project facts and commands in the repository. Let the harness and model select focused skills from the task; do not require hoyelam-mode for every engineering task. Invoke it explicitly when the complete preference bundle is useful. Local catalog choices and user-level changes are machine settings, not changes the stack installer applies to everyone.
 
 ## Use with other coding agents
 
@@ -45,5 +45,5 @@ Keep personal instructions in the user-level `AGENTS.md` and project facts and c
 ## Safety
 
 1. The installer never deletes or overwrites an existing path.
-2. An existing symlink to this repository is accepted.
+2. An existing symlink to the same skill directory is accepted, including relative links and repository aliases, without rewriting it.
 3. Any conflicting file, directory, or symlink stops installation and prints the exact path.

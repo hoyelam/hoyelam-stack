@@ -15,6 +15,8 @@ Choose evidence at the affected boundary: focused behavior tests, a real command
 
 Check prerequisites before relying on a verification path. Reproduce the original failure before fixing it when a cheap deterministic route exists, and report unavailable reproduction. For delegated work, agree on evidence each unit should return and verify the combined result; isolated passes do not prove integration.
 
+For performance claims, use [comparable measurements](references/performance-evidence.md) to distinguish an improvement in the requested metric from a source-level hypothesis or a change in workload.
+
 ## Run and assess
 
 Run required and selected checks, inspect their actual output, and re-exercise a bug's original reproduction through the relevant interface after fixing it. Add tests when they provide meaningful behavioral coverage, not merely to mirror implementation. Use snapshots when rendered output is the contract. Adapt additional checks to new evidence without silently weakening acceptance criteria.

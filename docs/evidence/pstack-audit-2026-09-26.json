@@ -1,0 +1,492 @@
+{
+  "date": "2026-09-26",
+  "local_base_revision": "bd457986fe611366ee9acad6e876db0f12f9b3d6",
+  "preexisting_local_changes_preserved": true,
+  "upstream_revision": "ecc249f1e306fc64ddf83c7bed16cacf7c2239db",
+  "upstream_subtree": "pstack",
+  "upstream_commit_date": "2026-09-25T23:04:33Z",
+  "file_hashes": {
+    "scripts/install-local.sh": {
+      "before": "41d18414e53ab1c7b4b68f4da5356f4cd0f4af4f16bb79dfd589ca85235a210b",
+      "after": "efe4ca59e0cb1e8c6fb3328928f6051823ef91a9958248b76ed7fa9907b37f7b"
+    },
+    "tests/test_install_local.py": {
+      "before": "9f89de66973a3c4b0ecf41303ddf38fd480538f111f150be8ebad1568ceb2a99",
+      "after": "7d371f97ddc887d8e6d7c429c3f1cf551de1f705d26bd55d7e533bd692bcef83"
+    },
+    "skills/investigate-first/SKILL.md": {
+      "before": "10fb4663407be88e34367f4cda626da042baa8842ff78a2fc6f6e98924536aca",
+      "after": "83ccb619f6896398c27b1ca205f2703e173ad40fedc6359ecc9f92f931565236"
+    },
+    "skills/review-and-resolve/SKILL.md": {
+      "before": "609882271cc3b0df81fb5bb986800968a03706a1e4cbd88f2b2083742fc422e4",
+      "after": "a8d794e7f1f5e9245bd12194b42339c746069f48641711676e52f5398b71a23d"
+    },
+    "skills/prove-the-work/SKILL.md": {
+      "before": "8e6164858b11a9f33dbdf6cc25aa5ce5fd1717d642f439a982c4cedb52e3915d",
+      "after": "d0860983d5eff68214c948e73704d53e1709be9c8e1a5a2813dec49665b3d298"
+    },
+    "skills/prove-the-work/references/performance-evidence.md": {
+      "before": null,
+      "after": "501ef767c33f4cf6101d05515d0b2cd470d27ecb9599e488db4a52f6b5102ab7"
+    }
+  },
+  "checks": {
+    "baseline": {
+      "command": "./scripts/validate.sh",
+      "exit_status": 0,
+      "tests": 74,
+      "skips": 0
+    },
+    "installer_original": {
+      "tests": 2,
+      "expected_failures": 2,
+      "errors": 0,
+      "evidence": "installer-before.log"
+    },
+    "installer_fixed": {
+      "command": "python3 -m unittest discover -s tests -p test_install_local.py",
+      "exit_status": 0,
+      "tests": 5
+    },
+    "revised": {
+      "command": "./scripts/validate.sh",
+      "exit_status": 0,
+      "tests": 77,
+      "skips": 0,
+      "skills": 16,
+      "agents": 10,
+      "automations": 3,
+      "evidence": "validation.log"
+    },
+    "skill_creator": {
+      "skills": [
+        "investigate-first",
+        "review-and-resolve",
+        "prove-the-work"
+      ],
+      "exit_status": 0,
+      "dependency": "PyYAML 6.0.3 in task-local directory"
+    }
+  },
+  "exercises": {
+    "review": {
+      "project": "/private/tmp/stockroom-fi_dd4gu",
+      "prompt": "Review the proposed response change in change.diff for regressions. Keep application files unchanged and run focused checks needed to support your findings.",
+      "initial_hashes": {
+        "change.diff": "1454e6761c9833fdf2b093a4b87962413a0d43b3c02e3f7757605c0970258335",
+        "stock_api.py": "cd920f50f7279f5d506165443a611159a38809b890327bbfad95050bd46259ee",
+        "README.md": "366efb39d9b4e7f5e806288179e81661bc251ef87d9cf38f4405347ca442c020",
+        "AGENTS.md": "e6852f8eea636ca877e0a72c0a3a31cd4a7b7946092f2d0a369130a21fd59295",
+        "tools/status_report.py": "eb4f7dfa764424d9f5cd994599308e6d65a462cfcc5d9e84a4c36cfefefdb104",
+        "tests/test_stock.py": "92d996c09ab216d762334a3d3fdef77daae7555c1f03ea4d3ad06c1e24e98d2a",
+        ".agents/skills/review-and-resolve/SKILL.md": "a8d794e7f1f5e9245bd12194b42339c746069f48641711676e52f5398b71a23d",
+        ".agents/skills/prove-the-work/SKILL.md": "d0860983d5eff68214c948e73704d53e1709be9c8e1a5a2813dec49665b3d298",
+        ".agents/skills/prove-the-work/references/project-verification.md": "c68c462f3a04226631e9fe767a83da853c8aeb6be1d011fe70ee3cd3eb0b6103",
+        ".agents/skills/prove-the-work/references/performance-evidence.md": "501ef767c33f4cf6101d05515d0b2cd470d27ecb9599e488db4a52f6b5102ab7",
+        ".agents/skills/prove-the-work/agents/openai.yaml": "ceac6807e66c380dbad53fd4edd05bef81e70c9d9759ac3154024b208063ca48",
+        ".agents/skills/review-and-resolve/agents/openai.yaml": "9e050842131e3889d97aa8ff93d17487b20de9820442c606263718fdf640e499"
+      },
+      "source_and_skills_unchanged": true,
+      "final_hashes": {
+        "change.diff": "1454e6761c9833fdf2b093a4b87962413a0d43b3c02e3f7757605c0970258335",
+        "stock_api.py": "cd920f50f7279f5d506165443a611159a38809b890327bbfad95050bd46259ee",
+        "README.md": "366efb39d9b4e7f5e806288179e81661bc251ef87d9cf38f4405347ca442c020",
+        "AGENTS.md": "e6852f8eea636ca877e0a72c0a3a31cd4a7b7946092f2d0a369130a21fd59295",
+        "tools/status_report.py": "eb4f7dfa764424d9f5cd994599308e6d65a462cfcc5d9e84a4c36cfefefdb104",
+        "tests/test_stock.py": "92d996c09ab216d762334a3d3fdef77daae7555c1f03ea4d3ad06c1e24e98d2a",
+        ".agents/skills/review-and-resolve/SKILL.md": "a8d794e7f1f5e9245bd12194b42339c746069f48641711676e52f5398b71a23d",
+        ".agents/skills/prove-the-work/SKILL.md": "d0860983d5eff68214c948e73704d53e1709be9c8e1a5a2813dec49665b3d298",
+        ".agents/skills/prove-the-work/references/project-verification.md": "c68c462f3a04226631e9fe767a83da853c8aeb6be1d011fe70ee3cd3eb0b6103",
+        ".agents/skills/prove-the-work/references/performance-evidence.md": "501ef767c33f4cf6101d05515d0b2cd470d27ecb9599e488db4a52f6b5102ab7",
+        ".agents/skills/prove-the-work/agents/openai.yaml": "ceac6807e66c380dbad53fd4edd05bef81e70c9d9759ac3154024b208063ca48",
+        ".agents/skills/review-and-resolve/agents/openai.yaml": "9e050842131e3889d97aa8ff93d17487b20de9820442c606263718fdf640e499"
+      },
+      "evidence_files": {}
+    },
+    "investigation": {
+      "project": "/private/tmp/dispatchdesk-diba_dxi",
+      "prompt": "Jobs still stall after the two timeout changes recorded in NOTES.md. Investigate the cause and the next useful action. Keep application files unchanged.",
+      "initial_hashes": {
+        "dispatch.py": "85faeb5256782136be37702b704cf55a4a24c25efa3c098dc0604ba8a400e9c1",
+        "README.md": "80c821000654db7aa84194452453d6837b056183e268d179cf2fa0d636a68e50",
+        "replay.py": "a5438597ad4c89b98f748d40b3f9b1b17211d485d346a363bc72c67eeaab4701",
+        "AGENTS.md": "e3ec49a308308fde58ad0c53e13f2764d36c0370ab02cdc1dd3c3fe515cc7373",
+        "NOTES.md": "fa9ef158dab6da81c184820e76c73e445cf29ae42ea0f0f066d93a00df2710a2",
+        ".agents/skills/investigate-first/SKILL.md": "83ccb619f6896398c27b1ca205f2703e173ad40fedc6359ecc9f92f931565236",
+        ".agents/skills/investigate-first/references/condition-based-observation.md": "186867e834b13545ffebb5682afe5539247407870ebd52f3af051a5bda8d45ad",
+        ".agents/skills/investigate-first/references/source-research.md": "3ed221d188baf736a7a0ce0b6f5f8131b778742676e8f54627700df4b17f37a1",
+        ".agents/skills/investigate-first/agents/openai.yaml": "d433f5a81ec778e9c456fe4ef1d38bb898c55074c700dfd2be864fc372ec1568",
+        ".agents/skills/investigate-first/scripts/reference_repo.py": "0cb9b74e2786754b9e3105dd5267a1a408b2411773f0c317dff929fa794a6f58",
+        ".agents/skills/investigate-first/scripts/__pycache__/reference_repo.cpython-39.pyc": "6c0081be544f19035d59089e080899f8fdad36b9f4ae7d87b55f1243eba36b76"
+      },
+      "source_and_skills_unchanged": true,
+      "final_hashes": {
+        "dispatch.py": "85faeb5256782136be37702b704cf55a4a24c25efa3c098dc0604ba8a400e9c1",
+        "README.md": "80c821000654db7aa84194452453d6837b056183e268d179cf2fa0d636a68e50",
+        "replay.py": "a5438597ad4c89b98f748d40b3f9b1b17211d485d346a363bc72c67eeaab4701",
+        "AGENTS.md": "e3ec49a308308fde58ad0c53e13f2764d36c0370ab02cdc1dd3c3fe515cc7373",
+        "NOTES.md": "fa9ef158dab6da81c184820e76c73e445cf29ae42ea0f0f066d93a00df2710a2",
+        ".agents/skills/investigate-first/SKILL.md": "83ccb619f6896398c27b1ca205f2703e173ad40fedc6359ecc9f92f931565236",
+        ".agents/skills/investigate-first/references/condition-based-observation.md": "186867e834b13545ffebb5682afe5539247407870ebd52f3af051a5bda8d45ad",
+        ".agents/skills/investigate-first/references/source-research.md": "3ed221d188baf736a7a0ce0b6f5f8131b778742676e8f54627700df4b17f37a1",
+        ".agents/skills/investigate-first/agents/openai.yaml": "d433f5a81ec778e9c456fe4ef1d38bb898c55074c700dfd2be864fc372ec1568",
+        ".agents/skills/investigate-first/scripts/reference_repo.py": "0cb9b74e2786754b9e3105dd5267a1a408b2411773f0c317dff929fa794a6f58",
+        ".agents/skills/investigate-first/scripts/__pycache__/reference_repo.cpython-39.pyc": "6c0081be544f19035d59089e080899f8fdad36b9f4ae7d87b55f1243eba36b76"
+      },
+      "evidence_files": {
+        ".work/investigation.json": "b5e8baad21a6c2b00fa17901c985711a58bd5aa9d8dc08acc31fc5fef48ff195"
+      }
+    },
+    "performance": {
+      "project": "/private/tmp/ledgerreport-wq5pn8ud",
+      "prompt": "Assess whether the new report aggregation is faster using the saved results, and run local measurements if needed. Keep application source unchanged and provide reproducible evidence for the conclusion.",
+      "initial_hashes": {
+        "aggregate.py": "2b315562bc85ee4669f30ae8d74a52f0a223e89c77d4304df473fb1047f4c041",
+        "benchmark.py": "7cb06d79db70b510e98f912f58e18634361130aaf5214b35ef58a4aef9ae8a09",
+        "README.md": "a1e990a0e0b3bb53c20c5e29836a34a82e75137b030e6c7cce64bf787b6c5e6e",
+        "AGENTS.md": "82302bbb9a1b97c28c3f1cb16d2d0a1c7f2a7128d472e8250a783495eb2f0f93",
+        "tests/test_aggregate.py": "9609d638353272eb3fa3361356f957af7f8a56a7922fb761d70088e43db78f51",
+        "results/before.json": "ca325f95b040a0c3ca7766ddeaeec0889f17049f7e95d62966b7287f620795d1",
+        "results/after.json": "a42789e862b00826834e70fea19b8b85ed4767cd5dec8b4aaabf189f8b948955",
+        ".agents/skills/prove-the-work/SKILL.md": "d0860983d5eff68214c948e73704d53e1709be9c8e1a5a2813dec49665b3d298",
+        ".agents/skills/prove-the-work/references/project-verification.md": "c68c462f3a04226631e9fe767a83da853c8aeb6be1d011fe70ee3cd3eb0b6103",
+        ".agents/skills/prove-the-work/references/performance-evidence.md": "501ef767c33f4cf6101d05515d0b2cd470d27ecb9599e488db4a52f6b5102ab7",
+        ".agents/skills/prove-the-work/agents/openai.yaml": "ceac6807e66c380dbad53fd4edd05bef81e70c9d9759ac3154024b208063ca48"
+      },
+      "source_and_skills_unchanged": true,
+      "final_hashes": {
+        "aggregate.py": "2b315562bc85ee4669f30ae8d74a52f0a223e89c77d4304df473fb1047f4c041",
+        "benchmark.py": "7cb06d79db70b510e98f912f58e18634361130aaf5214b35ef58a4aef9ae8a09",
+        "README.md": "a1e990a0e0b3bb53c20c5e29836a34a82e75137b030e6c7cce64bf787b6c5e6e",
+        "AGENTS.md": "82302bbb9a1b97c28c3f1cb16d2d0a1c7f2a7128d472e8250a783495eb2f0f93",
+        "tests/test_aggregate.py": "9609d638353272eb3fa3361356f957af7f8a56a7922fb761d70088e43db78f51",
+        "results/before.json": "ca325f95b040a0c3ca7766ddeaeec0889f17049f7e95d62966b7287f620795d1",
+        "results/after.json": "a42789e862b00826834e70fea19b8b85ed4767cd5dec8b4aaabf189f8b948955",
+        ".agents/skills/prove-the-work/SKILL.md": "d0860983d5eff68214c948e73704d53e1709be9c8e1a5a2813dec49665b3d298",
+        ".agents/skills/prove-the-work/references/project-verification.md": "c68c462f3a04226631e9fe767a83da853c8aeb6be1d011fe70ee3cd3eb0b6103",
+        ".agents/skills/prove-the-work/references/performance-evidence.md": "501ef767c33f4cf6101d05515d0b2cd470d27ecb9599e488db4a52f6b5102ab7",
+        ".agents/skills/prove-the-work/agents/openai.yaml": "ceac6807e66c380dbad53fd4edd05bef81e70c9d9759ac3154024b208063ca48"
+      },
+      "evidence_files": {}
+    }
+  },
+  "observations": {
+    "review": {
+      "outcome": "regression_reproduced",
+      "passing_unit_tests": 1,
+      "consumer_exit_status": 1,
+      "consumer_error": "KeyError: 'remaining'",
+      "parent_reproduced": true
+    },
+    "investigation": {
+      "outcome": "shared_premise_rejected",
+      "timeouts": [
+        1,
+        5,
+        10,
+        20
+      ],
+      "observed_assignments": [
+        12,
+        0,
+        0
+      ],
+      "scratch_assignments": [
+        4,
+        4,
+        4
+      ],
+      "scratch_completed": 12,
+      "parent_reproduced_skew": true,
+      "worker_evidence": {
+        "reproductions": [
+          {
+            "timeout": 1,
+            "workers": [
+              {
+                "worker": 0,
+                "assigned": 12,
+                "completed": 4,
+                "pending": 8
+              },
+              {
+                "worker": 1,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              },
+              {
+                "worker": 2,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              }
+            ]
+          },
+          {
+            "timeout": 5,
+            "workers": [
+              {
+                "worker": 0,
+                "assigned": 12,
+                "completed": 4,
+                "pending": 8
+              },
+              {
+                "worker": 1,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              },
+              {
+                "worker": 2,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              }
+            ]
+          },
+          {
+            "timeout": 10,
+            "workers": [
+              {
+                "worker": 0,
+                "assigned": 12,
+                "completed": 4,
+                "pending": 8
+              },
+              {
+                "worker": 1,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              },
+              {
+                "worker": 2,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              }
+            ]
+          },
+          {
+            "timeout": 20,
+            "workers": [
+              {
+                "worker": 0,
+                "assigned": 12,
+                "completed": 4,
+                "pending": 8
+              },
+              {
+                "worker": 1,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              },
+              {
+                "worker": 2,
+                "assigned": 0,
+                "completed": 0,
+                "pending": 0
+              }
+            ]
+          }
+        ],
+        "counterfactual": {
+          "description": "In-memory job-ID routing, using unchanged replay code",
+          "result": {
+            "timeout": 1,
+            "workers": [
+              {
+                "worker": 0,
+                "assigned": 4,
+                "completed": 4,
+                "pending": 0
+              },
+              {
+                "worker": 1,
+                "assigned": 4,
+                "completed": 4,
+                "pending": 0
+              },
+              {
+                "worker": 2,
+                "assigned": 4,
+                "completed": 4,
+                "pending": 0
+              }
+            ]
+          }
+        },
+        "application_sha256_before": {
+          "dispatch.py": "85faeb5256782136be37702b704cf55a4a24c25efa3c098dc0604ba8a400e9c1",
+          "replay.py": "a5438597ad4c89b98f748d40b3f9b1b17211d485d346a363bc72c67eeaab4701"
+        },
+        "application_sha256_after": {
+          "dispatch.py": "85faeb5256782136be37702b704cf55a4a24c25efa3c098dc0604ba8a400e9c1",
+          "replay.py": "a5438597ad4c89b98f748d40b3f9b1b17211d485d346a363bc72c67eeaab4701"
+        }
+      }
+    },
+    "performance": {
+      "outcome": "partial_worker_run_with_parent_measurement",
+      "saved_workloads_incomparable": true,
+      "parent_interventions": 2,
+      "worker_reported_tests": 1,
+      "worker_reported_timings_retained": false,
+      "retained_evidence": {
+        "observer": "parent",
+        "runtime": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+        "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+        "runs": [
+          {
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-B",
+              "benchmark.py",
+              "--implementation",
+              "legacy",
+              "--size",
+              "1000000",
+              "--runs",
+              "7"
+            ],
+            "exit_status": 0,
+            "result": {
+              "implementation": "legacy",
+              "size": 1000000,
+              "runs": 7,
+              "seconds": [
+                0.011390957995899953,
+                0.011014083000191022,
+                0.010714416996052023,
+                0.01148779100185493,
+                0.010846791999938432,
+                0.010822582997207064,
+                0.011785917005909141
+              ],
+              "total": 499999500000
+            }
+          },
+          {
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-B",
+              "benchmark.py",
+              "--implementation",
+              "current",
+              "--size",
+              "1000000",
+              "--runs",
+              "7"
+            ],
+            "exit_status": 0,
+            "result": {
+              "implementation": "current",
+              "size": 1000000,
+              "runs": 7,
+              "seconds": [
+                0.0018365419964538887,
+                0.0015587079979013652,
+                0.0014753340001334436,
+                0.001501667000411544,
+                0.0014751670023542829,
+                0.0014930840043234639,
+                0.001468041999032721
+              ],
+              "total": 499999500000
+            }
+          },
+          {
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-B",
+              "benchmark.py",
+              "--implementation",
+              "current",
+              "--size",
+              "1000000",
+              "--runs",
+              "7"
+            ],
+            "exit_status": 0,
+            "result": {
+              "implementation": "current",
+              "size": 1000000,
+              "runs": 7,
+              "seconds": [
+                0.0018482500017853454,
+                0.0016609590020379983,
+                0.0015200829948298633,
+                0.0014978749968577176,
+                0.0014955840015318245,
+                0.0015188750039669685,
+                0.0014809169952059165
+              ],
+              "total": 499999500000
+            }
+          },
+          {
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-B",
+              "benchmark.py",
+              "--implementation",
+              "legacy",
+              "--size",
+              "1000000",
+              "--runs",
+              "7"
+            ],
+            "exit_status": 0,
+            "result": {
+              "implementation": "legacy",
+              "size": 1000000,
+              "runs": 7,
+              "seconds": [
+                0.010879832996579353,
+                0.010347124996769708,
+                0.010637665996910073,
+                0.010371290998591576,
+                0.01056095800595358,
+                0.010539292001340073,
+                0.01055816600273829
+              ],
+              "total": 499999500000
+            }
+          }
+        ],
+        "summary": {
+          "legacy": {
+            "n": 14,
+            "median_seconds": 0.010768499996629544,
+            "min_seconds": 0.010347124996769708,
+            "max_seconds": 0.011785917005909141
+          },
+          "current": {
+            "n": 14,
+            "median_seconds": 0.0014997709986346308,
+            "min_seconds": 0.001468041999032721,
+            "max_seconds": 0.0018482500017853454
+          }
+        },
+        "correctness": {
+          "exit_status": 0,
+          "stdout": "",
+          "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Synthetic observations, not a blinded before/after comparison.",
+    "No model override; exact runtime model identity not independently observed.",
+    "Native worker tool logs were not exported; source and artifacts were independently checked where available.",
+    "Performance worker evidence saving was interrupted; retained raw measurements are the parent run.",
+    "Token usage and total worker elapsed times were not measured.",
+    "Temporary fixture paths and raw task-local evidence may expire.",
+    "No app runtime or exhaustive helper security audit."
+  ]
+}

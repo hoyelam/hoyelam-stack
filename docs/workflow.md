@@ -1,6 +1,6 @@
 # Using the stack
 
-[Hoyelam Mode](../skills/hoyelam-mode/SKILL.md) owns the personal defaults and completion standard. Its [capability guide](../skills/hoyelam-mode/SKILL.md#available-capabilities) routes optional deeper work. This page illustrates selection; it does not prescribe additional phases.
+[Hoyelam Mode](../skills/hoyelam-mode/SKILL.md) is an optional bundle of personal defaults and a completion standard. Use it when explicitly requested or adopted by a project. Otherwise, let the task, project harness, and focused skill descriptions guide selection. Its [capability guide](../skills/hoyelam-mode/SKILL.md#available-capabilities) remains available without making the mode a prerequisite.
 
 | Task | Useful approach |
 | --- | --- |
@@ -17,7 +17,7 @@ When delegation helps, [delegation guidance](../skills/hoyelam-mode/references/s
 
 ## Codex context
 
-Keep project instructions focused on project facts and verification commands. Link the personal defaults instead of copying their rules into each repository. Load specialized skills and references only when they change the task's decisions.
+Keep project instructions focused on project facts and verification commands. Do not require Hoyelam Mode merely because work is non-trivial; link it only when the project adopts the complete preference bundle. Load specialized skills and references only when they change the task's decisions.
 
 The same core guidance supports Astra and Sol. Describe the requested working result and relevant acceptance checks; let the model choose the method and continue through in-scope repairs. Add model-specific guidance only when repeated observations show a need. Verification skills supply platform knowledge; use prove-the-work when acceptance or evidence is unclear, not as an additional phase for every change.
 

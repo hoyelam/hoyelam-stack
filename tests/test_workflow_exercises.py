@@ -94,7 +94,9 @@ class WorkflowExerciseTests(unittest.TestCase):
                 self.assertNotIn(first, manifest_path(first).parents)
                 self.assertFalse((first / "workflow_exercises.py").exists())
                 self.assertFalse((first / "acceptance_check.py").exists())
-                self.assertIn(".agents/skills/hoyelam-mode/SKILL.md", (first / "AGENTS.md").read_text())
+                instructions = (first / "AGENTS.md").read_text()
+                self.assertIn("Skills are available under `.agents/skills/<skill-name>/SKILL.md`", instructions)
+                self.assertNotIn("Use `$hoyelam-mode`", instructions)
 
     def test_prepare_refuses_existing_work_and_invalid_skill_without_writes(self):
         project = self.base / "occupied"
@@ -115,7 +117,7 @@ class WorkflowExerciseTests(unittest.TestCase):
         previous = source.read_bytes()
         project = self.base / "minimal"
         prepare("docs", self.stack, project, ["prove-the-work"])
-        self.assertEqual(sorted(path.name for path in (project / ".agents/skills").iterdir()), ["hoyelam-mode", "prove-the-work"])
+        self.assertEqual(sorted(path.name for path in (project / ".agents/skills").iterdir()), ["prove-the-work"])
         self.assertEqual(source.read_bytes(), previous)
 
     def test_docs_checker_requires_runnable_output_and_preserves_product_scope(self):

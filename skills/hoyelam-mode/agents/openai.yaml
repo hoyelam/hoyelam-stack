@@ -1,6 +1,6 @@
 interface:
   display_name: "Hoyelam Mode"
-  short_description: "Engineering defaults and verified completion"
+  short_description: "Optional personal engineering preferences"
   default_prompt: "Use $hoyelam-mode to complete this task with appropriate tools, scope, and verification."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

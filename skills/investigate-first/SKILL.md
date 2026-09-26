@@ -9,6 +9,8 @@ Establish expected and observed behavior, relevant constraints, and what would r
 
 Reproduce the symptom when practical. Use logs, traces, persisted state, or a focused invocation to distinguish a cause from a plausible source-only explanation. Consult history when a regression or earlier design decision matters. Identify the important assumption that makes a proposed change safe, and check it through source or executable evidence where possible.
 
+When repeated fixes fail the same check, revisit their shared assumption before another variation. Choose an observation that distinguishes the leading explanations; for uneven load or ownership, compare the affected actors. Follow the result to the owning cause rather than adding compensating retries, delays, or guards. A failed hypothesis is evidence to narrow the investigation, not a reason to expand the task.
+
 For repeated remote-source research, [source research](references/source-research.md) provides an optional cache helper with explicit revisions. Use it when reuse helps; ordinary local searches need no extra tool. For timing failures, [condition-based observation](references/condition-based-observation.md) describes a bounded readiness check.
 
 Report the supported cause or strongest remaining hypothesis, its evidence, affected boundary, and next useful action. Expand the explanation only where uncertainty or impact needs it. Investigation remains read-only unless implementation is authorized.

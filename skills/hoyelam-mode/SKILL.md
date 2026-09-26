@@ -1,6 +1,6 @@
 ---
 name: hoyelam-mode
-description: "Engineering task defaults for scope, autonomy, and verified completion."
+description: "Optional Hoye Lam preferences for scope, autonomy, delegation, and verified completion. Use when explicitly requested or adopted by a project."
 ---
 
 # Hoyelam Mode

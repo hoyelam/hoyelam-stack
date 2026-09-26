@@ -1,0 +1,99 @@
+{
+  "artifacts": {
+    "disposable_projects": "/private/tmp/hoyelam-mode-optional-8Fegtp/",
+    "raw_task_logs": ".work/hoyelam-mode-optional-2026-09-14/",
+    "retention": "Ignored and temporary artifacts may expire."
+  },
+  "date": "2026-09-14",
+  "decision": {
+    "after": "The task, repository harness, and focused skill descriptions guide ordinary work. Hoyelam Mode is explicit-only and remains available when requested or adopted by a project.",
+    "before": "User-level, workspace, repository, and exercise instructions required Hoyelam Mode for non-trivial or all engineering work.",
+    "reason": "The broad mandate loaded general guidance before the model could determine whether it affected the task. Retaining explicit invocation preserves the preference bundle without making it a prerequisite."
+  },
+  "explicit_invocation_smoke": {
+    "actions": [
+      "Read only .agents/skills/hoyelam-mode/SKILL.md.",
+      "Returned a one-sentence summary with the project-local path.",
+      "Made no file changes and ran no product checks."
+    ],
+    "elapsed_seconds": 12.95,
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "status": "passed",
+    "usage": {
+      "cached_input_tokens": 27136,
+      "input_tokens": 42667,
+      "output_tokens": 148
+    }
+  },
+  "failures": [
+    {
+      "error": "The first fresh-session launch could not initialize the in-process app-server under the outer sandbox.",
+      "resolution": "Retried with elevated process startup while retaining the child workspace-write sandbox."
+    },
+    {
+      "error": "The first explicit-invocation command passed an unsupported -a flag to codex exec.",
+      "resolution": "Removed the unsupported flag and retained the read-only child sandbox."
+    }
+  ],
+  "instruction_sha256_after": {
+    "/Users/hoyelam/.codex/AGENTS.md": "f22021dfd7958ff890a9252f0cb022cd3bb08c7b4f3e725d09195273d1dcbb3b",
+    "/Users/hoyelam/GitHub/AGENTS.md": "58a6e4ce0d68e0cc7bc34e5d36c0ecc151997806a5647af198200999c7834dc7",
+    "AGENTS.md": "e3477156d667a1f046ac97cb9e066d572498f92ef94fcd8077a262bd9ed30fa2",
+    "scripts/workflow_exercises.py": "c721c9d24fb39785cf352c6db952909b0c140ddaa14c04ebc8a5ae51cabd46b0",
+    "skills/hoyelam-mode/SKILL.md": "dcc0576f4f29b1b06a625b169622b9121589f814fadff126483839966639b010",
+    "skills/hoyelam-mode/agents/openai.yaml": "a13ddaa2b2d713f550d256f4713dc5599c934d7c62365ac922e9c0dd869b8adf"
+  },
+  "instruction_version": {
+    "base_revision": "bd457986fe611366ee9acad6e876db0f12f9b3d6",
+    "package_version": "0.13.0 plus unreleased routing changes"
+  },
+  "limitations": [
+    "One synthetic documentation task does not establish behavior across repositories, models, or complex workflows.",
+    "The exercise confirms a correct direct path, not whether every focused skill will be selected when useful.",
+    "The running desktop conversation retains its startup catalog; fresh sessions observe the revised discovery policy.",
+    "Shared caches affect token usage, so the recorded usage is not a baseline comparison."
+  ],
+  "official_guidance": {
+    "observation": "OpenAI recommends focused skill triggers, progressive disclosure, and contextual AGENTS.md references because broad or over-emphasized instructions can load irrelevant guidance and consume context.",
+    "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+  },
+  "package_validation": {
+    "command": "./scripts/validate.sh",
+    "observed": "Validated 16 skills, 10 agents, and 3 automation packs; 74 tests passed with no failures or skips.",
+    "status": "passed"
+  },
+  "prompt_preview": {
+    "catalog_entry_occurrences": 0,
+    "explicit_instruction_occurrences": 0,
+    "new_harness_instruction_occurrences": 1,
+    "skill_path_occurrences": 0,
+    "status": "passed"
+  },
+  "workflow_exercise": {
+    "actions": [
+      "Inspected the project instructions, README, CLI source, and executable split help.",
+      "Changed only README.md from --output json to --format json.",
+      "Ran the documented command and the required unittest discovery."
+    ],
+    "case": "docs",
+    "checker": {
+      "changed_files": [
+        "README.md"
+      ],
+      "problems": [],
+      "status": "passed"
+    },
+    "elapsed_seconds": 25.69,
+    "model": "gpt-6-astra",
+    "observed": "The agent completed the scoped task directly without reading a SKILL.md. The command returned the expected JSON and all 3 discovered tests passed.",
+    "reasoning_effort": "medium",
+    "task": "Correct the failing README JSON example to match executable CLI help, keep the change scoped, and verify the documented command.",
+    "user_interventions_inside_candidate": 0,
+    "usage": {
+      "cached_input_tokens": 68864,
+      "input_tokens": 85024,
+      "output_tokens": 416
+    }
+  }
+}
