@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.14.0 - 2026-09-26
 
 1. Make Hoyelam Mode an explicit-only preference bundle instead of a mandatory baseline for non-trivial engineering work.
 2. Let project harnesses, task context, and focused skill descriptions drive ordinary skill selection, including isolated workflow exercises.
